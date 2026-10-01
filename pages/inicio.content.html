@@ -5,16 +5,20 @@
        ==================================================================== -->
   <section class="hero">
     <div class="hero__media" aria-hidden="true">
-      <img src="assets/img/photos/hero-edificio.webp"
-           srcset="assets/img/photos/hero-edificio-1100.webp 1100w, assets/img/photos/hero-edificio.webp 2000w"
-           sizes="100vw" alt="" fetchpriority="high" decoding="async" width="2000" height="1137">
+      <img src="assets/img/photos/hero-dron.webp"
+           srcset="assets/img/photos/hero-dron-1100.webp 1100w, assets/img/photos/hero-dron.webp 2000w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" width="2000" height="1125">
+      <!-- Video con dron de la clínica. site.js elige la versión según el
+           ancho de pantalla y no lo carga si el usuario pidió reducir movimiento. -->
+      <video class="hero__video" muted loop playsinline preload="none"
+             data-src-lg="assets/video/hero-dron.mp4" data-src-sm="assets/video/hero-dron-960.mp4"></video>
     </div>
 
     <div class="hero__inner">
       <div class="hero__text">
         <h1 class="hero__title">70 años cuidando <span class="u-accent-phrase">tu visión</span> con la tecnología del mañana</h1>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="contactanos.html">Agendar cita</a>
+          <a class="btn btn--primary" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           <a class="btn btn--outline" href="contactanos.html">Contáctanos</a>
         </div>
       </div>
@@ -217,7 +221,7 @@
         </div>
         <div class="head-split__aside">
           <p>Historias de pacientes que recuperaron su calidad de vida. Su confianza es nuestro mayor compromiso.</p>
-          <a class="btn btn--outline testimonios__cta" data-ondark="theme" href="contactanos.html">Agendar cita</a>
+          <a class="btn btn--outline testimonios__cta" data-ondark="theme" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
         </div>
       </div>
 

@@ -19,11 +19,11 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=232">
-<link rel="stylesheet" href="assets/css/tokens.css?v=232">
-<link rel="stylesheet" href="assets/css/components.css?v=232">
-<link rel="stylesheet" href="assets/css/site.css?v=232">
-<link rel="stylesheet" href="assets/css/pages.css?v=232">
+<link rel="stylesheet" href="assets/css/fonts.css?v=233">
+<link rel="stylesheet" href="assets/css/tokens.css?v=233">
+<link rel="stylesheet" href="assets/css/components.css?v=233">
+<link rel="stylesheet" href="assets/css/site.css?v=233">
+<link rel="stylesheet" href="assets/css/pages.css?v=233">
 <noscript><style>
   /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
   @media (max-width: 1024px) {
@@ -95,7 +95,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <div class="menu__sublinks">
                 <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
                 <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
-                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+                <a href="consultas-examenes.html#cita" data-whatsapp rel="noopener">Agenda tu cita</a>
               </div>
             </div>
             <div class="menu__col">
@@ -131,7 +131,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         </button>
       </div>
 
-      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
     </nav>
   </div>
 </header>
@@ -169,7 +169,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Queratocono</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Es una enfermedad degenerativa que deforma y adelgaza progresivamente la córnea, provocando visión distorsionada. Aparece en la juventud y es especialmente frecuente en Ecuador. Detectarlo a tiempo es clave para frenar su avance.</p>
         </article>
@@ -177,7 +177,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Crosslinking y anillos intraestromales</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Tratamientos para frenar y corregir el queratocono. El crosslinking aplica luz ultravioleta sobre la córnea para endurecerla y detener su deformación. Los anillos intraestromales, implantados con láser, regularizan la forma de la córnea en pacientes que no toleran los lentes de contacto. El Pentacam nos permite decidir cuál conviene en cada caso.</p>
         </article>
@@ -185,7 +185,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Pterigión</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Es el crecimiento de un tejido sobre la córnea, asociado a la exposición solar, el polvo y el viento. Puede afectar la estética del ojo y, si avanza, la visión. Su tratamiento es quirúrgico, ambulatorio y de bajo riesgo: se retira el pterigión y se coloca un injerto de conjuntiva, la técnica que menos recidivas presenta. El objetivo es devolver al ojo su aspecto blanco y sano en pocas semanas.</p>
         </article>
@@ -193,7 +193,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Trasplante de córnea</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Reemplaza el tejido corneal dañado cuando la córnea pierde su transparencia (por queratocono avanzado, infecciones, herpes o distrofia de Fuchs) y no hay otra forma de recuperar la visión. Es un procedimiento ambulatorio con anestesia local. Las técnicas actuales conservan parte del tejido del paciente, reduciendo el riesgo de rechazo, y el láser de femtosegundo permite cortes exactos tanto en la córnea donante como en la receptora. Somos un centro acreditado por el INDOT para trasplante de córnea.</p>
         </article>
@@ -217,7 +217,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/cirugias.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Catarata</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Es la pérdida de transparencia del cristalino, el lente natural del ojo, lo que vuelve la visión borrosa. Aparece principalmente con la edad y es la principal causa de ceguera en el mundo. Su tratamiento es quirúrgico: se reemplaza el cristalino por un lente intraocular en un procedimiento ambulatorio, sin hospitalización y con anestesia en gotas.</p>
         </article>
@@ -225,7 +225,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/cirugias.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Catarata asistida con láser de femtosegundo</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">El láser realiza las incisiones sin bisturí, crea una abertura perfectamente regular y centrada donde se implanta el lente intraocular y fragmenta la catarata antes de aspirarla, con menos energía. El resultado es una cirugía más segura, exacta y reproducible entre ambos ojos. Según el lente elegido, el paciente puede recuperar la visión de lejos, intermedia (computador) y de cerca (lectura).</p>
         </article>
@@ -249,7 +249,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Desprendimiento de retina</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Ocurre cuando la retina se separa del fondo del ojo y constituye una urgencia oftalmológica. Puede manifestarse con destellos de luz, manchas volantes nuevas o una sombra en el campo visual. Requiere atención inmediata para evitar la pérdida de visión.</p>
         </article>
@@ -257,7 +257,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Retinopatía diabética</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Es una complicación de la diabetes que daña los vasos sanguíneos de la retina. Al inicio no da síntomas, por lo que el control periódico es indispensable. Detectada a tiempo, es prevenible; sin tratamiento, puede llevar a la ceguera.</p>
         </article>
@@ -265,7 +265,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Degeneración macular (DMAE)</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Trastorno asociado a la edad que deteriora lentamente la visión central, dificultando leer y distinguir detalles finos. Es más común después de los 60 años. Su detección temprana permite frenar su progresión y proteger la visión.</p>
         </article>
@@ -273,7 +273,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Agujero macular</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Una pequeña rotura en el centro de la retina que afecta directamente la visión central: cuesta reconocer rostros o aparece una mancha en el centro de lo que se mira. Se trata con cirugía (vitrectomía) y detectarlo a tiempo hace la diferencia.</p>
         </article>
@@ -281,7 +281,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Membrana epirretiniana</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Una fina capa de tejido que se forma sobre la mácula y la arruga, haciendo que las líneas rectas se vean torcidas o las imágenes deformadas. Cuando afecta la calidad de vida, se retira mediante vitrectomía.</p>
         </article>
@@ -305,7 +305,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Inyecciones intraoculares</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Medicamentos anti-VEGF que se aplican dentro del ojo para frenar el crecimiento de vasos sanguíneos anormales. Son el tratamiento de elección en la degeneración macular húmeda y en el edema macular, a menudo asociado a la retinopatía diabética. Se realizan de forma ambulatoria, con anestesia en gotas y una aguja muy fina; suelen requerir varias aplicaciones y un control obligatorio al día siguiente. El médico tratante elige el medicamento adecuado para cada caso.</p>
         </article>
@@ -313,7 +313,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/cirugias.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Vitrectomía</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Cirugía en la que se retira el humor vítreo, el gel que llena el interior del ojo, para reparar la retina desde dentro. Se indica en el desprendimiento de retina, el agujero macular, la membrana epirretiniana, las hemorragias por diabetes y la extracción de cuerpos extraños.</p>
         </article>
@@ -321,7 +321,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-laser-pascal.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Fotocoagulación con láser</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Utiliza luz láser para sellar vasos sanguíneos y desgarros de la retina, evitando que la visión siga deteriorándose. Se usa en la retinopatía diabética, los desgarros de retina y otras enfermedades vasculares del ojo.</p>
         </article>
@@ -329,7 +329,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-laser-pascal.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Láser micropulsátil</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Uno de los tratamientos más modernos para el edema macular: ofrece buena recuperación visual y puede disminuir el número de inyecciones intraoculares que necesita el paciente.</p>
         </article>
@@ -353,7 +353,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-humphrey.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Glaucoma</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Es una enfermedad que daña el nervio óptico, generalmente por un aumento de la presión ocular, y puede llevar a una pérdida irreversible de la visión. Avanza sin dolor ni síntomas, por lo que se lo conoce como el ladrón silencioso de la vista. La detección temprana y el seguimiento —con campimetría, OCT y control de la presión— son fundamentales para controlarla. Es importante no suspender las gotas indicadas: abandonarlas es una de las principales causas de progresión.</p>
         </article>
@@ -361,7 +361,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-humphrey.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Láser para glaucoma</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Procedimientos láser que ayudan a controlar la presión ocular. El láser transescleral se utiliza en casos severos como el glaucoma neovascular, una forma secundaria de glaucoma de ángulo cerrado.</p>
         </article>
@@ -385,7 +385,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Miopía</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Dificultad para ver con nitidez de lejos, mientras la visión de cerca se mantiene clara. Se debe a que la imagen se enfoca delante de la retina y no sobre ella. Puede corregirse con lentes o mediante cirugía refractiva.</p>
         </article>
@@ -393,7 +393,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Hipermetropía</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Dificultad para enfocar los objetos cercanos, y en casos mayores también los lejanos. Ocurre cuando la imagen se enfoca detrás de la retina. Se corrige con lentes o mediante cirugía refractiva.</p>
         </article>
@@ -401,7 +401,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Astigmatismo</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Visión borrosa o distorsionada a cualquier distancia, causada por una curvatura irregular de la córnea. Suele acompañar a la miopía o la hipermetropía. Puede corregirse con lentes o cirugía refractiva.</p>
         </article>
@@ -409,7 +409,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/hero-ojo-800.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Femto-LASIK</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Corrige la miopía, la hipermetropía y el astigmatismo remodelando la córnea con láser. Un láser de femtosegundo crea una fina lámina en la córnea y el láser excímer corrige la graduación en pocos segundos. Es una técnica precisa y segura, con recuperación visual casi inmediata. Antes de operar, los exámenes confirman que el paciente cumple todos los requisitos de seguridad.</p>
         </article>
@@ -433,7 +433,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-optica.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Óptica ZEIZZ Vision Center</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Medición completa de la vista y elaboración de lentes con tecnología ZEIZZ, con la misma precisión con la que trabajamos en consulta.</p>
         </article>
@@ -441,7 +441,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <img class="topic__thumb" src="assets/img/photos/equipo-optica.webp" alt="" loading="lazy" decoding="async">
           <div class="topic__head">
             <h3 class="topic__name">Visión subnormal (baja visión)</h3>
-            <a class="topic__cta" href="contactanos.html">Agendar cita</a>
+            <a class="topic__cta" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           </div>
           <p class="topic__text">Cuando, a pesar de cirugías e inyecciones, la visión no se recupera lo suficiente, nuestros especialistas en baja visión diseñan una luna personalizada con parámetros milimétricos para aprovechar al máximo la visión que el paciente conserva.</p>
         </article>
@@ -459,7 +459,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <h2 class="cta-band__title">Evalúa tu caso con un especialista</h2>
         <p class="cta-band__text">Una consulta oftalmológica integral es el punto de partida para definir el diagnóstico y el tratamiento que corresponde a cada paciente.</p>
         <div class="cta-band__actions">
-          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html">Agenda tu cita <span aria-hidden="true">↗</span></a>
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html" data-whatsapp rel="noopener">Agenda tu cita <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -521,7 +521,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
       <div class="footer__col">
         <div class="footer__col-title">Contacto</div>
         <div class="footer__links">
-          <a href="contactanos.html">Agendar cita</a>
+          <a href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
           <a href="consentimiento.html">Consentimiento de datos</a>
           <a href="#">Facebook</a>
@@ -548,6 +548,6 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
   <span class="wa-fab__label"><strong>¿Agendamos tu cita?</strong> Escríbenos por WhatsApp</span>
   <span class="wa-fab__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
 </a>
-<script src="assets/js/site.js?v=232" defer></script>
+<script src="assets/js/site.js?v=233" defer></script>
 </body>
 </html>

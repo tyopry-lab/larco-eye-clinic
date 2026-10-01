@@ -66,6 +66,18 @@
     }
   }
 
+  /* Video de portada: versión liviana en pantallas chicas; nada si el
+     usuario pidió menos movimiento (queda la foto fija). */
+  function startHeroVideo() {
+    var v = document.querySelector('.hero__video');
+    if (!v || reduceMotion) return;
+    var small = window.matchMedia('(max-width: 900px)').matches;
+    v.src = small ? v.getAttribute('data-src-sm') : v.getAttribute('data-src-lg');
+    v.addEventListener('playing', function () { v.classList.add('is-playing'); });
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { /* autoplay bloqueado: queda la foto */ });
+  }
+
   /* ------------------------------------------------------------------
      Header: solid once the page leaves the hero, and while the mobile
      menu is open.
@@ -569,6 +581,7 @@
   body.classList.add('js');
 
   applyWhatsApp();
+  startHeroVideo();
   /* Oscuro por defecto: es el aspecto aprobado por el cliente. El claro es la
      elección explícita del visitante y se recuerda. */
   applyDark(read(STORAGE_DARK) !== '0', false);

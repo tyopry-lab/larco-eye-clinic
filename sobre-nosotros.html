@@ -19,11 +19,11 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=232">
-<link rel="stylesheet" href="assets/css/tokens.css?v=232">
-<link rel="stylesheet" href="assets/css/components.css?v=232">
-<link rel="stylesheet" href="assets/css/site.css?v=232">
-<link rel="stylesheet" href="assets/css/pages.css?v=232">
+<link rel="stylesheet" href="assets/css/fonts.css?v=233">
+<link rel="stylesheet" href="assets/css/tokens.css?v=233">
+<link rel="stylesheet" href="assets/css/components.css?v=233">
+<link rel="stylesheet" href="assets/css/site.css?v=233">
+<link rel="stylesheet" href="assets/css/pages.css?v=233">
 <noscript><style>
   /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
   @media (max-width: 1024px) {
@@ -95,7 +95,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <div class="menu__sublinks">
                 <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
                 <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
-                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+                <a href="consultas-examenes.html#cita" data-whatsapp rel="noopener">Agenda tu cita</a>
               </div>
             </div>
             <div class="menu__col">
@@ -131,7 +131,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         </button>
       </div>
 
-      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
     </nav>
   </div>
 </header>
@@ -305,7 +305,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Quirófano</h3>
               <p class="flip__text">Totalmente equipado para cirugía oftalmológica ambulatoria.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -324,7 +324,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Sala de exámenes</h3>
               <p class="flip__text">Donde se realizan los estudios de diagnóstico previos a cada consulta y cirugía.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -343,7 +343,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Sala de Láser</h3>
               <p class="flip__text">Espacio dedicado a los tratamientos con tecnología láser.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -387,7 +387,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Óptica ZEIZZ Vision Center</h3>
               <p class="flip__text">Óptica con tecnología alemana ZEIZZ para medir con precisión tu graduación y elaborar lentes a tu medida.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -406,7 +406,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">IOL Master 700</h3>
               <p class="flip__text">Última tecnología en Ecuador; calcula con exactitud el lente intraocular antes de una cirugía de catarata.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -425,7 +425,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Pentacam OCT</h3>
               <p class="flip__text">Diagnóstico detallado de enfermedades de la córnea.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -444,7 +444,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">OCT Triton Plus</h3>
               <p class="flip__text">Estudio de alta resolución de la retina y el nervio óptico.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -463,7 +463,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Cámara de retina</h3>
               <p class="flip__text">Registro fotográfico del fondo del ojo para detectar y seguir enfermedades retinianas.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -482,7 +482,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Humphrey Field Analyzer 3</h3>
               <p class="flip__text">Análisis del campo visual, clave en el diagnóstico y seguimiento del glaucoma.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -501,7 +501,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Microscopio especular</h3>
               <p class="flip__text">Evaluación de las células de la córnea.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -520,7 +520,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Sonomed Escalon</h3>
               <p class="flip__text">Ecografía ocular para explorar el interior del ojo.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -539,7 +539,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">Láser Pascal 577 (Iridex)</h3>
               <p class="flip__text">Tratamiento de precisión para enfermedades de la retina.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -558,7 +558,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <h3 class="flip__title">VISI Láser (Q-LAS A/c Laser)</h3>
               <p class="flip__text">Procedimientos láser para catarata secundaria y glaucoma.</p>
               <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
               </div>
             </div>
@@ -591,7 +591,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <h2 class="cta-band__title">Agenda tu cita</h2>
         <p class="cta-band__text">Evaluación oftalmológica integral con nuestros especialistas. Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco (Cumbayá). Teléfono y horarios por confirmar.</p>
         <div class="cta-band__actions">
-          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html">Agendar cita <span aria-hidden="true">↗</span></a>
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -653,7 +653,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
       <div class="footer__col">
         <div class="footer__col-title">Contacto</div>
         <div class="footer__links">
-          <a href="contactanos.html">Agendar cita</a>
+          <a href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
           <a href="consentimiento.html">Consentimiento de datos</a>
           <a href="#">Facebook</a>
@@ -680,6 +680,6 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
   <span class="wa-fab__label"><strong>¿Agendamos tu cita?</strong> Escríbenos por WhatsApp</span>
   <span class="wa-fab__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
 </a>
-<script src="assets/js/site.js?v=232" defer></script>
+<script src="assets/js/site.js?v=233" defer></script>
 </body>
 </html>
