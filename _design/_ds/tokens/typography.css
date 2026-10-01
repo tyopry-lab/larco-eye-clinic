@@ -1,0 +1,19 @@
+/* Larco Visión — type tokens. Serif display (high contrast) for H1/H2; humanist-geometric sans for body/UI. */
+:root{
+--font-serif-display:'Playfair Display',Georgia,serif;
+--font-sans:'Montserrat',-apple-system,'Helvetica Neue',sans-serif;
+/* display scale (desktop) */
+--text-display-xl:clamp(64px,9vw,120px);--text-display:clamp(48px,6vw,88px);--text-h2:clamp(36px,4.5vw,64px);--text-h3:32px;--text-h4:24px;
+/* body/UI scale */
+--text-lead:20px;--text-body-lg:18px;--text-body-size:16px;--text-small:14px;--text-label:12px;--text-micro:11px;
+/* weights */
+--weight-display:500;--weight-display-light:400;--weight-body:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+/* leading + tracking */
+--leading-display:1.02;--leading-heading:1.12;--leading-body:1.6;--tracking-display:-0.02em;--tracking-label:0.14em;
+}
+body{font-family:var(--font-sans);font-size:var(--text-body-size);line-height:var(--leading-body);color:var(--text-body);background:var(--surface-page);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--font-serif-display);font-weight:var(--weight-display);letter-spacing:var(--tracking-display);line-height:var(--leading-display)}
+.u-label{font-family:var(--font-sans);font-size:var(--text-label);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);text-transform:lowercase}
+.u-accent-phrase{color:var(--accent)}
+a{color:var(--text-body);text-decoration:none;transition:color .25s ease}
+a:hover{color:var(--accent)}

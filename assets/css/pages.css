@@ -1,0 +1,862 @@
+/* ==========================================================================
+   Larco Visión — páginas interiores
+
+   Vocabulario compartido por sobre-nosotros, consultas-examenes,
+   especialidades, casos-clinicos y contactanos. La portada no usa nada de
+   aquí: su composición es propia y vive en site.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Portada de página interior
+   Compacta a propósito: no compite con el hero de 100vh de la home.
+   -------------------------------------------------------------------------- */
+
+.page-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* La misma portada que la home pero corta: no llega a pantalla completa,
+     para que el contenido de la página asome sin bajar. */
+  /* Pantalla completa, como el banner de la portada: el cliente lo pidió así
+     para todas las páginas. `svh` por lo mismo que en la home: en el móvil,
+     100vh mide con la barra del navegador retraída y los botones caían por
+     debajo del corte. */
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(150px, 20vh, 190px) var(--grid-margin) clamp(48px, 8vh, 96px);
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.page-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.page-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* El mismo velo que la portada, y por las mismas razones: una banda corta
+   arriba que le da suelo al menú, y una diagonal de TINTA AZUL que entra por la
+   izquierda y se disuelve antes de la mitad, así que la derecha de la foto
+   queda intacta. El velo que había aquí era del enfoque monocromo —tinta
+   cálida plana al 45%— y dejaba las fotos pardas y sin fondo. */
+.page-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    /* La banda de arriba es más honda que en la home: las fotos reales de las
+       interiores traen paredes blancas y cristal justo detrás del menú, y a
+       .58 "Casos Clínicos" se quedaba en 4,37:1 sobre Nosotros. Medido. */
+    linear-gradient(180deg,
+      rgba(12, 20, 36, .72) 0,
+      rgba(12, 20, 36, .42) 100px,
+      rgba(12, 20, 36, 0) 210px),
+    /* Más corta que antes: se disuelve antes de la mitad. A 82% tapaba a los
+       doctores de la foto de Sobre Nosotros; el titular está acotado a 10em y
+       no pasa del 44% del ancho, así que no necesita más. */
+    linear-gradient(97deg,
+      rgba(12, 20, 36, .86) 0,
+      rgba(12, 20, 36, .82) 26%,
+      rgba(12, 20, 36, .60) 40%,
+      rgba(12, 20, 36, .20) 50%,
+      rgba(12, 20, 36, 0) 58%);
+}
+
+.page-hero__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+}
+
+.page-hero__title {
+  margin: 0;
+  /* 10em y no 13: a 13 el titular llegaba al 60% del ancho, donde la diagonal
+     ya casi no cubre, y en Contáctanos la primera línea caía sobre la parte
+     clara de la foto —2,43:1, por debajo del 3:1 del texto grande—. */
+  max-width: 10em;
+  font-size: min(var(--text-display), 13vh);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-display);
+  color: #FFFFFF;
+}
+
+/* Sobre la foto el acento sube de tono, igual que en la portada: el azul de
+   papel se apaga contra la tinta del degradado. */
+.page-hero .u-accent-phrase { color: #8FC3E8; }
+
+.page-hero__lede {
+  margin: 20px 0 0;
+  max-width: 44ch;
+  font-size: var(--text-body-size);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .88);
+}
+
+/* --------------------------------------------------------------------------
+   Texto corrido
+   -------------------------------------------------------------------------- */
+
+.prose {
+  max-width: 62ch;
+  font-size: var(--text-body-lg);
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+.prose > p { margin: 0 0 20px; }
+.prose > p:last-child { margin-bottom: 0; }
+.prose > p.u-muted { color: var(--text-muted); }
+
+/* Texto a dos columnas junto a una foto */
+.split {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.split--reverse .split__media { order: -1; }
+
+.split__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--tile-empty);
+}
+
+/* Alto acotado y explícito: sin él la foto impone su relación de aspecto y en
+   una columna ancha se va a 700px, más alta que todo el texto que acompaña.
+   Con el alto fijado, `height: 100%` de la imagen resuelve y `cover` recorta. */
+.split__media { height: clamp(320px, 30vw, 480px); }
+
+.split__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Tarjetas
+   -------------------------------------------------------------------------- */
+
+.cards {
+  display: grid;
+  gap: var(--grid-gutter);
+}
+
+.cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cards--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.card {
+  --card-pad: clamp(20px, 2.2vw, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: var(--card-pad);
+  /* Superficie elevada y filete, como las fichas de doctor de la portada. Con
+     --surface-card la tarjeta era una caja azul pálida: la pieza equivalente
+     de la home no tiene relleno, sólo filete. */
+  background: var(--surface-raised);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+}
+
+/* --------------------------------------------------------------------------
+   Ficha ancha de equipo — el formato de la referencia
+
+   La foto a sangre bajo un velo, el rótulo arriba con su filete, y el titular
+   abajo a la izquierda con el enlace al otro extremo de la misma línea.
+   -------------------------------------------------------------------------- */
+
+.card--wide {
+  --dark-text: rgba(255, 255, 255, .96); /* fondo propio: el texto no sigue a la banda */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* .card lleva `flex-start` y lo heredaba: las cabeceras se encogían a su
+     texto en vez de ocupar la ficha, y el pie no podía separar titular y
+     enlace a los extremos. */
+  align-items: stretch;
+  gap: var(--space-8);
+  min-height: max(300px, calc(74vh - 240px));
+  padding: 0;
+  overflow: hidden;
+  /* Pizarra, no negro: #08080A era del enfoque monocromo y con la foto encima
+     daba un pardo sucio. */
+  background: var(--ink-2);
+  border: 0;
+  border-radius: 0;
+}
+
+/* La ficha es SIEMPRE una superficie oscura —foto bajo velo—, esté en una
+   banda de papel o de tinta. Sin esto, dentro de .section--white el rótulo y
+   el texto heredaban --text-muted en su versión de papel, es decir tinta
+   sobre tinta: 1,3:1, ilegible. Sólo las fichas de la banda oscura salían
+   bien, y por eso el defecto pasó desapercibido. Los tokens de superficie
+   oscura se declaran aquí, en la ficha, que es donde manda el fondo. */
+.card--wide {
+  --text-muted: rgba(255, 255, 255, .72);
+  --text-faint: rgba(255, 255, 255, .64);
+  --border-hairline: rgba(255, 255, 255, .2);
+  color: var(--dark-text);
+}
+
+.card--wide .card__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  opacity: 1;
+  /* La foto se lleva a alta clave: sin color y subida de luz, el aparato —que
+     ya es blanco— queda en blanco y el fondo del gabinete desaparece. Debajo
+     del velo azul se lee como un dibujo del equipo, no como una fotografía
+     apagada. De paso el fondo deja de ser irregular: antes el peor pixel
+     variaba de una foto a otra y el velo tenía que cubrir el caso más claro. */
+  filter: grayscale(1) brightness(1.45) contrast(.82);
+}
+
+/* Un velo UNIFORME sobre toda la ficha, no dos bandas arriba y abajo: las
+   bandas cortaban la imagen y el cliente las vetó. Uniforme no deja ningún
+   canto y la foto se ve entera por debajo.
+
+   El valor no es de gusto: las fotos de equipo son máquinas casi blancas, y
+   para que el texto tenue llegue a 4,5:1 sobre el peor píxel hace falta este
+   nivel de atenuación. Por eso el realce del hover es corto —de .80 a .74—:
+   más luz costaría legibilidad. */
+.card--wide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Velo AZUL: el casi negro de antes ensuciaba la foto. El nivel sale de
+     medir el texto tenue —13px— contra la foto ya en alta clave. */
+  background: rgba(24, 34, 58, .80);
+  transition: background var(--dur-med) var(--ease-out);
+}
+
+/* .74 y no .72: a .72 el texto tenue se quedaba en 4,52:1, justo en el filo
+   del mínimo. Dos centésimas de velo compran medio punto de margen. */
+.card--wide:hover::after { background: rgba(24, 34, 58, .74); }
+
+/* Sin velos: la ficha se lee plana y la legibilidad la da la atenuación de la
+   foto, no una banda encima. */
+.card--wide .card__top,
+.card--wide .card__foot {
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 2.2vw, 30px);
+}
+
+.card--wide .card__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  /* En cuatro columnas la ficha mide 336px y el titular más el enlace piden
+     370: el enlace se salía de la ficha y `overflow: hidden` le cortaba la
+     flecha. Con el salto, se ponen en línea cuando caben y el enlace baja
+     solo cuando no; no hay un ancho mágico que mantener. */
+  flex-wrap: wrap;
+}
+
+.card--wide .card__label {
+  display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-hairline);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  /* --text-muted y no --text-faint: sobre este velo, el tenue se queda en
+     4,36:1 y el rótulo es texto de 11px. Medido. */
+  color: var(--text-muted);
+}
+
+.card--wide .card__text {
+  margin: 12px 0 0;
+  max-width: 42ch;
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.card--wide .card__title {
+  margin: 0;
+  max-width: 11em;
+  font-size: clamp(24px, 2.6vw, 40px);
+  line-height: 1.04;
+  letter-spacing: var(--tracking-display);
+  color: var(--dark-text);
+  text-shadow: 0 0 10px rgba(24, 34, 58, .9), 0 1px 3px rgba(24, 34, 58, .9);
+}
+
+.card--wide .card__more {
+  flex: 0 0 auto;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--dark-text);
+  transition: color var(--dur-fast);
+}
+
+.card--wide:hover .card__more { color: var(--text-muted); }
+
+@media (max-width: 760px) {
+  .card--wide .card__foot { flex-direction: column; align-items: flex-start; gap: var(--space-5); }
+}
+
+.card--plain {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+/* A sangre: el ancho se calculaba sumando el relleno en píxeles, y ese número
+   dejó de coincidir cuando el relleno pasó a ser elástico, así que la foto no
+   llegaba a los filos. Con márgenes negativos del MISMO valor que el relleno no
+   hay número que mantener sincronizado. */
+.card__media {
+  /* `auto` no estira un <img>: se queda en su ancho intrínseco y dejaba 57px de
+     tarjeta a la derecha. El ancho se calcula del MISMO relleno que los
+     márgenes negativos, así que no hay dos números que mantener a la par. */
+  width: calc(100% + var(--card-pad) * 2);
+  max-width: none;
+  margin: calc(var(--card-pad) * -1) calc(var(--card-pad) * -1) 8px;
+  height: clamp(160px, 18vw, 220px);
+  object-fit: cover;
+}
+
+.card--plain .card__media {
+  width: 100%;
+  margin: 0 0 6px;
+  border-radius: var(--radius-tile);
+}
+
+.card__label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+.card__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-medium);
+  line-height: 1.25;
+  color: var(--text-body);
+}
+
+.card__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.card .btn--link { margin-top: 2px; }
+
+/* --------------------------------------------------------------------------
+   Fichas del equipo
+   -------------------------------------------------------------------------- */
+
+/* auto-fill dejaba cuatro carriles de 300px y las dos fichas que hay hoy
+   quedaban apretadas contra un hueco enorme. auto-fit colapsa los carriles
+   vacíos, así que las fichas ocupan el ancho que haya. */
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: var(--grid-gutter);
+  /* `start` dejaba cada ficha al alto de su propio texto, y Marcelo tiene una
+     línea de publicaciones que Roberto no: una salía 160px más alta que la
+     otra. Con `stretch` las dos llenan la fila. */
+  align-items: stretch;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 22px;
+  padding: 24px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+}
+
+.person__photo {
+  width: 132px;
+  height: 172px;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border-radius: var(--radius-tile);
+  background: linear-gradient(160deg, var(--gray-3), var(--gray-5));
+}
+
+.person__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-medium);
+  color: var(--text-body);
+}
+
+.person__role {
+  margin: 4px 0 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.person__meta {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.person__meta dt {
+  margin-top: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--text-body);
+}
+
+.person__meta dt:first-child { margin-top: 0; }
+
+.person__meta dd {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Acordeón — la lista larga de exámenes sin ocupar toda la página
+   -------------------------------------------------------------------------- */
+
+.accordion {
+  border-top: 1px solid var(--border-hairline);
+}
+
+.accordion__item { border-bottom: 1px solid var(--border-hairline); }
+
+.accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 22px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--weight-medium);
+  line-height: 1.3;
+  text-align: left;
+  color: var(--text-body);
+  transition: color var(--dur-fast);
+}
+
+.accordion__trigger:hover { color: var(--text-muted); }
+
+.accordion__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-pill);
+  color: var(--accent-strong);
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-fast);
+}
+
+.accordion__item.is-open .accordion__icon {
+  transform: rotate(180deg);
+  background: var(--surface-card);
+}
+
+.accordion__panel { display: none; }
+
+.accordion__item.is-open .accordion__panel { display: block; }
+
+.accordion__panel p {
+  margin: 0 0 22px;
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Formulario
+   -------------------------------------------------------------------------- */
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px var(--grid-gutter);
+}
+
+.field { display: grid; gap: 8px; }
+.field--wide { grid-column: 1 / -1; }
+
+.field__label {
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--text-body);
+}
+
+.field__label .field__opt {
+  font-weight: var(--weight-body);
+  color: var(--text-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text-body);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(23, 38, 90, .22);
+}
+
+.form__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form__note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Datos de contacto
+   -------------------------------------------------------------------------- */
+
+.info-list {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+}
+
+.info-list dt {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+.info-list dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+.info-list a { color: var(--text-body); }
+.info-list a:hover { color: var(--text-muted); }
+
+/* Mapa grande de la página de contacto */
+.map-wide {
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+  background: var(--tile-empty);
+}
+
+.map-wide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Gris como toda la fotografía: en una página monocroma el color de las
+     teselas de OSM se lleva el ojo. */
+}
+
+/* La chincheta era del pie y se quedó sin dueño cuando el pie perdió su mapa:
+   ahora vive aquí, que es el único sitio donde queda un mapa. Marca el centro
+   de la zona, no la dirección exacta. */
+.map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 3px solid var(--surface-raised);
+  border-radius: var(--radius-pill);
+  background: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(23, 38, 90, .18);
+}
+
+.map-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Contenido que la clínica todavía no entregó
+   -------------------------------------------------------------------------- */
+
+
+/* --------------------------------------------------------------------------
+   Banda de cierre con la llamada a la acción
+   -------------------------------------------------------------------------- */
+
+/* Banda de cita — el formato de la referencia, sin formulario: rótulo, titular
+   grande, descripción y un solo botón a todo lo ancho. */
+.cta-band {
+  display: block;
+  padding: 0;
+  background: none;
+  border: 0;
+  /* Centrado, como la referencia: rótulo, titular y pastilla en un solo eje. */
+  text-align: center;
+}
+
+/* El rótulo no repite el titular —seria decir dos veces lo mismo— sino que lo
+   introduce. */
+.cta-band__label {
+  display: block;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.cta-band__title {
+  margin: var(--space-5) auto 0;
+  max-width: 14em;
+  font-size: var(--text-h2);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
+  color: var(--text-body);
+}
+
+.cta-band__text {
+  margin: var(--space-5) auto 0;
+  max-width: 46ch;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+
+.cta-band__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 4.5vh, 48px);
+}
+
+/* Pastilla compacta, no barra: se dimensiona con su texto. */
+.cta-band__actions .btn {
+  padding: 18px 40px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .cards--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 960px) {
+  .page-hero {
+    min-height: 46vh;
+    padding-top: 148px;
+  }
+
+  .page-hero__title { font-size: clamp(34px, 7vw, 56px); }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .split--reverse .split__media { order: 0; }
+
+  .cards--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .people { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .cards--2,
+  .cards--3,
+  .cards--4 { grid-template-columns: 1fr; }
+
+  .form { grid-template-columns: 1fr; }
+
+  .person {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Los retratos pasaron a ser 2:3 cuando la ficha de la portada se hizo
+     vertical. En una banda ancha de 220px, `cover` escala por el ancho y se
+     lleva por delante la coronilla: a 390px la ventana visible arrancaba por
+     debajo del pelo, y a 760px por debajo de las cejas. Apilada, la foto se
+     queda retrato y con la relación del archivo, así que no recorta nada. */
+  .person__photo {
+    width: clamp(132px, 42vw, 176px);
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-position: 50% 50%;
+  }
+
+  .accordion__trigger { font-size: 17px; padding: 18px 0; }
+
+  .cta-band {
+    padding: var(--space-6);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .map-wide { height: 260px; }
+
+  /* .btn lleva white-space: nowrap; a 320 de viewport «Escríbenos por
+     WhatsApp» impone 268px de mínimo en una caja de 216 y la banda entera se
+     salía 1px del carril. Con el texto envolviendo, el botón cede. */
+  .cta-band__actions { align-self: stretch; flex-direction: column; }
+  .cta-band__actions .btn { white-space: normal; }
+}
+
+
+/* --------------------------------------------------------------------------
+   Cómo llegar — mapa a sangre
+
+   La sección pierde su relleno y su carril: el mapa ocupa el ancho entero y el
+   titular y la nota se apoyan encima, como en la referencia.
+   -------------------------------------------------------------------------- */
+
+.section--map {
+  padding: 0;
+  overflow: hidden;
+}
+
+.map-full {
+  position: relative;
+  height: clamp(360px, 62vh, 640px);
+}
+
+.map-full img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Las teselas de OSM vienen claras y la sección es oscura: se apagan hasta
+     que el mapa se lea como parte de la banda y no como un recorte pegado. */
+  filter: grayscale(1) brightness(.42) contrast(1.15);
+}
+
+.map-full .map-pin {
+  background: var(--paper);
+  border-color: rgba(13, 13, 11, .8);
+}
+
+.map-full__title {
+  /* Interlínea con sitio para el descendente: el titular vive dentro de un
+     contenedor que recorta, y con la interlínea apretada del display la «g» de
+     «llegar» sobresalía 4px de su caja. */
+  line-height: 1.14;
+  padding-bottom: 6px;
+  position: absolute;
+  top: clamp(24px, 4vw, 52px);
+  left: var(--grid-margin);
+  margin: 0;
+  color: var(--paper);
+  text-shadow: 0 2px 26px rgba(0, 0, 0, .8);
+}
+
+.map-full__bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding: 18px var(--grid-margin);
+  background: rgba(9, 9, 8, .86);
+}
+
+.map-full .map-note {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: rgba(244, 242, 237, .72);
+}
+
+.map-full__link {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--paper);
+  white-space: nowrap;
+}
+
+.map-full__link:hover { color: rgba(244, 242, 237, .7); }
+
+
+/* ---- Perfil individual de doctor (dr-*.html) ---- */
+.profile-page__back { margin: 0 0 20px; font-size: var(--text-small); }
+.profile-page__back a, .profile-page__next a { color: inherit; text-underline-offset: 3px; }
+.profile-page__card .doc--bio { max-width: 1080px; }
+.profile-page__card .doc__name { margin: 0; }
+.profile-page__next { margin: 24px 0 0; font-size: var(--text-small); color: var(--text-muted); }
+@media (max-width: 760px) {
+  .profile-page__card .doc--bio { grid-template-columns: 1fr; }
+  .profile-page__card .doc--bio .doc__photo { order: -1; aspect-ratio: 4 / 3; height: auto; width: 100%; object-fit: cover; object-position: 50% 15%; }
+}

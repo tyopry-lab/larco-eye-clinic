@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/styles.css">
+  <script src="_ds/larco-visi-n-design-system-49063397-a897-4b1d-bba8-67e2e7987391/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    html,body{margin:0;padding:0}
+    body{--surface-page:#F1F6FC;--surface-raised:#FFFFFF;--surface-sunken:#E4EEF8;--text-body:#27285A;--text-muted:rgba(39,40,90,.66);--text-faint:rgba(39,40,90,.42);--border-hairline:rgba(39,40,90,.12);--border-strong:rgba(39,40,90,.4);--photo-tint:rgba(79,143,204,.10);--font-serif-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;--shadow-card:0 12px 36px rgba(39,40,90,.10);--shadow-float:0 18px 48px rgba(39,40,90,.16);background:linear-gradient(160deg,#F5F9FD 0%,#EAF2FA 45%,#DEEBF7 100%) fixed;color:#27285A}
+    body h1,body h2{line-height:1.12;font-weight:600}
+    body h3{font-weight:600}
+    body.lv-dark{--surface-page:#13142E;--surface-raised:#1B1C40;--surface-sunken:#101127;--text-body:rgba(247,246,243,.95);--text-muted:rgba(247,246,243,.62);--text-faint:rgba(247,246,243,.4);--border-hairline:rgba(247,246,243,.16);--border-strong:rgba(247,246,243,.4);--photo-tint:rgba(19,20,46,.35);--shadow-card:0 12px 40px rgba(0,0,0,.35);--shadow-float:0 20px 60px rgba(0,0,0,.45);background:#13142E;color:rgba(247,246,243,.95)}
+  </style>
+</helmet>
+<main data-screen-label="Inicio" style="font-family:var(--font-sans)">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:60;color:{{navInk}};display:flex;align-items:center;justify-content:space-between;padding:{{navPad}} var(--grid-margin);background:{{navBg}};backdrop-filter:{{navBlur}};border-bottom:{{navBorder}};transition:background .5s cubic-bezier(.16,1,.3,1),padding .5s cubic-bezier(.16,1,.3,1),border .5s">
+    <a href="inicio.dc.html" style="text-decoration:none;display:inline-flex;align-items:center"><sc-if value="{{navOnDark}}" hint-placeholder-val="{{false}}"><img src="uploads/white-logo.webp" alt="Larco Visión" style="height:54px;width:auto;display:block"></sc-if><sc-if value="{{navOnLight}}" hint-placeholder-val="{{false}}"><img src="uploads/logo.webp" alt="Larco Visión" style="height:54px;width:auto;display:block"></sc-if></a>
+    <nav style="display:flex;gap:28px;align-items:center">
+      <a href="inicio.dc.html" style="font-size:13px;font-weight:600;color:var(--accent);text-decoration:none">Inicio</a>
+      <div style="position:relative" onMouseEnter="{{openSobre}}" onMouseLeave="{{closeMenu}}">
+        <a href="sobre-nosotros.dc.html" style="font-size:13px;font-weight:500;color:{{navInk}};text-decoration:none">Sobre Nosotros <span style="font-size:9px;vertical-align:2px">▾</span></a>
+        <sc-if value="{{menuSobre}}" hint-placeholder-val="{{false}}">
+          <div style="position:absolute;top:100%;left:-24px;padding-top:18px">
+            <div style="width:300px;background:var(--surface-raised);border:1px solid var(--border-hairline);box-shadow:var(--shadow-float);padding:12px 0">
+              <a href="sobre-nosotros.dc.html#historia" style="display:block;padding:12px 24px;text-decoration:none"><span style="display:block;font-size:14px;font-weight:600;color:var(--text-body)">Nuestra Historia</span><span style="display:block;font-size:12px;color:var(--text-muted);margin-top:2px">Un legado de tres generaciones</span></a>
+              <a href="sobre-nosotros.dc.html#equipo" style="display:block;padding:12px 24px;text-decoration:none"><span style="display:block;font-size:14px;font-weight:600;color:var(--text-body)">Nuestro Equipo</span><span style="display:block;font-size:12px;color:var(--text-muted);margin-top:2px">Los doctores de la clínica</span></a>
+              <a href="sobre-nosotros.dc.html#instalaciones" style="display:block;padding:12px 24px;text-decoration:none"><span style="display:block;font-size:14px;font-weight:600;color:var(--text-body)">Instalaciones</span><span style="display:block;font-size:12px;color:var(--text-muted);margin-top:2px">Tecnología y espacios</span></a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="position:relative" onMouseEnter="{{openServ}}" onMouseLeave="{{closeMenu}}">
+        <a href="consultas-examenes.dc.html" style="font-size:13px;font-weight:500;color:{{navInk}};text-decoration:none">Servicios <span style="font-size:9px;vertical-align:2px">▾</span></a>
+        <sc-if value="{{menuServ}}" hint-placeholder-val="{{false}}">
+          <div style="position:absolute;top:100%;left:-180px;padding-top:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;width:560px;background:var(--surface-raised);border:1px solid var(--border-hairline);box-shadow:var(--shadow-float)">
+              <div style="padding:24px;border-right:1px solid var(--border-hairline)">
+                <a href="consultas-examenes.dc.html" style="text-decoration:none"><span style="font-family:var(--font-serif-display);font-size:19px;color:var(--text-body)">Consultas y Exámenes</span></a>
+                <div style="display:grid;gap:10px;margin-top:16px">
+                  <a href="consultas-examenes.dc.html#consulta" style="font-size:13px;color:var(--text-muted);text-decoration:none">Consulta oftalmológica</a>
+                  <a href="consultas-examenes.dc.html#examenes" style="font-size:13px;color:var(--text-muted);text-decoration:none">Exámenes de diagnóstico</a>
+                  <a href="consultas-examenes.dc.html#cita" style="font-size:13px;color:var(--text-muted);text-decoration:none">Agenda tu cita</a>
+                </div>
+              </div>
+              <div style="padding:24px">
+                <a href="especialidades.dc.html" style="text-decoration:none"><span style="font-family:var(--font-serif-display);font-size:19px;color:var(--text-body)">Especialidades</span></a>
+                <div style="display:grid;gap:10px;margin-top:16px">
+                  <a href="especialidades.dc.html#cornea" style="font-size:13px;color:var(--text-muted);text-decoration:none">Córnea</a>
+                  <a href="especialidades.dc.html#catarata" style="font-size:13px;color:var(--text-muted);text-decoration:none">Catarata</a>
+                  <a href="especialidades.dc.html#retina" style="font-size:13px;color:var(--text-muted);text-decoration:none">Retina y Vítreo</a>
+                  <a href="especialidades.dc.html#glaucoma" style="font-size:13px;color:var(--text-muted);text-decoration:none">Glaucoma</a>
+                  <a href="especialidades.dc.html#refractiva" style="font-size:13px;color:var(--text-muted);text-decoration:none">Cirugía Refractiva</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <a href="casos-clinicos.dc.html" style="font-size:13px;font-weight:500;color:{{navInk}};text-decoration:none">Casos Clínicos</a>
+      <a href="contactanos.dc.html" style="font-size:13px;font-weight:500;color:{{navInk}};text-decoration:none">Contáctanos</a>
+      <div style="width:1px;height:20px;background:currentColor;opacity:.25"></div>
+      <button onClick="{{cycleZoom}}" title="Tamaño de texto para lectores" style="background:none;border:none;cursor:pointer;padding:2px 4px;font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:.04em;color:{{navInk}}">{{zoomLabel}}</button>
+      <button onClick="{{toggleDark}}" title="Modo claro y oscuro" style="background:none;border:none;cursor:pointer;padding:2px 4px;display:flex;align-items:center;color:{{navInk}}">
+        <sc-if value="{{dk}}" hint-placeholder-val="{{false}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if>
+        <sc-if value="{{lgt}}" hint-placeholder-val="{{true}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg></sc-if>
+      </button>
+      <a href="contactanos.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" size="sm" on-dark="{{navOnDark}}" hint-size="130px,36px">Agendar Cita</x-import></a>
+    </nav>
+  </header>
+
+  <section style="position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:#14181d">
+    <div style="position:absolute;inset:-8% 0;background:linear-gradient(160deg,var(--gray-6) 0%,#1a2430 55%,var(--gray-5) 100%)">
+      <img src="https://unsplash.com/photos/In4XVKhYaiI/download?w=2400" alt="video de fondo — macro de iris" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)"><div style="position:absolute;inset:0;background:rgba(39,40,90,.35)"></div><span style="position:absolute;top:18px;right:18px;z-index:1;font-size:11px;letter-spacing:.12em;color:rgba(247,246,243,.55)">video pendiente — foto provisional</span>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,26,.25) 30%,rgba(16,18,26,.8))"></div>
+    <div style="position:relative;max-width:var(--grid-max);margin:0 auto;width:100%;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;padding:120px var(--grid-margin) 56px">
+      <h1 style="margin:0;max-width:8.5em;font-size:min(var(--text-display-xl),8.5vh);line-height:1.08;color:var(--bone)">70 años cuidando tu visión</h1>
+      <div style="margin:0;align-self:flex-end;max-width:9em;font-family:var(--font-serif-display);font-weight:600;letter-spacing:-0.01em;line-height:1.08;font-size:min(var(--text-display-xl),8.5vh);text-align:right;color:var(--accent)">con tecnología del mañana</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:32px">
+      <p style="margin:0;max-width:460px;font-size:var(--text-body-lg);line-height:1.6;color:rgba(247,246,243,.8)">Tres generaciones de cirujanos oftalmólogos. <span style="color:rgba(247,246,243,.55)">Tradición médica familiar con diagnóstico y quirófano de última generación.</span></p>
+      <div style="display:flex;gap:16px">
+        <a href="contactanos.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" size="lg" on-dark="{{true}}" hint-size="170px,52px">Agendar Cita</x-import></a>
+        <a href="contactanos.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" size="lg" variant="outline" on-dark="{{true}}" hint-size="150px,52px">Contáctanos</x-import></a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin)">
+    <div style="max-width:var(--grid-max);margin:0 auto;display:grid;grid-template-columns:6fr 6fr;gap:var(--grid-gutter);align-items:start">
+      <h2 data-rev="1" style="margin:0;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Tecnología de punta con <span style="color:rgba(39,40,90,.38)">atención personalizada</span></h2>
+      <div data-rev="1" style="max-width:520px;justify-self:end">
+        <p style="margin:0 0 18px;font-size:var(--text-body-lg);line-height:1.7;color:var(--text-body)">Brindamos atención oftalmológica integral, humana y de excelencia, respaldada por 70 años de experiencia. <span style="color:var(--text-muted)">Tecnología de vanguardia y un profundo compromiso con la salud visual de nuestros pacientes.</span></p>
+        <p style="margin:0;font-size:var(--text-body-lg);line-height:1.7;color:var(--text-muted)">Con el respaldo de marcas líderes en oftalmología como ZEISS, diagnosticamos con precisión y ofrecemos tratamientos seguros y exactos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin);background:var(--surface-sunken)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:var(--space-7)">
+        <h2 style="margin:0;max-width:14em;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Todo tu cuidado visual, <span class="u-accent-phrase">en un solo lugar</span></h2>
+        <a href="especialidades.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" variant="outline" on-dark="{{dk}}" hint-size="130px,44px">Saber más</x-import></a>
+      </div>
+      <div data-rev="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-hairline)">
+        <x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.ServiceCard" price="01" name="Cirugías" description="Procedimientos quirúrgicos con tecnología láser para catarata, córnea, retina y corrección de defectos refractivos. Cirugía ambulatoria, precisa y con recuperación ágil." image-src="https://unsplash.com/photos/0m4ZNiUcFy8/download?w=1080" image-label="manos de cirujano" href="especialidades.dc.html" style="background:var(--surface-raised)" hint-size="100%,480px"></x-import>
+        <x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.ServiceCard" price="02" name="Exámenes" description="Diagnóstico de alta precisión con equipos especializados. Estudios complementarios que confirman cada diagnóstico y planifican el tratamiento exacto para cada paciente." image-src="https://unsplash.com/photos/kQpoOC1GTAk/download?w=1080" image-label="equipo de diagnóstico" href="consultas-examenes.dc.html" style="background:var(--surface-raised)" hint-size="100%,480px"></x-import>
+        <x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.ServiceCard" price="03" name="Consultas" description="Evaluación oftalmológica integral. El punto de partida para detectar a tiempo, dar seguimiento y definir el mejor tratamiento para tu salud visual." image-src="https://unsplash.com/photos/0YMnASP4N0I/download?w=1080" image-label="lámpara de hendidura" href="consultas-examenes.dc.html" style="background:var(--surface-raised)" hint-size="100%,480px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-8) var(--grid-margin);background:var(--surface-page)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gutter)">
+        <div style="background:var(--surface-raised);border-radius:20px;box-shadow:var(--shadow-card);padding:32px 32px 24px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;gap:0;margin-bottom:14px"><span style="width:11px;height:11px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="width:11px;height:11px;border-radius:99px;background:#E8802F;margin-left:-6px"></span></span><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.StatCounter" value="70" label="años de trayectoria" hint-size="100%,130px"></x-import></div>
+        <div style="background:var(--surface-raised);border-radius:20px;box-shadow:var(--shadow-card);padding:32px 32px 24px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;gap:0;margin-bottom:14px"><span style="width:11px;height:11px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="width:11px;height:11px;border-radius:99px;background:#E8802F;margin-left:-6px"></span></span><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.StatCounter" value="1" suffix="er" label="Laser Center del país" hint-size="100%,130px"></x-import></div>
+        <div style="background:var(--surface-raised);border-radius:20px;box-shadow:var(--shadow-card);padding:32px 32px 24px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;gap:0;margin-bottom:14px"><span style="width:11px;height:11px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="width:11px;height:11px;border-radius:99px;background:#E8802F;margin-left:-6px"></span></span><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.StatCounter" value="1" suffix="º" label="en Queratocono, Mácula, Retina y Córnea" hint-size="100%,130px"></x-import></div>
+        <div style="background:var(--surface-raised);border-radius:20px;box-shadow:var(--shadow-card);padding:32px 32px 24px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;gap:0;margin-bottom:14px"><span style="width:11px;height:11px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="width:11px;height:11px;border-radius:99px;background:#E8802F;margin-left:-6px"></span></span><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.StatCounter" value="3" label="generaciones de cirujanos oftalmólogos" hint-size="100%,130px"></x-import></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin);border-top:1px solid var(--border-hairline);background:var(--surface-page)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:var(--space-7)">
+        <h2 style="margin:0;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Doctores <span class="u-accent-phrase">socios</span></h2>
+        <a href="sobre-nosotros.dc.html#equipo" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" variant="link" hint-size="130px,24px">Conócenos →</x-import></a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gutter)">
+        <div data-rev="1">
+          <x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.DoctorCard" name="Dr. Marcelo Larco" specialty="Córnea, catarata y cirugía refractiva" generation="2ª generación" image-src="https://unsplash.com/photos/XuB10o8080c/download?w=1080" image-label="retrato monocromático" hint-size="100%,560px"></x-import>
+          <p style="margin:14px 0 0;font-size:14px;color:var(--text-muted);border-left:2px solid var(--accent);padding-left:12px">Pionero de la cirugía de catarata con láser en Quito.</p>
+        </div>
+        <div data-rev="1">
+          <x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.DoctorCard" name="Dr. Roberto Larco" specialty="Retina y vítreo" generation="2ª generación" image-src="https://unsplash.com/photos/-3HE32KRqJs/download?w=1080" image-label="retrato monocromático" hint-size="100%,560px"></x-import>
+          <p style="margin:14px 0 0;font-size:14px;color:var(--text-muted);border-left:2px solid var(--accent);padding-left:12px">Más de 30 años de experiencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin);background:var(--surface-page)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gutter);align-items:end;margin-bottom:var(--space-7)">
+        <h2 style="margin:0;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Casos <span class="u-accent-phrase">Clínicos</span></h2>
+        <div style="justify-self:end;max-width:420px">
+          <p style="margin:0 0 20px;color:var(--text-body)">Casos reales analizados por nuestros especialistas, <span style="color:var(--text-muted)">desde el diagnóstico hasta el resultado.</span></p>
+          <a href="casos-clinicos.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" variant="link" hint-size="100px,24px">Ver más →</x-import></a>
+        </div>
+      </div>
+      <div data-rev="1" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border-hairline)">
+        <div style="padding:32px 28px 40px 0;border-right:1px solid var(--border-hairline)"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.SectionLabel" hint-size="90px,18px">caso 01</x-import><div style="font-family:var(--font-serif-display);font-size:24px;line-height:1.25;margin-top:14px;color:var(--text-faint)">[ pendiente de información del cliente ]</div></div>
+        <div style="padding:32px 28px 40px;border-right:1px solid var(--border-hairline)"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.SectionLabel" hint-size="90px,18px">caso 02</x-import><div style="font-family:var(--font-serif-display);font-size:24px;line-height:1.25;margin-top:14px;color:var(--text-faint)">[ pendiente de información del cliente ]</div></div>
+        <div style="padding:32px 0 40px 28px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.SectionLabel" hint-size="90px,18px">caso 03</x-import><div style="font-family:var(--font-serif-display);font-size:24px;line-height:1.25;margin-top:14px;color:var(--text-faint)">[ pendiente de información del cliente ]</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin);border-top:1px solid var(--border-hairline);background:var(--surface-page)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gutter);align-items:end;margin-bottom:var(--space-7)">
+        <h2 style="margin:0;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Equipos de <span class="u-accent-phrase">última generación</span></h2>
+        <div style="justify-self:end;max-width:440px">
+          <p style="margin:0 0 20px;color:var(--text-body)">Contamos con el respaldo de marcas líderes en oftalmología como ZEISS <span style="color:var(--text-muted)">y tecnología que nos permite diagnosticar con precisión y ofrecer tratamientos seguros y exactos.</span></p>
+          <a href="sobre-nosotros.dc.html#instalaciones" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" variant="link" hint-size="100px,24px">Ver más →</x-import></a>
+        </div>
+      </div>
+      <div data-rev="1" style="display:flex;gap:24px;overflow-x:auto;padding-bottom:16px">
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/kQpoOC1GTAk/download?w=1000" alt="óptica ZEISS" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="120px,30px">Óptica ZEISS</x-import></span></div>
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/5b95cK_mLB8/download?w=1000" alt="IOL Master 700" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="130px,30px">IOL Master 700</x-import></span></div>
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/0m4ZNiUcFy8/download?w=1000" alt="Pentacam OCT" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="130px,30px">Pentacam OCT</x-import></span></div>
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/_XTwEvm7lHY/download?w=1000" alt="OCT Triton Plus" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="130px,30px">OCT Triton Plus</x-import></span></div>
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/0YMnASP4N0I/download?w=1000" alt="Humphrey Field Analyzer 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="180px,30px">Humphrey FA3</x-import></span></div>
+        <div style="flex:0 0 340px;position:relative;height:230px;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><img src="https://unsplash.com/photos/5b95cK_mLB8/download?w=1000" alt="Láser Pascal 577" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><div style="position:absolute;inset:0;background:var(--photo-tint)"></div><span style="position:absolute;top:14px;left:14px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.PillTag" over-photo="{{true}}" hint-size="140px,30px">Láser Pascal 577</x-import></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;padding:var(--space-section) var(--grid-margin);background:var(--surface-sunken)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div data-rev="1" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gutter);align-items:end;margin-bottom:var(--space-7)">
+        <h2 style="margin:0;font-size:var(--text-h2);color:var(--text-body)"><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:rgba(232,128,47,.45)"></span><span style="display:inline-block;vertical-align:.14em;width:12px;height:12px;border-radius:99px;background:#E8802F;margin:0 16px 0 -7px"></span>Lo que dicen <span class="u-accent-phrase">nuestros pacientes</span></h2>
+        <div style="justify-self:end;max-width:420px">
+          <p style="margin:0 0 20px;color:var(--text-body)">Testimonios que reflejan el compromiso <span style="color:var(--text-muted)">con el que cuidamos la visión de nuestros pacientes.</span></p>
+          <a href="contactanos.dc.html" style="text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" on-dark="{{dk}}" hint-size="150px,44px">Agenda tu cita</x-import></a>
+        </div>
+      </div>
+      <div data-rev="1" style="display:flex;gap:24px;overflow-x:auto;padding-bottom:16px">
+        <div style="flex:0 0 400px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.TestimonialCard" quote="Volví a ver los rostros de mis nietos con una claridad que había olvidado." author="Rosa M." detail="Cirugía de catarata — testimonio de ejemplo" video="{{true}}" hint-size="100%,300px"></x-import></div>
+        <div style="flex:0 0 400px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.TestimonialCard" quote="Me atendió el abuelo, el padre y ahora confío mis ojos a la nueva generación." author="Jorge A." detail="Paciente de la clínica — testimonio de ejemplo" hint-size="100%,300px"></x-import></div>
+        <div style="flex:0 0 400px"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.TestimonialCard" quote="La cirugía refractiva me cambió la rutina entera. Cero lentes desde entonces." author="Camila R." detail="Cirugía refractiva — testimonio de ejemplo" hint-size="100%,300px"></x-import></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--surface-page);border-top:1px solid var(--border-hairline);padding:var(--space-7) var(--grid-margin) var(--space-6)">
+    <div style="max-width:var(--grid-max);margin:0 auto">
+      <div style="display:grid;grid-template-columns:4fr 3fr 3fr 3fr;gap:var(--grid-gutter);padding-bottom:var(--space-7);border-bottom:1px solid var(--border-hairline)">
+        <div>
+          <a href="inicio.dc.html" style="text-decoration:none;display:inline-block"><img src="uploads/logo.webp" alt="Larco Visión — Clínica y Cirugía de Ojos" style="height:68px;width:auto;display:block"></a>
+          <p style="margin:16px 0 0;max-width:280px;font-size:14px;line-height:1.6;color:var(--text-muted)">70 años cuidando la visión de las familias ecuatorianas.</p>
+        </div>
+        <div><div class="u-label" style="color:var(--text-muted);margin-bottom:16px">clínica</div><div style="display:grid;gap:10px"><a href="sobre-nosotros.dc.html" style="font-size:14px;color:var(--text-body);text-decoration:none">Sobre Nosotros</a><a href="casos-clinicos.dc.html" style="font-size:14px;color:var(--text-body);text-decoration:none">Casos Clínicos</a><a href="contactanos.dc.html" style="font-size:14px;color:var(--text-body);text-decoration:none">Contáctanos</a></div></div>
+        <div><div class="u-label" style="color:var(--text-muted);margin-bottom:16px">servicios</div><div style="display:grid;gap:10px"><a href="consultas-examenes.dc.html" style="font-size:14px;color:var(--text-body);text-decoration:none">Consultas y Exámenes</a><a href="especialidades.dc.html#cornea" style="font-size:14px;color:var(--text-body);text-decoration:none">Córnea</a><a href="especialidades.dc.html#retina" style="font-size:14px;color:var(--text-body);text-decoration:none">Retina y Vítreo</a><a href="especialidades.dc.html#glaucoma" style="font-size:14px;color:var(--text-body);text-decoration:none">Glaucoma</a><a href="especialidades.dc.html#refractiva" style="font-size:14px;color:var(--text-body);text-decoration:none">Cirugía Refractiva</a></div></div>
+        <div><div class="u-label" style="color:var(--text-muted);margin-bottom:16px">contacto</div><div style="display:grid;gap:10px"><a href="contactanos.dc.html" style="font-size:14px;color:var(--text-body);text-decoration:none">Agendar cita</a><a href="{{waHref}}" style="font-size:14px;color:var(--text-body);text-decoration:none">WhatsApp</a><a href="#" style="font-size:14px;color:var(--text-body);text-decoration:none">Facebook</a><a href="#" style="font-size:14px;color:var(--text-body);text-decoration:none">Instagram</a></div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:28px;padding:20px 0;border-bottom:1px solid var(--border-hairline)">
+        <div style="position:relative;flex:0 0 220px;height:84px;overflow:hidden;border-radius:14px;background:linear-gradient(160deg,#D7E5F3,#C6DAEE)"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.12em;color:rgba(39,40,90,.45)">[ mapa — Google Maps ]</span></div>
+        <p style="margin:0;font-size:13px;line-height:1.7;color:var(--text-muted)">Cumbayá · Quito, Ecuador — dirección por confirmar<br>Teléfono y WhatsApp por confirmar</p>
+        <a href="contactanos.dc.html" style="margin-left:auto;flex:0 0 auto;text-decoration:none"><x-import component-from-global-scope="LarcoVisiNDesignSystem_490633.Button" size="sm" on-dark="{{dk}}" hint-size="130px,36px">Agendar Cita</x-import></a>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:24px;padding-top:24px;font-size:12px;color:var(--text-muted)"><span>© 2026 Larco Visión · Quito, Ecuador</span><span>facebook · instagram</span></div>
+    </div>
+  </footer>
+
+  <a href="{{waHref}}" title="WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:70;width:56px;height:56px;border-radius:999px;background:var(--accent);color:#10122E;box-shadow:var(--shadow-float);display:flex;align-items:center;justify-content:center;text-decoration:none" style-hover="background:var(--accent-hover)">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.2-.2Z"/></svg>
+  </a>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;593 99 999 9999&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;animaciones&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = {menu:null, scrolled:false, dark:false, zoom:0};
+  componentDidMount(){
+    this._sc = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({scrolled:s}); document.querySelectorAll('[data-rev]').forEach(el => { if (el.style.opacity==='0' && el.getBoundingClientRect().top < window.innerHeight*.92) { el.style.opacity='1'; el.style.transform='none'; } }); };
+    window.addEventListener('scroll', this._sc, {passive:true}); this._sc();
+    let d=false, z=0;
+    try { d = localStorage.getItem('lv-dark')==='1'; z = parseInt(localStorage.getItem('lv-zoom')||'0',10)||0; } catch(e) {}
+    this.applyDark(d); this.applyZoom(z);
+    if ((this.props.animaciones ?? true) && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.style.opacity='1'; en.target.style.transform='none'; io.unobserve(en.target); } }), {threshold:.12});
+      document.querySelectorAll('[data-rev]').forEach(el => {
+        if (el.getBoundingClientRect().top > window.innerHeight*.92) {
+          el.style.opacity='0'; el.style.transform='translateY(26px)';
+          el.style.transition='opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+          io.observe(el);
+        }
+      });
+    }
+  }
+  componentWillUnmount(){ window.removeEventListener('scroll', this._sc); }
+  applyDark(d){ document.body.classList.toggle('lv-dark', d); this.setState({dark:d}); try{ localStorage.setItem('lv-dark', d?'1':'0'); }catch(e){} }
+  applyZoom(z){ z = ((z%3)+3)%3; document.body.style.zoom = [1,1.12,1.25][z]; this.setState({zoom:z}); try{ localStorage.setItem('lv-zoom', ''+z); }catch(e){} }
+  renderVals(){
+    const {menu, scrolled:sc, dark:dk, zoom} = this.state;
+    const wa = String(this.props.whatsapp ?? '593 99 999 9999').replace(/[^0-9]/g,'');
+    return {
+      true: true,
+      navPad: sc ? '12px' : '22px',
+      navBg: sc ? (dk ? 'rgba(19,20,46,.85)' : 'rgba(241,246,252,.85)') : 'transparent',
+      navBlur: sc ? 'blur(12px)' : 'none',
+      navBorder: sc ? '1px solid ' + (dk ? 'rgba(247,246,243,.16)' : 'rgba(29,29,27,.14)') : '1px solid transparent',
+      navInk: (!sc || dk) ? 'rgba(247,246,243,.95)' : '#27285A',
+      navOnDark: !sc || dk,
+      navOnLight: !(!sc || dk),
+      menuSobre: menu==='sobre', menuServ: menu==='serv',
+      openSobre: () => this.setState({menu:'sobre'}),
+      openServ: () => this.setState({menu:'serv'}),
+      closeMenu: () => this.setState({menu:null}),
+      dk, lgt: !dk,
+      toggleDark: () => this.applyDark(!this.state.dark),
+      cycleZoom: () => this.applyZoom(this.state.zoom+1),
+      zoomLabel: ['A','A+','A++'][zoom],
+      waHref: 'https://wa.me/' + wa
+    };
+  }
+}
+</script>
+</body>
+</html>

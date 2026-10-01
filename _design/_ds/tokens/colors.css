@@ -1,0 +1,18 @@
+/* Larco Visión — color tokens. Visión Editorial: bone white, deep ink, petrol blue, one luminous teal accent. */
+:root{
+/* base palette */
+--bone:#F7F6F3;--bone-2:#EFEDE7;--ink:#1D1D1B;--petrol:#27285A;--petrol-deep:#1B1C40;--teal:#4F8FCC;--teal-bright:#6FA6DB;--teal-dim:#3A6EA8;
+/* neutrals */
+--gray-1:#FBFAF8;--gray-2:#E2E2E6;--gray-3:#C6C6CE;--gray-4:#8B8B95;--gray-5:#57575F;--gray-6:#2B2B36;
+/* semantic — light sections */
+--surface-page:var(--bone);--surface-raised:#FFFFFF;--surface-sunken:var(--bone-2);--text-body:var(--ink);--text-muted:rgba(29,29,27,.62);--text-faint:rgba(29,29,27,.4);--border-hairline:rgba(29,29,27,.14);--border-strong:rgba(29,29,27,.35);
+/* semantic — dark sections (apply .section-dark or set manually) */
+--dark-surface:var(--petrol);--dark-surface-deep:var(--petrol-deep);--dark-text:rgba(247,246,243,.95);--dark-text-muted:rgba(247,246,243,.6);--dark-border:rgba(247,246,243,.16);
+/* accent */
+--accent:var(--teal);--accent-hover:var(--teal-bright);--accent-ink:#10122E;
+/* states */
+--success:#4F9C6F;--warning:#C7973F;--danger:#B0533F;
+/* imagery duotone tint */
+--photo-tint:rgba(39,40,90,.35);
+}
+.section-dark{--surface-page:var(--petrol);--surface-raised:var(--petrol-deep);--surface-sunken:var(--petrol-deep);--text-body:var(--dark-text);--text-muted:var(--dark-text-muted);--text-faint:rgba(247,246,243,.4);--border-hairline:var(--dark-border);--border-strong:rgba(247,246,243,.4);background:var(--petrol);color:var(--dark-text)}

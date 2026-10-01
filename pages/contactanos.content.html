@@ -1,0 +1,117 @@
+<main id="contenido">
+
+  <!-- ====================================================================
+       Portada
+       ==================================================================== -->
+
+  <!-- ====================================================================
+       Formulario y datos de la clínica
+       ==================================================================== -->
+  <section id="formulario" class="section section--dark section--night section--first">
+    <div class="u-shell">
+      <div class="section-head" data-rev>
+        <h2 class="section__title">
+          Estamos para <span class="u-accent-phrase">atenderte</span>
+        </h2>
+      </div>
+
+      <div class="split" data-rev>
+        <form class="form" action="#" method="post" novalidate>
+          <div class="field">
+            <label class="field__label" for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="given-name" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="apellido">Apellido</label>
+            <input id="apellido" name="apellido" type="text" autocomplete="family-name" required>
+          </div>
+
+          <div class="field field--wide">
+            <label class="field__label" for="motivo">Motivo de contacto</label>
+            <select id="motivo" name="motivo" required>
+              <option value="">Selecciona una opción</option>
+              <option value="agendar-cita">Agendar cita</option>
+              <option value="consulta-general">Consulta general</option>
+              <option value="informacion-servicio">Información sobre un servicio</option>
+              <option value="estudiante">Estudiante</option>
+              <option value="medico-colega">Médico colega</option>
+              <option value="empresa-privada">Empresa privada</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="telefono">Teléfono <span class="field__opt">(opcional)</span></label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel">
+          </div>
+
+          <div class="field field--wide">
+            <label class="field__label" for="mensaje">Mensaje <span class="field__opt">(opcional)</span></label>
+            <textarea id="mensaje" name="mensaje" rows="6"></textarea>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Enviar mensaje</button>
+            <p class="form__note">El envío de este formulario todavía no está conectado; mientras tanto puedes escribirnos por <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>.</p>
+          </div>
+        </form>
+
+        <div class="card">
+          <h3 class="card__title">Datos de la clínica</h3>
+          <dl class="info-list">
+            <div>
+              <dt>Dirección</dt>
+              <dd>Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco, Cumbayá · 170157 Quito, Ecuador</dd>
+            </div>
+            <div>
+              <dt>Teléfono</dt>
+              <dd>Por confirmar</dd>
+            </div>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd><a href="contactanos.html" data-whatsapp rel="noopener">Escríbenos por WhatsApp</a></dd>
+            </div>
+            <div>
+              <dt>Correo</dt>
+              <dd>Por confirmar</dd>
+            </div>
+            <div>
+              <dt>Horarios</dt>
+              <dd>Por confirmar</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Ubicación
+       ==================================================================== -->
+
+  <!-- ====================================================================
+       Redes sociales
+       ==================================================================== -->
+
+  <!-- ====================================================================
+       Cierre
+       ==================================================================== -->
+  <section id="agenda" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="cta-band" data-rev>
+        <span class="cta-band__label">Revisa tu visión con nosotros</span>
+        <h2 class="cta-band__title">Agenda tu cita</h2>
+        <p class="cta-band__text">Completa el formulario o escríbenos por WhatsApp y coordinamos el horario que mejor te acomode.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html#formulario">Agendar cita <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,2759 @@
+/* ==========================================================================
+   Larco Visión — layout global
+
+   Header, hero, retícula editorial de secciones, bandas oscuras, pie, slider,
+   responsive e impresión de las seis páginas. La portada sigue la referencia
+   editorial del cliente, no el canvas de _design/.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+/* No pegajoso: la cabecera vive sobre la portada y se va con ella al bajar.
+   `absolute` y no `static` para que siga flotando encima de la foto sin ocupar
+   sitio en el flujo. Consecuencia asumida: el menú sólo se abre arriba del
+   todo, que es donde está la cabecera. */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  padding: 22px var(--grid-margin);
+  color: var(--dark-text);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur-med) var(--ease-out),
+              padding var(--dur-med) var(--ease-out),
+              border-color var(--dur-med) var(--ease-out),
+              color var(--dur-med) var(--ease-out);
+}
+
+body.is-solid .site-header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: var(--ink);
+  background: var(--nav-scrolled-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--nav-scrolled-border);
+}
+
+body.is-solid.lv-dark .site-header { color: var(--dark-text); }
+
+/* El hero de la portada ya no es una foto oscura sino papel, así que ahí el
+   header nace en su versión clara: letra marino, logo a color y un filete
+   abajo, sin relleno. Las interiores conservan la portada fotográfica y con
+   ella el header blanco traslúcido. */
+
+
+/* Mismo mecanismo que .u-shell: la sección pone el margen y el interior pone
+   el tope. Replicarlo con max() en el padding parecía más corto, pero un
+   clamp() anidado dentro de max() no resuelve al mismo valor y el logo se
+   quedaba en 72px cuando el resto iba a 51. */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+}
+
+/* backdrop-filter turns the header into the containing block for its
+   position: fixed children, which would trap the panel inside the 79px bar.
+   The open panel is opaque anyway, so drop the blur and paint the bar solid. */
+body.nav-open .site-header {
+  transition: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: var(--surface-raised);
+}
+
+/* The panel is the scroll surface while it is open. */
+body.nav-open { overflow: hidden; }
+
+/* ---- brand -------------------------------------------------------------- */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand img {
+  display: block;
+  /* El lockup nuevo es apaisado —748x418, casi 1.8:1, frente al 1.26 del
+     anterior— así que a la misma altura ocupa mucho más ancho. Se baja el alto
+     para que la marca pese lo mismo en la fila sin empujar al menú. */
+  height: clamp(46px, 3.9vw, 60px);
+  width: auto;
+}
+
+.brand img.brand__logo--on-light { display: none; }
+
+body.is-solid:not(.lv-dark) .brand img.brand__logo--on-dark { display: none; }
+body.is-solid:not(.lv-dark) .brand img.brand__logo--on-light { display: block; }
+
+/* ---- nav ---------------------------------------------------------------- */
+
+.nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Versalitas con separación, como el board. */
+.nav__link {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+}
+
+/* Con el header transparente el nav vive sobre foto oscura: el hover global
+   (tinta atenuada) lo hacía desaparecer. Sobre el hero se atenúa hacia papel;
+   con el header sólido, hacia tinta. */
+.nav__link:hover { color: var(--text-muted); }
+
+body:not(.is-solid):not(.nav-open) .site-header .nav__link:hover,
+body:not(.is-solid):not(.nav-open) .site-header .nav__tool:hover {
+  color: rgba(244, 242, 237, .72);
+}
+
+/* El subrayado va en un ::after posicionado y no como border: si engorda la
+   caja del enlace, el nav —que centra verticalmente— sube ese texto respecto
+   de sus hermanos. Así el texto no se mueve y la línea baja donde queramos. */
+.nav__link--current {
+  position: relative;
+  font-weight: 600;
+}
+
+.nav__link--current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 2px;
+  background: currentColor;
+}
+
+body.is-solid .nav__link--current { color: var(--accent-strong); }
+
+.nav__caret {
+  font-size: 9px;
+  vertical-align: 2px;
+}
+
+.nav__divider {
+  width: 1px;
+  height: 20px;
+  background: currentColor;
+  opacity: .25;
+}
+
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__tool {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: inherit;
+}
+
+.nav__tool:hover { color: var(--text-muted); }
+
+/* ---- dropdown menus ------------------------------------------------------ */
+
+/* Los ítems sueltos del nav son hijos directos del flex y quedan
+   "blockificados"; los que tienen desplegable van dentro de .menu y seguían
+   siendo inline, 1.6px más abajo. Con esto las cinco etiquetas comparten
+   línea base. */
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu__panel {
+  position: absolute;
+  top: 100%;
+  left: -24px;
+  padding-top: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fast) var(--ease-out), visibility var(--dur-fast);
+}
+
+.menu:hover > .menu__panel,
+.menu:focus-within > .menu__panel,
+.menu.is-open > .menu__panel {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu__inner {
+  width: 300px;
+  padding: 12px 0;
+  /* Token y no #FFFFFF a pelo: en claro resuelve a blanco puro —que es lo que
+     pide un panel flotante— y en oscuro a pizarra. En blanco fijo, el
+     desplegable salía como un rectángulo blanco en mitad del hero oscuro. */
+  background: var(--surface-raised);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--shadow-float);
+}
+
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+}
+
+.menu__item-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.menu__item:hover .menu__item-title { color: var(--text-muted); }
+
+.menu__item-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Two-column services menu */
+.menu--wide > .menu__panel { left: -180px; }
+
+.menu--wide .menu__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 560px;
+  padding: 0;
+}
+
+.menu__col { padding: 24px; }
+
+.menu__col + .menu__col { border-left: 1px solid var(--border-hairline); }
+
+.menu__col-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  color: var(--text-body);
+}
+
+.menu__col a:hover .menu__col-title { color: var(--text-muted); }
+
+.menu__sublinks {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.menu__sublinks a {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.menu__sublinks a:hover { color: var(--text-muted); }
+
+.menu__toggle { display: none; }
+
+/* ---- mobile menu button -------------------------------------------------- */
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Hero — la foto manda
+
+   La fotografía va entera, sin lavarla: el texto se pone en blanco encima y a
+   la izquierda, donde el encuadre es más tranquilo. Lo único que se le añade
+   es un degradado de tinta que entra por la izquierda y se disuelve antes de
+   la mitad; a la derecha, donde está el instrumental, la foto queda intacta.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Pantalla completa. `svh` además de `vh`: en el móvil, 100vh mide la
+     ventana con la barra del navegador RETRAÍDA, así que al abrir la página
+     —con la barra desplegada— el banner queda más alto que lo que se ve y los
+     botones caen por debajo del corte. `svh` mide la ventana pequeña, que es
+     el estado en el que aterriza el visitante. El `vh` de antes se queda como
+     alternativa para navegadores sin unidades dinámicas. */
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 40%;
+}
+
+/* Las paradas salen de medir el texto contra el píxel más claro que queda
+   debajo de cada bloque, no de tantear: el respaldo del sillón del fondo tiene
+   zonas a 160 de luminancia y la entradilla es de 15px. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Dos capas: la diagonal que asienta el texto, y una banda corta arriba que
+     le da suelo al menú. Sin la de arriba, "Casos Clínicos" y "Contáctanos"
+     caían sobre el instrumental, que es la zona más clara de la foto. */
+  background:
+    linear-gradient(180deg,
+      rgba(12, 20, 36, .58) 0,
+      rgba(12, 20, 36, .28) 90px,
+      rgba(12, 20, 36, 0) 190px),
+    /* Tercera capa, desde el pie: la foto del edificio es clara abajo a la
+       izquierda —la casa blanca— y el botón de contorno se quedaba en 1,02:1. */
+    linear-gradient(0deg,
+      rgba(12, 20, 36, .88) 0,
+      rgba(12, 20, 36, .55) 26%,
+      rgba(12, 20, 36, 0) 50%),
+    linear-gradient(97deg,
+      rgba(12, 20, 36, .86) 0,
+      rgba(12, 20, 36, .80) 30%,
+      rgba(12, 20, 36, .70) 46%,
+      rgba(12, 20, 36, .30) 62%,
+      rgba(12, 20, 36, 0) 78%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  /* El relleno se mide contra la ALTURA, no contra la anchura: con `vw`, una
+     ventana ancha y baja reservaba 80px arriba y 96 abajo que no había, y el
+     banner se pasaba 133px del corte en 1366x700. */
+  padding: calc(var(--header-h, 92px) + clamp(24px, 6vh, 80px)) var(--grid-margin) clamp(32px, 7vh, 96px);
+}
+
+.hero__text { width: min(640px, 100%); }
+
+.hero__title {
+  margin: 0;
+  /* El segundo término ata el titular al alto disponible: son cuatro líneas y
+     a cuerpo fijo no caben en una pantalla baja. En una pantalla alta manda el
+     primero y el tamaño no cambia. */
+  font-size: min(var(--text-display-xl), 9.4vh);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: #FFFFFF;
+}
+
+/* Sobre la foto el acento sube de tono: el azul de papel se apaga contra la
+   tinta del degradado. */
+.hero .u-accent-phrase { color: #8FC3E8; }
+
+.hero__lede {
+  margin: clamp(14px, 2.6vh, 30px) 0 0;
+  max-width: 40ch;
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+  color: rgba(255, 255, 255, .88);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: clamp(18px, 3.2vh, 40px);
+}
+
+.hero__actions .btn {
+  padding: 15px 30px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* Azul claro con la letra en marino. El tono es el CLARO de la escala y no el
+   de papel: sobre #5E92BC el marino se queda en 4,2:1 y la etiqueta es de
+   11px; sobre #8FB6D5 sube a 6,4:1. Blanco encima, que es lo que insinúa el
+   board, daría 2:1. */
+.hero__actions .btn--primary {
+  background: #8FB6D5;
+  color: var(--ink);
+}
+
+.hero__actions .btn--primary:hover { background: #B4CFE6; }
+
+.hero__actions .btn--outline {
+  border: 1px solid rgba(255, 255, 255, .85);
+  color: #FFFFFF;
+}
+
+.hero__actions .btn--outline:hover {
+  background: rgba(255, 255, 255, .16);
+  color: #FFFFFF;
+}
+
+@media (max-width: 760px) {
+  /* En una pantalla estrecha el titular ocupa más líneas y el relleno vertical
+     es lo único que puede ceder: 10px de más dejaban el segundo botón medio
+     píxel por debajo del corte. */
+  .hero__inner {
+    padding-top: calc(var(--header-h, 92px) + clamp(16px, 4vh, 48px));
+    padding-bottom: clamp(24px, 5vh, 64px);
+  }
+
+  .hero__media::after {
+    background: linear-gradient(180deg,
+      rgba(12, 20, 36, .62) 0,
+      rgba(12, 20, 36, .78) 100%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Ritmo de la página — scroll normal
+
+   Aquí vivía el scroll por pantallas completas: cada sección medía un viewport
+   y el scroll saltaba de una a otra. Se retiró a petición del cliente. Con él
+   se va toda la maquinaria que existía sólo para que el contenido cupiera en
+   una pantalla —topes de alto sobre fotos, formularios apretados, el acordeón
+   partido por altura—: sin la restricción, cada sección mide lo que pide su
+   contenido y el aire vuelve a ser el del ritmo editorial, no el sobrante de
+   una pantalla a medio llenar.
+
+   Lo que SÍ se queda de aquella etapa es lo que mejoraba el diseño por sí
+   mismo: el acordeón a dos columnas y el párrafo del bloque partido centrado
+   contra su foto.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1025px) {
+  /* Doce exámenes en una columna son una lista de casi mil píxeles. A dos
+     columnas que se llenan por vertical —1 a 6 a la izquierda, 7 a 12 a la
+     derecha— se abarcan de un vistazo. */
+  #examenes .accordion {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(6, auto);
+    column-gap: var(--space-8);
+  }
+
+  /* El párrafo del bloque partido son cuatro líneas contra una foto alta:
+     arriba del todo dejaba medio panel vacío. `main > section` y no `.split` a
+     secas porque pages.css carga después y ganaba por orden, no por peso. */
+  main > section .split { align-items: center; }
+}
+
+/* --------------------------------------------------------------------------
+   Chip de cita del header
+   El de la referencia: pastilla traslúcida oscura con el punto delante y la
+   etiqueta en versalitas. Sobre el hero va traslúcida con blur; con el header
+   sólido o el menú abierto pasa a tinta plena, que funciona sobre papel.
+   -------------------------------------------------------------------------- */
+
+.site-header .btn {
+  padding: 12px 22px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.site-header .btn::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-right: 10px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+}
+
+body:not(.is-solid) .site-header .btn {
+  background: rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--paper);
+}
+
+body:not(.is-solid) .site-header .btn:hover {
+  background: rgba(255, 255, 255, .34);
+  color: var(--paper);
+}
+
+/* Sobre la foto, la pastilla es blanca con la letra en marino: traslúcida se
+   perdía contra las zonas claras del banner. Vale para TODAS las páginas: las
+   interiores llevan la misma portada fotográfica. */
+body:not(.is-solid):not(.nav-open) .site-header .btn {
+  background: #FFFFFF;
+  color: var(--ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+body:not(.is-solid):not(.nav-open) .site-header .btn:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+/* El punto delante desapareció con el board. */
+.site-header .btn::before { display: none; }
+
+body.is-solid .site-header .btn,
+body.nav-open .site-header .btn {
+  background: var(--brand-deep);
+  color: var(--surface-page);
+}
+
+body.is-solid .site-header .btn:hover,
+body.nav-open .site-header .btn:hover {
+  background: var(--ink-3);
+  color: var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   Shared section furniture
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   Retícula editorial
+
+   Cada sección abre con un filete a todo lo ancho. El número de sección que
+   llevaban antes se quitó a petición del cliente.
+   -------------------------------------------------------------------------- */
+
+.section,
+.stats-band {
+  border-top: 0;
+}
+
+.section {
+  position: relative;
+  padding: var(--space-section) var(--grid-margin);
+}
+
+.section--sunken { background: var(--surface-sunken); }
+.section--page { background: var(--surface-page); }
+
+/* Blanco puro, no el papel del resto: en esta sección las fotos van en color y
+   el blanco las deja respirar sin el tinte cálido de --surface-page. */
+.section--white { background: #FFFFFF; }
+
+/* En oscuro la banda "blanca" no puede quedarse blanca: es la superficie de
+   página, y las piezas que viven encima —fichas de doctor, filas de artículo—
+   ya se resuelven con sus tokens. */
+body.lv-dark .section--white { background: var(--surface-page); }
+
+/* El hero de la portada es papel en claro y pizarra en oscuro; el logo blanco
+   vuelve a entrar y el chip deja de ser gris papel. */
+
+
+/* Banda a sangre en tinta, como alterna la referencia. Redefine los tokens de
+   texto y filete puertas adentro: así el número de sección, los hairlines y
+   todo lo que viva aquí se resuelve solo, sin variantes --dark de cada pieza. */
+.section--dark {
+  /* El acento NO se apaga aquí: en el board azul la banda oscura conserva el
+     azul claro —es el color del nombre de cada servicio y de las cifras—, sólo
+     que un punto más luminoso para que aguante sobre pizarra. */
+  --accent: #8FB6D5;
+  --accent-display: #8FB6D5;
+  --accent-strong: #8FB6D5;
+  --accent-hover: #B4CFE6;
+  --mark: #8FB6D5;
+  --mark-soft: rgba(143, 182, 213, .34);
+  --border-hairline: rgba(255, 255, 255, .2);
+  --border-strong: rgba(255, 255, 255, .55);
+  --text-muted: rgba(255, 255, 255, .70);
+  --text-faint: rgba(255, 255, 255, .64);
+  --text-dim: rgba(255, 255, 255, .66);
+  --text-body: var(--dark-text);
+  --surface-raised: var(--ink-3);
+  --surface-card: var(--ink-3);
+  --surface-sunken: #1D2534;
+  --border-card: rgba(255, 255, 255, .2);
+  --tile-empty: linear-gradient(160deg, var(--ink-2), var(--ink-3));
+  --tile-empty-ink: rgba(255, 255, 255, .7);
+  --btn-outline-hover: rgba(255, 255, 255, .08);
+  background: var(--ink-2);
+  color: var(--dark-text);
+}
+
+.section--dark a { color: var(--dark-text); }
+
+/* Negro casi plano, el color que pasó el cliente. Lo comparten servicios y
+   doctores: son las dos bandas que enmarcan a la de cifras, y planas dejan que
+   el degradado de aquélla sea lo único que llama la atención. Sin rejilla ni
+   grano a propósito —la muestra es lisa—, y por eso los paneles de servicio, un
+   punto más oscuros, se despegan del fondo. */
+/* El mismo grano que la banda de cifras. Sin él la costura seguía viéndose: el
+   grano en modo overlay aclara el borde inferior de la banda unos 15 puntos, y
+   contra un negro liso ese salto se nota. Con la misma textura a los dos lados,
+   los dos bordes se levantan igual y el corte desaparece. */
+.section--night { background: var(--dark-surface-deep); }
+.section--dark a:hover { color: var(--text-muted); }
+
+/* Con el tema oscuro activo la página entera es tinta: la banda se distingue
+   subiendo un paso, no bajando. */
+body.lv-dark .section--dark { background: var(--surface-raised); }
+
+/* Todas llevan filete ya; el modificador se queda sin trabajo pero sigue en el
+   markup de las seis páginas, así que no rompe nada dejarlo inerte. */
+.section--ruled { border-top-width: 1px; }
+
+/* El colapso de aire entre secciones del mismo color se fue con el enfoque
+   anterior: ahora todas llevan filete arriba, así que el corte se lee aunque el
+   fondo no cambie y cada una conserva su margen. */
+
+/* El eyebrow y el h2 son una sola unidad: sin esto cada uno se vuelve una
+   celda del flex/grid del encabezado y el titular se desalinea. */
+.head-title { min-width: 0; }
+
+.section-head .head-title { flex: 1 1 auto; }
+
+.section__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  color: var(--text-body);
+}
+
+/* Heading left, action right */
+/* El titular de sección pasó a 46px y con 48px por debajo quedaba pegado a su
+   contenido: el aire tiene que crecer con la letra. */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: clamp(40px, 4.5vw, 68px);
+}
+
+/* Heading left, supporting copy + action right */
+.head-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--grid-gutter);
+  align-items: end;
+  margin-bottom: clamp(40px, 4.5vw, 68px);
+}
+
+.head-split__aside {
+  justify-self: end;
+  max-width: 420px;
+}
+
+.head-split__aside--wide { max-width: 440px; }
+
+.head-split__aside p {
+  margin: 0 0 20px;
+  color: var(--text-body);
+}
+
+/* --------------------------------------------------------------------------
+   Services
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   Servicios — columnas altas a hueso
+
+   El formato de la referencia: tarjetas a toda altura divididas por filete y
+   sin separación, con el dato corto arriba, el titular grande abajo y el
+   enlace cerrando. La foto va a sangre bajo un velo, no como banda recortada
+   encima del texto.
+   -------------------------------------------------------------------------- */
+
+/* El encabezado cede aire para que las tarjetas ganen alto: es la sección con
+   más contenido por columna de toda la portada. */
+#servicios .head-split { margin-bottom: clamp(20px, 2.4vh, 30px); }
+
+/* Paneles separados por un hueco fino, no columnas a hueso: en la referencia
+   el fondo de la sección asoma entre tarjeta y tarjeta. */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.service-col {
+  --dark-text: rgba(255, 255, 255, .96); /* fondo propio: el texto no sigue a la banda */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  /* Alto elástico: la sección va clavada a un viewport, así que la tarjeta se
+     mide contra la altura y no contra un valor fijo. */
+  min-height: clamp(380px, 34vw, 520px);
+  padding: 0;
+  overflow: hidden;
+  /* Pizarra plana en reposo, como en el board: las tres tarjetas iguales y sin
+     foto. La foto es lo que aparece al pasar el puntero. */
+  background: var(--ink-2);
+  text-decoration: none;
+  /* La tarjeta es una superficie OSCURA dentro de una banda de papel. Sin
+     redeclarar aquí los tokens, el resumen heredaba --text-muted en su versión
+     de papel —pizarra sobre pizarra, 1,14:1, ilegible— igual que le pasaba a
+     las fichas de equipo. Manda el fondo de la pieza, no el de la sección. */
+  --text-muted: rgba(255, 255, 255, .72);
+  --text-faint: rgba(255, 255, 255, .64);
+  --accent: #8FB6D5;
+  --accent-strong: #8FB6D5;
+  --border-hairline: rgba(255, 255, 255, .2);
+  color: var(--dark-text);
+}
+
+.service-col__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Visible en reposo: el tablero del cliente enseña las tres con foto. El
+     puntero sólo la acerca un poco; el velo NO cambia, porque es lo que
+     sostiene el contraste del índice de 11px (4,80:1 medido a .84). */
+  opacity: 1;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.service-col:hover .service-col__photo,
+.service-col:focus-visible .service-col__photo { transform: scale(1.03); }
+
+/* El velo es AZUL, no negro: en el board la foto de la tarjeta activa se ve
+   entera pero teñida de pizarra, que es lo que la ata a las otras dos. En
+   reposo no hay foto debajo, así que el velo es transparente y no pinta nada;
+   sólo entra con ella. */
+.service-col__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 34, 58, .84);
+}
+
+.service-col__top,
+.service-col__foot {
+  position: relative;
+  /* Explícito: la foto y el velo también van posicionados, y sin esto el orden
+     de pintado dependería del orden en el DOM. */
+  z-index: 1;
+  display: block;
+  padding: clamp(20px, 2.2vw, 32px);
+}
+
+.service-col__index {
+  display: block;
+  margin-bottom: 14px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: rgba(255, 255, 255, .92);
+}
+
+.service-col__desc {
+  display: block;
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* El nombre nace en azul claro y pasa a blanco cuando la tarjeta se abre: es
+   la única señal de estado que necesita, porque la tarjeta entera es enlace. */
+.service-col__name {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  color: #FFFFFF;
+}
+
+/* El board no lleva enlace de continuar: el nombre de la tarjeta ES el enlace,
+   y la tarjeta entera es el área pulsable. */
+.service-col__more { display: none; }
+
+/* --------------------------------------------------------------------------
+   Doctores — dos fichas en una pantalla
+
+   El board las pone una al lado de la otra: panel de texto a la izquierda,
+   retrato a la derecha, filete alrededor. Sustituye a la retícula escalonada
+   de cuatro carriles del enfoque anterior, que repartía a los dos doctores en
+   dos paradas distintas.
+   -------------------------------------------------------------------------- */
+
+.docs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+.doc {
+  display: grid;
+  /* El retrato es vertical: algo menos de la mitad basta para que la cara
+     quepa entera sin recortar la barbilla. */
+  grid-template-columns: minmax(0, 1fr) 44%;
+  border: 1px solid var(--border-hairline);
+  background: var(--surface-raised);
+  overflow: hidden;
+}
+
+.doc__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 3vw, 46px);
+}
+
+.doc__name {
+  margin: 0;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+  color: var(--text-body);
+}
+
+.doc__note {
+  margin: clamp(18px, 2.4vh, 32px) 0 0;
+  max-width: 26ch;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+
+.doc__specialty {
+  margin: clamp(16px, 2.2vh, 28px) 0 0;
+  max-width: 26ch;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+
+.doc__tag {
+  display: block;
+  margin-bottom: 4px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* `auto` arriba empuja la pastilla al pie de la ficha: las dos quedan a la
+   misma altura aunque un doctor tenga una línea más de texto. */
+/* `.doc .doc__cta` y no `.doc__cta` a secas: .btn--outline tiene el mismo peso
+   y ganaba por orden, dejando la pastilla en el azul de titular —3,3:1 sobre
+   blanco, por debajo del mínimo para 11px—. */
+.doc .doc__cta {
+  margin-top: auto;
+  padding: 13px 26px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.doc .doc__cta:hover {
+  background: var(--btn-outline-hover);
+  color: var(--accent-strong);
+}
+
+.doc__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+@media (max-width: 1024px) {
+  .docs { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .doc { grid-template-columns: 1fr; }
+  .doc__photo { aspect-ratio: 3 / 2; }
+}
+
+/* --------------------------------------------------------------------------
+   Artículos — filas con numeral, miniatura y pastilla
+
+   El board: un número dentro de un círculo a la izquierda, una miniatura de
+   esquinas redondeadas, el titular con dos líneas de resumen, y la pastilla de
+   continuar al otro extremo. Filete entre filas y nada más.
+   -------------------------------------------------------------------------- */
+
+.articles__head { align-items: start; }
+
+.articles__list { border-top: 1px solid var(--border-hairline); }
+
+.article-row {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 56px);
+  padding: clamp(18px, 2.4vh, 30px) clamp(16px, 2.4vw, 40px); /* aire a los costados, tablero */
+  border-bottom: 1px solid var(--border-hairline);
+  text-decoration: none;
+}
+
+.article-row:hover { background: var(--surface-card); }
+
+/* El numeral va en un círculo de filete, no en una etiqueta: es lo que ordena
+   la lista de un vistazo. */
+.article-row__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.article-row__media {
+  display: block;
+  width: clamp(72px, 7vw, 96px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.article-row__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-row__body { display: block; }
+
+.article-row__title {
+  margin: 0;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+  color: var(--text-body);
+}
+
+.article-row__text {
+  display: block;
+  margin-top: 6px;
+  max-width: 52ch;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.article-row__more {
+  flex: 0 0 auto;
+  padding: 12px 24px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  white-space: nowrap;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.article-row:hover .article-row__more {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .article-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: 14px;
+  }
+  .article-row__media { display: none; }
+  .article-row__more { grid-column: 2; justify-self: start; }
+}
+
+/* --------------------------------------------------------------------------
+   Pie — cuatro carriles con filete y una barra legal debajo
+
+   Como la referencia: marca y frase en el primer carril, tres columnas de
+   enlaces separadas por filete vertical, y una fila legal abajo dividida en el
+   mismo ritmo. Blanco puro, no el papel del resto.
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  /* Mismo caso que el desplegable: blanco en claro, pizarra en oscuro. */
+  background: var(--surface-raised);
+  border-top: 1px solid var(--border-hairline);
+  padding: 0 var(--grid-margin);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3.4fr) repeat(3, minmax(0, 2.866fr));
+  gap: 0;
+  padding: clamp(40px, 5vw, 72px) 0 clamp(48px, 6vw, 88px);
+}
+
+.footer__brand { padding-right: clamp(20px, 3vw, 48px); }
+
+/* Mapa del pie: banda a todo el carril, encima de las cuatro columnas. La
+   tarjeta va superpuesta abajo a la izquierda, sobre superficie elevada, para
+   que la dirección no dependa del contraste contra las teselas. */
+.footer__map {
+  height: clamp(220px, 24vw, 320px);
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.footer__map-card {
+  position: absolute;
+  left: clamp(14px, 2vw, 24px);
+  bottom: clamp(14px, 2vw, 24px);
+  max-width: 300px;
+  padding: 16px 20px 18px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-hairline);
+}
+
+.footer__map-card .footer__col-title { margin-bottom: 8px; }
+.footer__map-card .footer__address { margin: 0; }
+
+.footer__map-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.footer__map-link:hover { color: var(--text-body); }
+
+@media (max-width: 560px) {
+  .footer__map { height: 260px; }
+  .footer__map-card { left: 10px; right: 10px; bottom: 10px; max-width: none; }
+}
+
+.footer__col {
+  padding: 0 clamp(20px, 2.6vw, 44px);
+  border-left: 0;
+}
+
+.footer__brand img {
+  display: block;
+  height: 76px;
+  width: auto;
+}
+
+.footer__brand .brand__logo--on-dark { display: none; }
+body.lv-dark .footer__brand .brand__logo--on-dark { display: block; }
+body.lv-dark .footer__brand .brand__logo--on-light { display: none; }
+
+/* La frase de marca va en display, como en la referencia: es lo único del pie
+   que no es una lista. */
+.footer__tag {
+  margin: var(--space-6) 0 0;
+  max-width: 16ch;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: 1.12;
+  color: var(--text-body);
+}
+
+.footer__col-title {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-body);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 16px;
+  font-size: var(--text-small);
+}
+
+.footer__links a { color: var(--text-muted); }
+.footer__links a:hover { color: var(--text-body); }
+
+.footer__block { margin-top: clamp(32px, 4vw, 56px); }
+
+.footer__address {
+  margin: 14px 0 0;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.footer__address--muted { color: var(--text-faint); }
+.footer__address + .footer__address { margin-top: 4px; }
+
+/* La barra legal repite el ritmo de cuatro carriles del bloque de arriba. */
+.footer__legal {
+  display: grid;
+  grid-template-columns: minmax(0, 3.4fr) repeat(3, minmax(0, 2.866fr));
+  gap: 0;
+  padding: 20px 0;
+  border-top: 0;
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+
+.footer__legal > * + * {
+  padding-left: clamp(20px, 2.6vw, 44px);
+  border-left: 0;
+}
+
+.footer__legal a { color: var(--text-muted); }
+.footer__legal a:hover { color: var(--text-body); }
+
+.footer__note { color: var(--text-faint); }
+
+
+
+@media (max-width: 900px) {
+  .footer__grid,
+  .footer__legal { grid-template-columns: 1fr 1fr; }
+
+  .footer__brand { grid-column: 1 / -1; padding-right: 0; }
+
+  .footer__col,
+  .footer__legal > * + * {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .footer__col { padding-right: 0; margin-top: var(--space-7); }
+  .footer__legal { gap: 10px 24px; }
+}
+
+@media (max-width: 560px) {
+  .footer__grid,
+  .footer__legal { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   WhatsApp floating action
+   -------------------------------------------------------------------------- */
+
+.wa-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-float);
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+body.nav-open .wa-fab { display: none; }
+
+.wa-fab:hover {
+  background: var(--accent-hover);
+  color: var(--accent-ink);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal
+   Only applied once JS is running, so the page is fully readable without it.
+   -------------------------------------------------------------------------- */
+
+[data-rev] {
+  transition: opacity var(--dur-reveal) var(--ease-out),
+              transform var(--dur-reveal) var(--ease-out);
+}
+
+body.js [data-rev].is-pending {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   The mockup is a desktop artboard; below 1024px the layout collapses to a
+   single-column reading order and the nav becomes a disclosure panel.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1180px) {
+  .nav { gap: 20px; }
+}
+
+@media (max-width: 1024px) {
+  .nav-toggle { display: inline-flex; }
+
+  /* ---- the panel ---------------------------------------------------------
+     A full-height sheet under the header. Rows are a plain list; the two
+     sections that have children collapse behind their own disclosure button,
+     so the whole menu fits one screen instead of scrolling past forty links.
+     ---------------------------------------------------------------------- */
+
+  .nav {
+    position: fixed;
+    top: var(--header-h, 78px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 8px var(--grid-margin) max(28px, env(safe-area-inset-bottom));
+    background: var(--surface-raised);
+    border-bottom: 1px solid var(--border-hairline);
+    box-shadow: var(--shadow-float);
+    color: var(--text-body);
+  }
+
+  body.nav-open .nav { display: flex; }
+
+  /* ---- rows -------------------------------------------------------------- */
+
+  .nav > .nav__link,
+  .nav .menu {
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text-body);
+    border-bottom: 0;
+  }
+
+  .nav__link--current {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .nav__link--current::after { display: none; }
+
+  .nav__caret { display: none; }
+  .nav__divider { display: none; }
+
+  /* ---- disclosure -------------------------------------------------------- */
+
+  .menu {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .menu > .nav__link { flex: 1 1 auto; }
+
+  .menu__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast);
+  }
+
+  .menu__toggle:hover { color: var(--accent-strong); }
+
+  .menu.is-expanded > .menu__toggle {
+    transform: rotate(180deg);
+    color: var(--accent-strong);
+  }
+
+  /* ---- the expanded tray ------------------------------------------------- */
+
+  .menu__panel {
+    position: static;
+    flex-basis: 100%;
+    display: none;
+    padding-top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu.is-expanded > .menu__panel { display: block; }
+
+  /* Full-bleed so the tray reads as a layer under the row, not as indented text. */
+  .menu__inner,
+  .menu--wide .menu__inner {
+    display: block;
+    width: auto;
+    margin: 0 calc(var(--grid-margin) * -1) 12px;
+    padding: 4px var(--grid-margin) 8px;
+    background: var(--surface-sunken);
+    border: none;
+    border-top: 1px solid var(--border-hairline);
+    box-shadow: none;
+  }
+
+  .menu__col { padding: 8px 0; }
+  .menu__col + .menu__col {
+    border-left: none;
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .menu__col > a { display: block; }
+
+  .menu__item {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .menu__sublinks { gap: 0; margin-top: 4px; }
+
+  .menu__sublinks a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-left: 14px;
+    font-size: 15px;
+  }
+
+  /* A sub-heading must not outweigh the row it hangs from. */
+  .menu__col-title,
+  .menu__item-title {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-body);
+  }
+
+  .menu__col-title { display: block; padding: 6px 0; }
+  .menu__item-note { font-size: 13px; }
+
+  /* ---- footer of the sheet ----------------------------------------------- */
+
+  .nav .btn {
+    order: 2;
+    width: 100%;
+    /* Pins the booking CTA to the bottom of the sheet when the sections are
+       collapsed; collapses to nothing once they are open and content fills it. */
+    margin-top: auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 15px;
+  }
+
+  .nav__tools {
+    order: 3;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 8px;
+    padding-top: 20px;
+  }
+
+  .nav__tool { min-width: 44px; min-height: 44px; justify-content: center; }
+}
+
+@media (max-width: 960px) {
+  .head-split,
+  .doctors__layout,
+
+  /* Apilado, el lede ya no compite con las fichas y puede respirar a lo ancho. */
+  
+
+  .head-split__aside {
+    justify-self: start;
+    max-width: 640px;
+  }
+
+
+}
+
+@media (max-width: 760px) {
+  /* Tres columnas altas no caben en un móvil: se apilan y el alto lo pone el
+     contenido, no el viewport. */
+  .services__grid { grid-template-columns: 1fr; border-left: 0; }
+
+  .service-col {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  /* La fila de artículo pierde el carril de la foto y apila etiqueta y texto. */
+
+  /* Tres fichas verticales por debajo de 760px dan menos de 220px de ancho: el
+     nombre se parte y la especialidad ocupa media foto. En una columna se
+     acorta el formato y se topa el ancho, porque a 720px de contenedor una sola
+     ficha 8:15 mediría 1350px de alto. */
+  /* La malla escalonada no cabe en un móvil: cada pieza pasa a fila completa
+     en el orden en que se lee. */
+  .doctors__layout { grid-template-columns: 1fr; }
+
+  .doctors__head,
+  .doctors__intro,
+  .doctor-card--a,
+  .doctor-card--b,
+  .doctor-photo--a,
+  .doctor-photo--b {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    border-left: 1px solid var(--border-hairline);
+  }
+
+  .doctors__gap { display: none; }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  /* Apiladas, las columnas cambian el filete de lado: la división vertical se
+     vuelve horizontal, igual que hace la referencia en móvil. */
+  .services__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+
+  .service-col,
+  .service-col:first-child {
+    padding: var(--space-6) 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .service-col:first-child { padding-top: 0; border-top: 0; }
+
+  /* La fila de artículo apila la etiqueta sobre el título y suelta la flecha. */
+
+  /* The desktop artboard sizes the display line off viewport height; at phone
+     widths that overflows, so cap it against the width instead. */
+  .hero__inner { padding-top: clamp(140px, 21vh, 180px); }
+
+  .hero__title {
+    max-width: none;
+    font-size: clamp(40px, 12vw, 64px);
+  }
+
+  /* En columna estrecha no hay hueco que encajar: líneas corridas y párrafo
+     en su sitio. */
+  .hero__title-line { display: inline; }
+  .hero__title-line--end { padding-left: 0; }
+  .hero__lede { position: static; top: 0; margin-bottom: 0; max-width: 340px; }
+
+  .hero__foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+
+
+
+
+}
+
+@media (max-width: 560px) {
+
+
+  .wa-fab { bottom: 18px; right: 18px; }
+}
+
+/* --------------------------------------------------------------------------
+   Motion preferences
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body.js [data-rev].is-pending {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print
+   -------------------------------------------------------------------------- */
+
+/* ==========================================================================
+   Bandas — cortan la sucesión de secciones claras
+   Referencia: Vyra Capital, que el sitemap del cliente ya citaba.
+   ========================================================================== */
+
+/* ---- cifras: la banda azul pizarra --------------------------------------
+
+   Plana, sin degradado ni grano: en el board azul la banda es un rectángulo de
+   pizarra y lo que la anima son las cifras en azul claro y los filetes que las
+   separan. El fondo de oliva y turbulencia que había aquí era del enfoque
+   monocromo y no sobrevive al cambio de paleta.
+   ------------------------------------------------------------------------ */
+.stats-band {
+  position: relative;
+  /* Relleno propio y no --space-section: la banda son tres cifras y un
+     titular, 223px de contenido, y con el relleno general de sección se iba a
+     549px de alto. Aquí manda lo que hay dentro. */
+  padding: clamp(48px, 5vw, 76px) var(--grid-margin);
+  background: #2C3547; /* el hex que pide el tablero: 2C, no 2B */
+}
+
+.stats-band__layout { display: block; }
+
+.stats-band__title {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-display);
+  /* La separación hasta las cifras la pone el titular. */
+  margin-bottom: clamp(28px, 3.2vw, 48px);
+}
+
+.stats-band__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.figure {
+  display: block;
+  padding: 0 clamp(20px, 2.4vw, 34px);
+  border-left: 0;
+}
+
+.figure:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.figure__num {
+  display: block;
+  font-family: var(--font-display);
+  /* El numeral manda en la sección: es lo que se lee de lejos y el rótulo lo
+     explica debajo. Por eso llega casi al tamaño de un titular de sección. */
+  font-size: clamp(44px, 5.2vw, 76px);
+  font-weight: var(--weight-display);
+  line-height: .95;
+  letter-spacing: -.03em;
+  /* La cifra es lo único en azul claro de la banda: es lo que se lee de lejos
+     y el rótulo, en blanco atenuado, la explica debajo. */
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* El afijo no compite con la cifra: la mitad de cuerpo y en tono secundario. */
+.figure__prefix,
+.figure__suffix {
+  font-size: .62em; /* tablero: "que no sean tan pequeños" */
+  color: var(--text-muted);
+}
+
+.figure__prefix { margin-right: .06em; }
+
+.figure__label {
+  display: block;
+  margin-top: 6px; /* pegado a la cifra, como la referencia del tablero */
+  max-width: 22ch;
+  font-size: var(--text-body-lg); /* tablero: texto complementario más grande */
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .stats-band__grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-7);
+  }
+
+  .figure {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .figure__label { max-width: 34ch; }
+}
+
+@media (max-width: 560px) {
+  .stats-band__grid { row-gap: var(--space-6); }
+}
+
+/* El pie: la columna de texto necesita cuerpo, si no la fila queda hueca. */
+
+
+.footer__address--muted { color: var(--text-faint); }
+
+@media (max-width: 860px) {
+
+}
+
+/* ==========================================================================
+   Testimonios — columnas abiertas por un filete de color
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Aquí vivía el carril horizontal con scroll-snap y sus flechas
+
+   Se retiró: un contenedor con `scroll-snap-type: x` bajo el puntero secuestra
+   el gesto de la rueda y del trackpad, y era la causa de que el scroll de la
+   página se sintiera raro. Lo que enseñaba ahora se ve entero de una vez.
+   -------------------------------------------------------------------------- */
+
+/* Los testimonios en vídeo, en retícula: tres por fila y todos a la vista. */
+.vquotes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 26px);
+  align-items: start;
+}
+
+@media (max-width: 900px) { .vquotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .vquotes { grid-template-columns: 1fr; } }
+
+/* Estas reglas se perdieron al retirar el carril: la cirugía sobre el archivo
+   se llevó por delante el bloque entero de la ficha de vídeo, que sólo era
+   vecino suyo. Restauradas, con el alto ya sin depender del viewport. */
+
+.vquote { margin: 0; }
+
+.vquote__media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--border-hairline);
+}
+
+.vquote__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  color: var(--dark-text);
+}
+
+.vquote__pending {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.vquote__by {
+  display: block;
+  margin-top: 16px;
+}
+
+.vquote__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  color: var(--dark-text);
+}
+
+.vquote__what {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+
+.testimonios__cta { margin-top: var(--space-5); }
+
+
+/* ==========================================================================
+   Impresión
+
+   Va al final del archivo a propósito. `@media print` no aporta especificidad,
+   así que una regla normal escrita más abajo le gana: cuando este bloque estaba
+   a media altura, `.stats-band__grid { display: block }` lo pisaba el
+   `display: grid` de la banda, doscientas líneas más abajo, y el panel salía en
+   rejilla igual. Lo que anula el diseño de pantalla tiene que ir el último.
+   ========================================================================== */
+
+@media print {
+  .site-header,
+  .wa-fab { display: none; }
+
+  .hero { min-height: auto; background: #fff; }
+  .hero__inner { min-height: auto; padding: 40px 0; }
+  .hero__media, .hero__scrim { display: none; }
+  body { background: #fff; }
+
+  .hero__title,
+  .hero__lede,
+  .hero__lede span { color: var(--ink); text-shadow: none; }
+
+  .hero__actions .btn {
+    background: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  /* En papel no hay scroll que dispare el observador de reveals: lo que no
+     llegó a entrar en pantalla seguiría en opacity 0 y la sección saldría en
+     blanco. */
+  body.js [data-rev].is-pending {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Las bandas oscuras pierden su fondo al imprimir, así que sus tokens
+     vuelven a tinta sobre papel AQUÍ, en las custom properties y no pieza a
+     pieza: cifras, servicios y testimonios se arreglan de una vez, y lo que se
+     añada a una banda oscura mañana imprime bien sin tocar este bloque. */
+  .section--dark {
+    --text-body: var(--ink);
+    --text-muted: rgba(30, 38, 58, .70);
+    --text-faint: rgba(30, 38, 58, .64);
+    --text-dim: rgba(30, 38, 58, .66);
+    --border-hairline: rgba(23, 38, 90, .14);
+    --border-strong: rgba(23, 38, 90, .45);
+    --dark-text: var(--ink);
+    --dark-text-muted: rgba(30, 38, 58, .70);
+    --mark: var(--ink);
+    --accent: var(--ink);
+    color: var(--ink);
+  }
+
+  .section--dark .section__title { color: var(--ink); }
+
+  .figure,
+  .doctor-card,
+  .service-col,
+  .article-row { break-inside: avoid; }
+}
+
+
+/* --------------------------------------------------------------------------
+   Escaparate de equipos — la diapositiva a sangre del board
+
+   Foto entera bajo un velo azul, el titular en dos tonos arriba a la
+   izquierda, el resumen y la pastilla debajo, y las flechas sobre la propia
+   foto. Sustituye a los testimonios en video, que seguían siendo marcadores
+   sin material del cliente.
+   -------------------------------------------------------------------------- */
+
+/* Una sola pieza fija, sin carril ni flechas. */
+.showcase { position: relative; }
+
+.slide {
+  --dark-text: rgba(255, 255, 255, .96); /* fondo propio: el texto no sigue a la banda */
+  /* Misma razón que en .service-col: superficie oscura dentro de banda clara. */
+  --accent: #8FB6D5;
+  --text-muted: rgba(255, 255, 255, .82);
+  position: relative;
+  display: flex;
+  align-items: center;
+  scroll-snap-align: start;
+  min-height: clamp(420px, 40vw, 600px);
+  overflow: hidden;
+  background: var(--ink-2);
+}
+
+.slide__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Velo azul y no negro: la foto se ve entera pero teñida de pizarra, que es lo
+   que la ata al resto de la página. El nivel sale de medir el texto contra el
+   pixel más claro de cada foto, no de tantear. */
+.slide__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 30, 52, .92) 0, rgba(20, 30, 52, .78) 42%, rgba(20, 30, 52, .42) 100%);
+}
+
+.slide__body {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  padding: clamp(28px, 4vw, 68px);
+}
+
+.slide__title {
+  margin: 0;
+  font-size: clamp(30px, 3.8vw, 54px);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-display);
+  color: #FFFFFF;
+}
+
+.slide__text {
+  margin: clamp(20px, 3vh, 36px) 0 0;
+  max-width: 42ch;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+  color: rgba(255, 255, 255, .82);
+}
+
+.slide__cta {
+  display: inline-block;
+  margin-top: clamp(24px, 3.4vh, 40px);
+  padding: 13px 28px;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.slide__cta:hover {
+  background: rgba(255, 255, 255, .14);
+  color: #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 620px) {
+  .slide__body { width: 100%; }
+  .slide__veil { background: linear-gradient(180deg, rgba(20, 30, 52, .72) 0, rgba(20, 30, 52, .92) 100%); }
+}
+
+/* Tablero, sección Doctores: "alinear" — la entradilla arranca a la misma
+   altura que el titular, no colgada arriba mientras el titular baja al pie. */
+#doctores .head-split { align-items: start; }
+
+
+
+/* ==========================================================================
+   Tablero del 8 de septiembre — piezas nuevas de las interiores
+   ========================================================================== */
+
+/* ---- Nuestra historia: rótulo, titular grande a dos tonos y el cuerpo en
+   la columna derecha, como la maqueta. ---- */
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 56%);
+  column-gap: var(--grid-gutter);
+  row-gap: clamp(28px, 4vw, 56px);
+}
+
+.story__label {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.story__headline {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+  /* Un punto menor, a petición del cliente. */
+  font-size: clamp(24px, 3vw, 44px);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-display);
+  text-align: right;
+  color: var(--text-body);
+}
+
+/* La foto va en la columna izquierda, a la altura del cuerpo de texto. */
+.story__photo {
+  grid-column: 1;
+  grid-row: 3;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  align-self: start;
+}
+
+.story__body {
+  grid-column: 2;
+  grid-row: 3;
+  font-size: var(--text-body-size);
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.story__body p { margin: 0 0 1em; }
+.story__body p:last-child { margin-bottom: 0; }
+
+@media (max-width: 760px) {
+  .story { grid-template-columns: 1fr; }
+  .story__headline { text-align: left; }
+  .story__photo { grid-row: auto; }
+  .story__body { grid-column: 1; grid-row: auto; }
+}
+
+/* ---- Misión y Visión: dos columnas de texto con rótulo pequeño ---- */
+.mv {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 80px);
+  /* Las columnas van metidas respecto al titular, como la maqueta: margen
+     lateral generoso y más aire arriba. */
+  padding: clamp(8px, 2vw, 32px) clamp(16px, 7vw, 140px) 0;
+}
+
+.mv__label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.mv__col p {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--text-body-size);
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) { .mv { grid-template-columns: 1fr; } }
+
+/* ---- Equipo: la trayectoria en viñetas, no en una frase con punto y coma ---- */
+.person__list {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.person__list li { margin: 0 0 4px; }
+
+/* ---- Especialidades: filas con miniatura, nombre y texto (tablero) ---- */
+.topics { border-top: 1px solid var(--border-hairline); }
+
+.topic {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 220px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 56px);
+  align-items: center;
+  padding: clamp(20px, 2.6vw, 34px) clamp(12px, 2vw, 32px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.topic__thumb {
+  width: 96px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.topic__name {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px; /* un punto más grande, a petición del cliente */
+  font-weight: var(--weight-semibold);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.topic__cta {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.topic__cta:hover { color: var(--text-body); }
+
+.topic__text {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--text-body-size);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  .topic { grid-template-columns: 72px minmax(0, 1fr); }
+  .topic__thumb { width: 72px; }
+  .topic__text { grid-column: 1 / -1; }
+}
+
+/* ---- Fichas con foto: la foto SIEMPRE visible, sin hover. El cliente lo
+   pidió así tras ver la versión que la revelaba al pasar el puntero. Encima
+   va un velo azul uniforme calibrado para el texto de 11–13px; el titular
+   lleva además un degradado bajo. Sin el filtro de alta clave: "la foto se
+   debe visualizar muy bien". ---- */
+.card--wide.card--reveal { background: var(--ink-3); }
+
+.card--wide.card--reveal .card__media {
+  filter: none;
+  opacity: 1;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.card--wide.card--reveal::after {
+  opacity: 1;
+  /* Tres capas: un degradado ARRIBA para el rótulo y el resumen, otro ABAJO
+     para el titular, y un velo uniforme suave en medio para que la foto se
+     vea. Medido: con sólo el uniforme al .66 el resumen se quedaba en 3,65:1
+     sobre las paredes claras de las fotos. */
+  background:
+    linear-gradient(180deg, rgba(24, 34, 58, .90) 0, rgba(24, 34, 58, .72) 34%, rgba(24, 34, 58, 0) 52%),
+    linear-gradient(0deg, rgba(24, 34, 58, .92) 0, rgba(24, 34, 58, .55) 36%, rgba(24, 34, 58, 0) 56%),
+    rgba(24, 34, 58, .5);
+}
+
+.card--wide.card--reveal:hover .card__media,
+.card--wide.card--reveal:focus-within .card__media { transform: scale(1.03); }
+
+.card--wide.card--reveal .card__more {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Fichas compactas del carrusel */
+.card--wide.card--compact {
+  min-height: 0;
+  height: clamp(220px, 24vw, 300px);
+  gap: var(--space-5);
+}
+
+.card--wide.card--compact .card__title { font-size: clamp(18px, 1.6vw, 24px); max-width: none; }
+.card--wide.card--compact .card__text { display: none; }
+.card--wide.card--compact .card__top,
+.card--wide.card--compact .card__foot { padding: clamp(16px, 1.6vw, 22px); }
+
+/* ---- Carrusel por transform: sin scroll nativo, no secuestra la rueda ---- */
+.carousel { --carousel-gap: clamp(14px, 1.6vw, 24px); }
+
+.carousel__viewport { overflow: hidden; }
+
+.carousel__track {
+  display: flex;
+  gap: var(--carousel-gap);
+  transition: transform .55s var(--ease-out);
+  will-change: transform;
+}
+
+.carousel__track > * {
+  flex: 0 0 calc((100% - var(--carousel-gap) * 3) / 4);
+}
+
+@media (max-width: 1100px) { .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap) * 2) / 3); } }
+@media (max-width: 760px)  { .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap)) / 2); } }
+@media (max-width: 480px)  { .carousel__track > * { flex-basis: 100%; } }
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.carousel__dots { display: flex; gap: 8px; }
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, .28);
+  cursor: pointer;
+}
+
+.carousel__dot.is-active { background: var(--accent); }
+
+.carousel__arrows { display: flex; gap: 10px; }
+
+.carousel__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-body);
+  cursor: pointer;
+}
+
+.carousel__arrow:hover { background: var(--btn-outline-hover); }
+.carousel__arrow[disabled] { opacity: .35; cursor: default; }
+
+/* ---- Pop-up de ficha (dialog nativo) ---- */
+.modal {
+  width: min(760px, calc(100vw - 32px));
+  padding: 0;
+  border: 0;
+  background: var(--ink-2);
+  color: var(--dark-text);
+}
+
+.modal::backdrop { background: rgba(10, 16, 30, .72); }
+
+.modal__inner { position: relative; }
+
+.modal__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.modal__body { padding: clamp(22px, 3vw, 36px); }
+
+.modal__label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: #8FB6D5;
+}
+
+.modal__title {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.modal__body p {
+  margin: 0 0 22px;
+  max-width: 60ch;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .78);
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(10, 16, 30, .7);
+  color: #FFFFFF;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Exámenes: la cabecera se alinea con el párrafo, como pide el tablero. */
+#examenes .head-split { align-items: start; }
+
+/* ---- La consulta (maqueta del cliente): titular arriba a la izquierda, los
+   dos botones abajo a la izquierda; a la derecha el texto y, debajo, la foto. */
+.consult {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 96px);
+}
+
+.consult__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-7);
+}
+
+.consult__left .section__title { margin: 0; }
+
+.consult__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.consult__actions .btn {
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.consult__right .prose { max-width: none; }
+.consult__right .prose p { color: var(--text-muted); }
+
+.consult__photo {
+  display: block;
+  width: 100%;
+  margin-top: clamp(24px, 3vw, 44px);
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .consult { grid-template-columns: 1fr; }
+  .consult__left { gap: var(--space-5); }
+}
+
+/* ---- Sección a sangre: sin relleno ni carril, la pieza llega de borde a
+   borde. El cliente lo pidió para el escaparate de equipos. ---- */
+.section--bleed { padding: 0; }
+.section--bleed > .u-shell { max-width: none; margin: 0; }
+
+/* ---- Testimonios: titular y párrafo alineados arriba, a la misma altura. ---- */
+#testimonios .head-split { align-items: start; }
+
+/* ---- Tarjetas de servicio: la foto se ve, el texto aparece al pasar.
+   En reposo un velo suave y un degradado bajo que sostiene el nombre; al pasar
+   el puntero el velo sube y entra el índice con la descripción. El cliente
+   pidió ver más la imagen y que los textos aparezcan con el hover. ---- */
+.service-col .service-col__scrim {
+  background:
+    linear-gradient(0deg, rgba(24, 34, 58, .92) 0, rgba(24, 34, 58, .5) 34%, rgba(24, 34, 58, 0) 58%),
+    rgba(24, 34, 58, .34);
+  transition: background var(--dur-med) var(--ease-out);
+}
+
+.service-col .service-col__top {
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out);
+}
+
+.service-col:hover .service-col__scrim,
+.service-col:focus-visible .service-col__scrim {
+  background:
+    linear-gradient(0deg, rgba(24, 34, 58, .92) 0, rgba(24, 34, 58, .5) 34%, rgba(24, 34, 58, 0) 58%),
+    rgba(24, 34, 58, .80);
+}
+
+.service-col:hover .service-col__top,
+.service-col:focus-visible .service-col__top { opacity: 1; }
+
+/* ---- Equipo: carrusel de dos fichas por vista, formato de la portada ---- */
+.carousel--2 .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap)) / 2); }
+@media (max-width: 860px) { .carousel--2 .carousel__track > * { flex-basis: 100%; } }
+
+.doc--bio { grid-template-columns: minmax(0, 1fr) 42%; }
+.doc--bio .doc__body { padding: clamp(22px, 2.6vw, 40px); }
+.doc--bio .doc__note { margin-top: 8px; max-width: none; }
+.doc--bio .person__meta { margin-top: clamp(16px, 2vh, 24px); font-size: var(--text-small); line-height: 1.6; }
+.doc--bio .person__meta dt { margin-top: 12px; font-weight: var(--weight-semibold); color: var(--text-body); }
+.doc--bio .person__meta dt:first-child { margin-top: 0; }
+.doc--bio .person__meta dd { margin: 3px 0 0; color: var(--text-muted); }
+.doc--bio .doc__photo { object-position: 50% 18%; }
+/* En el carrusel, el alto lo pone la ficha más larga: las tres se estiran igual
+   y el retrato cubre su columna entera. */
+.carousel--2 .carousel__track { align-items: stretch; }
+
+/* ---- Ficha que se gira: la foto delante, la información detrás. Sustituye al
+   pop-up a petición del cliente: al pasar el puntero —o al tocar "Ver más"—
+   la ficha rota y enseña su reverso. ---- */
+.card--wide.card--flip {
+  perspective: 1400px;
+  overflow: visible;
+  background: none;
+  height: max(320px, calc(74vh - 240px));
+  min-height: 0;
+}
+
+.card--wide.card--compact.card--flip { height: clamp(220px, 24vw, 300px); }
+
+.card--wide.card--flip::after { display: none; }
+
+.flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .7s var(--ease-out);
+}
+
+.card--flip:hover .flip__inner,
+.card--flip.is-flipped .flip__inner,
+.card--flip:focus-within .flip__inner { transform: rotateY(180deg); }
+
+/* Tras pulsar "Volver" la foto gana aunque el puntero siga encima. */
+.card--flip.is-held .flip__inner { transform: none; }
+
+.flip__front,
+.flip__back {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Cara delantera: la foto entera con el velo en tres capas y el titular abajo. */
+.flip__front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--ink-3);
+}
+
+.flip__front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(24, 34, 58, .90) 0, rgba(24, 34, 58, .72) 34%, rgba(24, 34, 58, 0) 52%),
+    linear-gradient(0deg, rgba(24, 34, 58, .92) 0, rgba(24, 34, 58, .55) 36%, rgba(24, 34, 58, 0) 56%),
+    rgba(24, 34, 58, .5);
+}
+
+.flip__front .card__top,
+.flip__front .card__foot { position: relative; z-index: 1; }
+
+/* Reverso: pizarra plana con la información. */
+.flip__back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: clamp(18px, 2.2vw, 30px);
+  background: var(--ink-2);
+  transform: rotateY(180deg);
+}
+
+.flip__back .card__label { padding-bottom: 0; border-bottom: 0; }
+
+.flip__title {
+  margin: 0;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.flip__text {
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .78);
+}
+
+.flip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.flip__close {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+
+.card--wide.card--compact.card--flip .flip__text { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flip__inner { transition: none; }
+}
+
+/* ---- Dos secciones seguidas nunca comparten fondo: se leían como un solo
+   bloque. site.js recorre las secciones en orden y, cuando el fondo calculado
+   se repite, marca la segunda con .section--alt; aquí va el tono alterno de
+   cada familia. El oscuro alterno es el que adjuntó el cliente. ---- */
+main > section.section--alt.section--night,
+main > section.section--alt.section--dark { background: #2C3547; }
+main > section.section--alt:not(.section--dark):not(.section--night) { background: var(--paper-2); }
+body.lv-dark main > section.section--alt:not(.section--dark):not(.section--night) { background: var(--surface-raised); }
+
+/* ---- Secciones en espejo: la primera a la izquierda, la segunda a la
+   derecha, y así. Titular alineado a la derecha y las filas invertidas:
+   texto, nombre, miniatura. ---- */
+.section--mirror .section-head { justify-content: flex-end; text-align: right; }
+.section--mirror .topic { grid-template-columns: minmax(0, 1fr) minmax(0, 220px) 96px; }
+.section--mirror .topic__thumb { order: 3; justify-self: end; }
+.section--mirror .topic__head { order: 2; text-align: right; }
+.section--mirror .topic__text { order: 1; text-align: right; margin-left: auto; }
+
+@media (max-width: 760px) {
+  .section--mirror .section-head { justify-content: flex-start; text-align: left; }
+  .section--mirror .topic { grid-template-columns: 72px minmax(0, 1fr); }
+  .section--mirror .topic__thumb { order: 0; justify-self: start; }
+  .section--mirror .topic__head { order: 0; text-align: left; }
+  .section--mirror .topic__text { order: 0; text-align: left; margin-left: 0; }
+}
+
+/* ---- Página sin portada: la primera sección deja sitio al header flotante. ---- */
+.section--first { padding-top: calc(var(--header-h, 92px) + clamp(32px, 6vh, 64px)); }
+
+.section-head__lede {
+  margin: 12px 0 0;
+  font-size: var(--text-body-lg);
+  color: var(--text-muted);
+}
+
+/* ---- Sección compacta: la mitad de aire y el titular a la escala de tarjeta. ---- */
+.section--compact { padding-block: clamp(28px, 3.2vw, 48px); }
+.section--compact .section__title { font-size: var(--text-h3); }
+.section--compact .head-split { margin-bottom: 0; align-items: center; }
+
+/* ---- Cifras centradas en su columna, a petición del cliente. ---- */
+.figure { text-align: center; }
+.figure__label { margin-left: auto; margin-right: auto; }
+
+/* ---- Menú con el texto ampliado (A+ / A++): nunca en dos líneas ---- */
+.nav__link { white-space: nowrap; }
+.nav__caret { display: inline-block; }
+body.lv-zoom-1 .nav { gap: 18px; }
+body.lv-zoom-2 .nav { gap: 12px; }
+body.lv-zoom-1 .nav__link { font-size: 13px; letter-spacing: .05em; }
+body.lv-zoom-2 .nav__link { font-size: 12px; letter-spacing: .03em; }
+body.lv-zoom-2 .site-header .btn { padding: 10px 16px; }
+
+/* ==========================================================================
+   Modo claro de verdad
+
+   El aspecto aprobado —bandas azul pizarra— es el modo OSCURO y es el que se
+   carga por defecto. Cuando el visitante elige el modo claro, las bandas
+   pasan a papel y sus tokens vuelven a los valores de papel: antes ambos
+   modos eran oscuros y "no se notaba la diferencia".
+   ========================================================================== */
+body:not(.lv-dark) .section--dark,
+body:not(.lv-dark) .section--night {
+  /* Sobre el papel-2 de estas bandas el azul claro de siempre se queda en
+     2,96:1; un punto más oscuro da 3,7:1 para el texto grande, y el fuerte
+     4,8:1 para el pequeño. Medido. */
+  --accent: #4A82AE;
+  --accent-display: #4A82AE;
+  --accent-strong: #2F6EAA;
+  --accent-hover: #8FB6D5;
+  --accent-ink: #FFFFFF;
+  --mark: #5E92BC;
+  --mark-soft: rgba(94, 146, 188, .34);
+  --border-hairline: rgba(23, 38, 90, .14);
+  --border-strong: rgba(23, 38, 90, .45);
+  --border-card: rgba(23, 38, 90, .14);
+  --text-body: #17265A;
+  --text-muted: rgba(30, 38, 58, .72);
+  --text-faint: rgba(30, 38, 58, .70);
+  --text-dim: rgba(30, 38, 58, .70);
+  --dark-text: #17265A;
+  --surface-raised: #FFFFFF;
+  --surface-card: #F1F4F9;
+  --surface-sunken: #E2E8F1;
+  --tile-empty: linear-gradient(160deg, #F1F4F9, #E2E8F1);
+  --btn-outline-hover: rgba(23, 38, 90, .06);
+  background: #EEF2F7;
+  color: #17265A;
+}
+
+body:not(.lv-dark) .section--dark a { color: inherit; }
+body:not(.lv-dark) main > section.section--alt.section--night,
+body:not(.lv-dark) main > section.section--alt.section--dark { background: #FFFFFF; }
+body:not(.lv-dark) .vquote__media { background: rgba(23, 38, 90, .04); }
+body:not(.lv-dark) .vquote__play { color: #17265A; }
+body:not(.lv-dark) .stats-band { background: #EEF2F7; }
+body:not(.lv-dark) .stats-band .figure__num { color: #3576B4; }
+
+/* Texto PEQUEÑO en acento usa el acento fuerte: 15 y 11px necesitan 4,5:1. */
+.topic__name, .mv__label { color: var(--accent-strong); }
+
+/* ---- Testimonios en vídeo: reels verticales (9:16), acotados en ancho para
+   que tres quepan en fila sin ocupar media pantalla de alto. Controles
+   nativos: teclado, subtítulos y pantalla completa vienen de serie. ---- */
+.vquote__media:has(.vquote__video) {
+  aspect-ratio: 9 / 16;
+  max-width: 340px;
+  margin: 0 auto;
+  background: #0B0F19;
+  border: 0;
+}
+
+.vquote__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0B0F19;
+}
+
+.vquote__by { text-align: center; }
+
+/* ---- Contacto: el panel de datos arranca a la altura del formulario, no
+   centrado en vertical. ---- */
+#formulario .split { align-items: start; }
+
+/* ---- Frase del pie: contraste de grosor para que no se lea plana. Fina de
+   base, y "70 años" y "tu visión" en negrita. ---- */
+.footer__tag {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.footer__tag strong { font-weight: 700; }
+
+/* ---- Historia, recolocada a petición del cliente: el titular deja de cruzar
+   toda la sección y pasa a la columna derecha, encima del cuerpo, que es el
+   hueco que dejaba la foto. Izquierda: rótulo y foto; derecha: titular y
+   texto. ---- */
+.story {
+  grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+  column-gap: clamp(32px, 4vw, 64px);
+  row-gap: clamp(20px, 2.6vw, 36px);
+  align-items: start;
+}
+
+.story__label { grid-column: 1; grid-row: 1; align-self: start; }
+.story__photo { grid-column: 1; grid-row: 2; aspect-ratio: 4 / 3; }
+.story__headline {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: left;
+  font-size: clamp(22px, 2.5vw, 38px);
+}
+.story__body { grid-column: 2; grid-row: 2; }
+
+@media (max-width: 760px) {
+  .story { grid-template-columns: 1fr; }
+  .story__label, .story__headline, .story__photo, .story__body { grid-column: 1; grid-row: auto; }
+}
+
+/* ---- Misión y Visión: el aire entre el titular y las columnas (2) igual al
+   aire sobre el titular (1). ---- */
+#mision-vision .section-head { margin-bottom: 0; }
+#mision-vision .mv { padding-top: var(--space-section); }
+
+/* ---- Pie de cada testimonio en una cajita de color pegada al vídeo, para que
+   no se lea plano. En claro, papel-2 con el texto en marino (tokens). ---- */
+.vquote__by {
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 16px 18px 18px;
+  background: #2C3547;
+  text-align: center;
+}
+
+body:not(.lv-dark) .vquote__by { background: #E2E8F1; }
+
+/* ---- Fichas que giran, sin velo: la foto entera y limpia. Sólo un degradado
+   corto bajo el titular para que se lea; el resto de la foto, intacta. La
+   ficha entera es pulsable para girarla en pantallas táctiles. ---- */
+.card--wide.card--flip .flip__front::after {
+  /* Medido contra la pared blanca de la sala de exámenes: con .88→.45 el
+     titular se quedaba en 2,0:1. Sigue siendo un degradado corto bajo el
+     titular, no un velo sobre la foto. */
+  background: linear-gradient(0deg, rgba(24, 34, 58, .96) 0, rgba(24, 34, 58, .82) 22%, rgba(24, 34, 58, .35) 40%, rgba(24, 34, 58, 0) 52%);
+}
+.card--wide.card--flip .flip__front { justify-content: flex-end; cursor: pointer; }
+
+/* ---- Páginas sin portada fotográfica (Contacto): en modo claro la primera
+   banda es papel y el header blanco desaparecía encima. Aquí el header sigue
+   al tema: letra marino y logo a color mientras no haya scroll. ---- */
+body.no-hero:not(.lv-dark):not(.is-solid) .site-header { color: var(--text-body); }
+body.no-hero:not(.lv-dark) .brand img.brand__logo--on-dark { display: none; }
+body.no-hero:not(.lv-dark) .brand img.brand__logo--on-light { display: block; }
+body.no-hero:not(.lv-dark):not(.is-solid):not(.nav-open) .site-header .btn {
+  background: var(--ink);
+  color: #FFFFFF;
+}
+
+/* ---- Fichas del equipo: sin relleno, solo el trazo. ---- */
+.doc--bio {
+  background: none;
+  border: 1px solid var(--border-strong);
+}
+
+/* Los enlaces del menú fijan su propio color; sin esto la regla del header
+   no les llegaba y en Contacto seguían blancos sobre papel (1,9:1 medido). */
+body.no-hero:not(.lv-dark):not(.is-solid) .nav__link,
+body.no-hero:not(.lv-dark):not(.is-solid) .nav__tool,
+body.no-hero:not(.lv-dark):not(.is-solid) .menu__toggle,
+body.no-hero:not(.lv-dark):not(.is-solid) .nav-toggle { color: var(--text-body); }
+body.no-hero:not(.lv-dark):not(.is-solid) .nav__link--current { color: var(--accent-strong); }
+
+/* Enlace activo del menú en claro sin portada: #3576B4 sobre papel-2 daba
+   4,24:1; un punto más oscuro, 5,2:1. */
+body.no-hero:not(.lv-dark):not(.is-solid) .nav__link--current { color: #2A67A2; }
+
+/* ---- Reverso de la ficha: el botón "Agendar cita" con letra marino sobre
+   blanco, explícito. Heredaba --dark-text (blanco) de .card--wide y salía
+   blanco sobre blanco. ---- */
+/* Peso 0,4,0: en claro, `body:not(.lv-dark) .section--dark a { color: inherit }`
+   (0,2,1) ganaba y la etiqueta heredaba el blanco del reverso: blanco sobre
+   blanco, que es lo que vio el cliente. */
+.card--wide.card--flip .flip__back .btn,
+.card--wide.card--flip .flip__back .btn:hover { background: #FFFFFF; color: #17265A; }
+
+/* ---- La consulta: la columna de la foto más angosta, para que el hueco
+   entre las dos columnas no sea tan ancho. ---- */
+.consult { grid-template-columns: minmax(0, 1fr) minmax(0, 44%); }
+.consult__photo { max-width: 100%; }
+
+/* ---- Historia: el titular a todo el ancho (petición del cliente), alineado a
+   la izquierda; debajo, la foto y el cuerpo en dos columnas. ---- */
+.story__label { grid-column: 1 / -1; grid-row: 1; }
+.story__headline { grid-column: 1 / -1; grid-row: 2; text-align: left; font-size: clamp(26px, 3.2vw, 48px); max-width: none; }
+.story__photo { grid-column: 1; grid-row: 3; }
+.story__body { grid-column: 2; grid-row: 3; }
+@media (max-width: 760px) {
+  .story__label, .story__headline, .story__photo, .story__body { grid-column: 1; grid-row: auto; }
+}
+
+/* ---- La consulta: la foto con su formato original (16:10), al ancho exacto
+   del texto y alineada con él. El recorte a 16:6 se probó y se descartó. ---- */
+.consult__photo { aspect-ratio: 16 / 10; object-position: 50% 50%; }
+
+/* ---- La consulta: la foto centrada respecto al texto, algo más estrecha que
+   la columna, con el mismo aire a los dos lados. ---- */
+.consult__photo { width: 84%; margin-left: auto; margin-right: auto; }
+
+/* ==========================================================================
+   Tablero del 14 de septiembre
+   ========================================================================== */
+
+/* General: la flecha del botón de cita, separada del texto. */
+.btn > span[aria-hidden="true"] { margin-left: .55em; }
+
+/* Home · cifras: sin titular y con la banda más estrecha. */
+.stats-band { padding-block: clamp(36px, 4.2vw, 60px); }
+
+/* Home · escaparate: el degradado era demasiado fuerte y cubría casi toda la
+   imagen; la máquina perdía protagonismo. Ahora se disuelve antes de la mitad. */
+.slide__veil {
+  /* Denso bajo el bloque de texto (que mide 560px como mucho) y corto: se
+     disuelve antes de la mitad para que la máquina siga entera. */
+  background: linear-gradient(90deg,
+    rgba(20, 30, 52, .94) 0,
+    rgba(20, 30, 52, .90) 38%,
+    rgba(20, 30, 52, .45) 50%,
+    rgba(20, 30, 52, 0) 60%);
+}
+
+/* Home · testimonios: el nombre un punto más grueso. */
+.vquote__name { font-weight: 600; }
+
+/* Sobre Nosotros · Historia: se mantiene la disposición de la primera
+   imagen (titular en la columna derecha sobre el cuerpo) y la foto queda
+   centrada en vertical respecto al texto. */
+.story__label { grid-column: 1; grid-row: 1; }
+.story__headline { grid-column: 2; grid-row: 1; text-align: left; max-width: none; font-size: clamp(22px, 2.5vw, 38px); }
+.story__photo { grid-column: 1; grid-row: 2; align-self: center; }
+.story__body { grid-column: 2; grid-row: 2; }
+
+/* Sobre Nosotros · Instalaciones: el texto de la derecha alineado con el
+   borde inferior del titular. */
+#instalaciones .head-split { align-items: end; }
+#instalaciones .head-split__aside p { margin-bottom: 0; }
+
+/* Consultas · La consulta: la foto al lado izquierdo, bajo el titular; los
+   botones siguen abajo a la izquierda; el texto, a la derecha. */
+.consult { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.consult__left .consult__photo {
+  width: 100%;
+  max-width: 560px;
+  margin: clamp(20px, 2.6vw, 36px) 0 clamp(20px, 2.6vw, 36px);
+  aspect-ratio: 16 / 10;
+}
+.consult__actions { margin-top: auto; }
+
+/* Historia: cuerpo de texto y foto centrados entre sí en su fila. */
+.story__body { align-self: center; }
+
+/* ---- Giro más suave: más lento, con una curva que arranca y frena sin golpe,
+   y el reverso entra en fundido mientras rota, para que no haya un salto seco
+   a mitad de vuelta. ---- */
+.flip__inner { transition: transform 1.05s cubic-bezier(.4, 0, .2, 1); }
+.flip__front, .flip__back { transition: opacity .55s ease; }
+.flip__back { opacity: 0; }
+.card--flip:hover .flip__back,
+.card--flip.is-flipped .flip__back,
+.card--flip:focus-within .flip__back { opacity: 1; transition-delay: .3s; }
+.card--flip:hover .flip__front,
+.card--flip.is-flipped .flip__front,
+.card--flip:focus-within .flip__front { opacity: 0; transition-delay: .25s; }
+@media (prefers-reduced-motion: reduce) {
+  .flip__inner { transition: none; }
+  .flip__front, .flip__back { transition: none; }
+}

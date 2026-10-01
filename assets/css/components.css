@@ -1,0 +1,197 @@
+/* ==========================================================================
+   Larco Visión — componentes
+
+   Botón (con sus variantes y estados data-ondark) y la ficha de doctor. Nació
+   como un port 1:1 del design system de Claude Design; del port ya sólo queda
+   el botón — el resto se reescribió o se retiró con el enfoque editorial.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Button
+   Rendered as <a class="btn"> — the mockup nests <button> inside <a>, which
+   is not valid HTML and is not reachable by keyboard as a link.
+
+   `data-ondark` selects the light-on-dark treatment:
+     always → fixed (buttons that always sit on a photo)
+     theme  → follows dark mode
+     nav    → follows "header is over the hero" or dark mode
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.btn:active { transform: scale(.98); }
+
+.btn--sm { padding: 10px 24px; font-size: 14px; }
+.btn--lg { padding: 18px 44px; font-size: 16px; }
+
+/* ---- primary ------------------------------------------------------------ */
+
+.btn--primary {
+  background: var(--brand-deep);
+  /* El par se invierte solo en modo oscuro: relleno papel, etiqueta tinta.
+     Con --dark-text aquí, el submit del formulario quedaba papel sobre papel. */
+  color: var(--surface-page);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+  color: var(--accent-ink);
+}
+
+.btn--primary[data-ondark="always"],
+body.lv-dark .btn--primary[data-ondark="theme"],
+body:not(.is-solid) .btn--primary[data-ondark="nav"],
+body.lv-dark .btn--primary[data-ondark="nav"] {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btn--primary[data-ondark="always"]:hover,
+body.lv-dark .btn--primary[data-ondark="theme"]:hover,
+body:not(.is-solid) .btn--primary[data-ondark="nav"]:hover,
+body.lv-dark .btn--primary[data-ondark="nav"]:hover {
+  background: var(--accent-hover);
+  color: var(--accent-ink);
+}
+
+/* ---- outline ------------------------------------------------------------ */
+
+.btn--outline {
+  background: transparent;
+  color: var(--text-body);
+  border-color: var(--border-strong);
+}
+
+.btn--outline:hover {
+  background: var(--btn-outline-hover);
+  color: var(--text-body);
+}
+
+.btn--outline[data-ondark="always"],
+body.lv-dark .btn--outline[data-ondark="theme"],
+body:not(.is-solid) .btn--outline[data-ondark="nav"],
+body.lv-dark .btn--outline[data-ondark="nav"] {
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+.btn--outline[data-ondark="always"]:hover,
+body.lv-dark .btn--outline[data-ondark="theme"]:hover,
+body:not(.is-solid) .btn--outline[data-ondark="nav"]:hover,
+body.lv-dark .btn--outline[data-ondark="nav"]:hover {
+  background: rgba(244, 242, 237, .08);
+  color: var(--dark-text);
+}
+
+/* ---- accent ------------------------------------------------------------- */
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.btn--accent:hover {
+  background: var(--accent-hover);
+  color: var(--accent-ink);
+}
+
+/* ---- link --------------------------------------------------------------- */
+
+.btn--link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-body);
+}
+
+.btn--link:hover { color: var(--accent-strong); }
+
+/* --------------------------------------------------------------------------
+   DoctorCard
+   Como la fila de especialistas de la referencia: la foto es la foto y el
+   nombre va debajo, en flujo. Sin velo, sin overlay, sin sombra — sólo el
+   retrato en gris y la tipografía.
+   -------------------------------------------------------------------------- */
+
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--font-sans);
+  text-decoration: none;
+}
+
+.doctor-card__photo {
+  display: block;
+  width: 100%;
+  /* El height="1422" del markup es una pista presentacional que fija la altura
+     en CSS; sin este auto, el aspect-ratio pierde (ambas dimensiones definidas)
+     y la foto sale a 1422px reales. */
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 18%;
+  background: var(--tile-empty);
+  transition: filter var(--dur-med) var(--ease-out);
+}
+
+/* El hover devuelve el color: el mismo gesto que la referencia insinúa con sus
+   retratos, y una señal de enlace que no necesita levitar la tarjeta. */
+
+.doctor-card__name {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  line-height: 1.2;
+  color: var(--text-body);
+}
+
+/* La línea que distingue al doctor: va en tinta plena y pesa más que la
+   especialidad, porque es lo que no se repite entre uno y otro. */
+.doctor-card__note {
+  display: block;
+  margin-top: 8px;
+  font-size: var(--text-body-size);
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+.doctor-card__specialty {
+  display: block;
+  margin-top: 10px;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* «Especialidad» rotula el dato sin gritarlo: versalitas y un filete corto
+   hacen de dos puntos. */
+.doctor-card__tag {
+  display: block;
+  margin-bottom: 3px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}

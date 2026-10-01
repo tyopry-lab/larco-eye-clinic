@@ -1,0 +1,100 @@
+<body>
+<script>/* Paint the stored theme before first paint; site.js re-applies it idempotently. */
+try{if(localStorage.getItem('lv-dark')==='1'){document.body.classList.add('lv-dark');
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E';}}catch(e){}</script>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="Larco Eye Clinic — inicio">
+      <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+      <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg data-icon="open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg data-icon="close" hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="nav__link nav__link--current" href="index.html" aria-current="page">Inicio</a>
+
+      <div class="menu">
+        <a class="nav__link" href="sobre-nosotros.html" aria-haspopup="true">Sobre Nosotros <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sobre" aria-label="Desplegar Sobre Nosotros"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-sobre">
+          <div class="menu__inner">
+            <a class="menu__item" href="sobre-nosotros.html#historia">
+              <span class="menu__item-title">Nuestra Historia</span>
+              <span class="menu__item-note">Un legado de tres generaciones</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#equipo">
+              <span class="menu__item-title">Nuestro Equipo</span>
+              <span class="menu__item-note">Conoce a nuestros especialistas</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#instalaciones">
+              <span class="menu__item-title">Instalaciones</span>
+              <span class="menu__item-note">Tecnología y espacios de la clínica</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu menu--wide">
+        <a class="nav__link" href="consultas-examenes.html" aria-haspopup="true">Servicios <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-servicios" aria-label="Desplegar Servicios"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-servicios">
+          <div class="menu__inner">
+            <div class="menu__col">
+              <a href="consultas-examenes.html"><span class="menu__col-title">Consultas y Exámenes</span></a>
+              <div class="menu__sublinks">
+                <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
+                <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
+                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+              </div>
+            </div>
+            <div class="menu__col">
+              <a href="especialidades.html"><span class="menu__col-title">Especialidades</span></a>
+              <div class="menu__sublinks">
+                <a href="especialidades.html#cornea">Córnea</a>
+                <a href="especialidades.html#catarata">Catarata</a>
+                <a href="especialidades.html#retina">Retina y Vítreo</a>
+                <a href="especialidades.html#glaucoma">Glaucoma</a>
+                <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+                <a href="especialidades.html#optica">Óptica y baja visión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link" href="casos-clinicos.html">Casos Clínicos</a>
+      <a class="nav__link" href="contactanos.html">Contáctanos</a>
+
+      <div class="nav__divider" aria-hidden="true"></div>
+
+      <div class="nav__tools">
+        <button class="nav__tool" type="button" data-cycle-zoom title="Cambiar tamaño del texto" aria-label="Cambiar tamaño del texto">A</button>
+        <button class="nav__tool" type="button" data-toggle-dark aria-pressed="false" aria-label="Modo claro y oscuro" title="Modo claro y oscuro">
+          <svg data-icon="sun" hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <svg data-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+    </nav>
+  </div>
+</header>

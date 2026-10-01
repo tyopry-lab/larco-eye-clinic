@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultas y Exámenes — Larco Visión</title>
+<meta name="description" content="La consulta oftalmológica y los quince exámenes de diagnóstico con que confirmamos cada diagnóstico: Pentacam, OCT, Angio-OCT, campimetría y más.">
+<meta name="theme-color" content="#F4F2ED">
+<!-- Preview para el cliente: contenido y fotografía son placeholders. Quitar esta
+     línea al publicar el sitio definitivo con el contenido real de la clínica. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:title" content="Consultas y Exámenes — Larco Visión">
+<meta property="og:description" content="El primer paso hacia una mejor visión: consulta integral y diagnóstico de alta precisión.">
+<!-- TODO(dominio): og:image y og:url deben ser absolutos, y el card quiere un JPEG 1200x630 propio. -->
+<meta property="og:image" content="assets/img/photos/hero-ojo.webp">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=230">
+<link rel="stylesheet" href="assets/css/tokens.css?v=230">
+<link rel="stylesheet" href="assets/css/components.css?v=230">
+<link rel="stylesheet" href="assets/css/site.css?v=230">
+<link rel="stylesheet" href="assets/css/pages.css?v=230">
+<noscript><style>
+  /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
+  @media (max-width: 1024px) {
+    .nav-toggle { display: none; }
+    .site-header { position: static; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+    .nav { position: static; display: flex; max-height: none; padding: 12px 0; box-shadow: none; }
+    .hero__inner { padding-top: 48px; }
+    .page-hero { padding-top: 48px; }
+  }
+</style></noscript>
+</head>
+<body data-page="consultas-examenes">
+<script>/* Paint the stored theme before first paint; site.js re-applies it idempotently. */
+try{if(localStorage.getItem('lv-dark')==='1'){document.body.classList.add('lv-dark');
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E';}}catch(e){}</script>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="Larco Eye Clinic — inicio">
+      <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+      <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg data-icon="open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg data-icon="close" hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+
+      <div class="menu">
+        <a class="nav__link" href="sobre-nosotros.html" aria-haspopup="true">Sobre Nosotros <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sobre" aria-label="Desplegar Sobre Nosotros"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-sobre">
+          <div class="menu__inner">
+            <a class="menu__item" href="sobre-nosotros.html#historia">
+              <span class="menu__item-title">Nuestra Historia</span>
+              <span class="menu__item-note">Un legado de tres generaciones</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#equipo">
+              <span class="menu__item-title">Nuestro Equipo</span>
+              <span class="menu__item-note">Conoce a nuestros especialistas</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#instalaciones">
+              <span class="menu__item-title">Instalaciones</span>
+              <span class="menu__item-note">Tecnología y espacios de la clínica</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu menu--wide">
+        <a class="nav__link nav__link--current" aria-current="page" href="consultas-examenes.html" aria-haspopup="true">Servicios <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-servicios" aria-label="Desplegar Servicios"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-servicios">
+          <div class="menu__inner">
+            <div class="menu__col">
+              <a href="consultas-examenes.html"><span class="menu__col-title">Consultas y Exámenes</span></a>
+              <div class="menu__sublinks">
+                <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
+                <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
+                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+              </div>
+            </div>
+            <div class="menu__col">
+              <a href="especialidades.html"><span class="menu__col-title">Especialidades</span></a>
+              <div class="menu__sublinks">
+                <a href="especialidades.html#cornea">Córnea</a>
+                <a href="especialidades.html#catarata">Catarata</a>
+                <a href="especialidades.html#retina">Retina y Vítreo</a>
+                <a href="especialidades.html#glaucoma">Glaucoma</a>
+                <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+                <a href="especialidades.html#optica">Óptica y baja visión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link" href="casos-clinicos.html">Casos Clínicos</a>
+      <a class="nav__link" href="contactanos.html">Contáctanos</a>
+
+      <div class="nav__divider" aria-hidden="true"></div>
+
+      <div class="nav__tools">
+        <button class="nav__tool" type="button" data-cycle-zoom title="Cambiar tamaño del texto" aria-label="Cambiar tamaño del texto">A</button>
+        <button class="nav__tool" type="button" data-toggle-dark aria-pressed="false" aria-label="Modo claro y oscuro" title="Modo claro y oscuro">
+          <svg data-icon="sun" hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <svg data-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ====================================================================
+       Portada de página
+       ==================================================================== -->
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="assets/img/photos/hero-consultas.webp"
+           srcset="assets/img/photos/hero-consultas-800.webp 800w, assets/img/photos/hero-consultas.webp 2000w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" width="1500" height="1000">
+    </div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">El primer paso hacia una <span class="u-accent-phrase">mejor visión</span></h1>
+      <p class="page-hero__lede">Consulta oftalmológica integral y diagnóstico de alta precisión.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       La consulta
+       ==================================================================== -->
+  <section id="consulta" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="consult" data-rev>
+        <div class="consult__left">
+          <h2 class="section__title">La consulta</h2>
+          <img class="consult__photo" src="assets/img/photos/consultas.webp" alt="" loading="lazy" decoding="async">
+          <div class="consult__actions">
+            <a class="btn btn--outline" data-ondark="theme" href="contactanos.html">Agendar cita</a>
+            <a class="btn btn--outline" data-ondark="theme" href="contactanos.html">Contáctanos</a>
+          </div>
+        </div>
+        <div class="consult__right">
+          <div class="prose">
+            <p>La consulta oftalmológica es la puerta de entrada a tu cuidado visual. En ella, nuestros especialistas evalúan tu visión, revisan la salud de tus ojos y detectan a tiempo cualquier condición que requiera atención.</p>
+            <p>Es el momento para resolver tus dudas, entender tu diagnóstico y, cuando es necesario, planificar los siguientes pasos con claridad y sin prisa.</p>
+            <p>Cada paciente recibe una atención personalizada, porque cada ojo es distinto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Exámenes de diagnóstico
+       ==================================================================== -->
+  <section id="examenes" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="head-split" data-rev>
+        <h2 class="section__title">
+          Exámenes de <span class="u-accent-phrase">diagnóstico</span>
+        </h2>
+        <div class="head-split__aside head-split__aside--wide">
+          <p>Los exámenes son fundamentales para confirmar un diagnóstico y planificar con exactitud cualquier tratamiento o cirugía. <span class="u-muted">Contamos con equipos de alta precisión que nos permiten ver lo que un examen convencional no alcanza.</span></p>
+        </div>
+      </div>
+
+      <div class="accordion" data-rev>
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-pentacam">
+            Pentacam
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-pentacam"><p>Tomografía completa de la córnea, cara anterior y posterior. Permite seleccionar candidatos a cirugía refractiva, planificar el tratamiento del queratocono, calcular lentes para catarata y seguir la evolución de la córnea. Dura entre 5 y 10 minutos por ojo. Si usas lentes de contacto, suspéndelos antes del examen: 15 días los rígidos y entre 5 y 8 días los blandos.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-campimetria">
+            Campimetría (campo visual)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-campimetria"><p>Mide todo lo que alcanzas a ver alrededor de un punto fijo. Es la prueba clave para detectar el glaucoma —el ladrón silencioso de la vista— y seguir su evolución, ya que esta enfermedad avanza sin que el paciente lo note.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-retinografia">
+            Retinografía
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-retinografia"><p>Fotografía en color del fondo del ojo. Parte del chequeo básico a partir de los 40 años y del control periódico en pacientes con diabetes; detecta enfermedades de la retina como la retinopatía diabética incluso antes de que den síntomas.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-oct">
+            Tomografía de Coherencia Óptica (OCT)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-oct"><p>Escáner de alta resolución que muestra las capas de la retina y el nervio óptico en 3D, sin contacto ni molestias. Indispensable para detectar y seguir enfermedades de la retina y el glaucoma.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-angio-oct">
+            Angio-OCT
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-angio-oct"><p>Estudia los vasos sanguíneos de la retina en detalle, sin necesidad de inyectar contraste. Una exploración rápida y segura que permite detectar cambios muy tempranos en la circulación del ojo.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-autofluorescente">
+            Angiografía autofluorescente
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-autofluorescente"><p>Examen fotográfico no invasivo, sin contraste, que revela alteraciones tempranas de la retina y la mácula.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-biometria">
+            Biometría ocular (IOL Master)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-biometria"><p>Mide el ojo con precisión para calcular el lente intraocular exacto antes de una cirugía de catarata, buscando que el paciente quede con la menor medida residual posible.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-espesor-corneal">
+            Medición de espesor corneal y ángulo (OCT)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-espesor-corneal"><p>Evalúa el grosor de la córnea y el ángulo del ojo, datos muy útiles en el estudio del glaucoma y la presión intraocular.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-microperimetria">
+            Microperimetría
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-microperimetria"><p>Relaciona el daño en la mácula con su impacto real en la visión, y ayuda en la rehabilitación visual de pacientes con baja visión.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-mapeamiento">
+            Mapeamiento de retina
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-mapeamiento"><p>Exploración detallada de toda la retina para detectar lesiones periféricas, desgarros o zonas de riesgo.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-biomicroscopia">
+            Biomicroscopía
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-biomicroscopia"><p>Examen de rutina con lámpara de hendidura que revisa en detalle las estructuras del ojo, con registro fotográfico o de video.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-endotelial">
+            Conteo de células endoteliales (microscopía especular)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-endotelial"><p>Cuenta y analiza las células de la capa interna de la córnea, responsables de mantenerla transparente. Es clave antes de una cirugía de catarata, en la distrofia de Fuchs y en el seguimiento de los trasplantes de córnea: si las células son pocas, la cirugía se planifica con cuidado especial.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-ecografia">
+            Ecografía ocular
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-ecografia"><p>Ultrasonido que permite explorar el interior del ojo cuando no se puede ver directamente, por ejemplo en una catarata muy densa o una hemorragia. También calcula el lente intraocular cuando la biometría óptica no es posible.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-verion">
+            Planificación de astigmatismo en catarata (Verion)
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-verion"><p>Sistema de imagen que guía la cirugía de catarata para corregir el astigmatismo con mayor exactitud, antes y después de la operación.</p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="ex-optometria">
+            Optometría
+            <span class="accordion__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion__panel" id="ex-optometria"><p>Evaluación completa de la vista, medición para lentes correctivos y tratamiento de problemas visuales comunes.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Cierre
+       ==================================================================== -->
+  <section id="cita" class="section section--white">
+    <div class="u-shell">
+      <div class="cta-band" data-rev>
+        <span class="cta-band__label">Revisa tu visión con nosotros</span>
+        <h2 class="cta-band__title">Agenda tu cita</h2>
+        <p class="cta-band__text">Revisa tu visión con nosotros.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html">Agenda tu cita <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================================
+     Footer
+     ====================================================================== -->
+<footer class="site-footer">
+  <div class="u-shell">
+    <!-- Mapa de la zona. La imagen es una tesela de OpenStreetMap alojada aquí
+         mismo —ninguna petición a terceros al cargar—; el enlace a Google Maps
+         sólo se sigue si el visitante lo pulsa. La chincheta marca el cruce
+         de la Av. Oswaldo Guayasamín con la Calle 1. -->
+    <div class="footer__map map-wide" data-rev>
+      <img src="assets/img/mapa-cumbaya.webp" alt="Mapa de Cumbayá: Av. Oswaldo Guayasamín y Calle 1" loading="lazy" decoding="async" width="2200" height="880">
+      <span class="map-pin" aria-hidden="true"></span>
+      <div class="footer__map-card">
+        <div class="footer__col-title">Dónde estamos</div>
+        <p class="footer__address">Cumbayá · Quito, Ecuador</p>
+        <p class="footer__address footer__address--muted">Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco · 170157</p>
+        <a class="footer__map-link" href="https://www.google.com/maps/search/Av.+Oswaldo+Guayasam%C3%ADn+y+Calle+1,+Cumbay%C3%A1,+170157+Quito" target="_blank" rel="noopener">Abrir en Google Maps <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" aria-label="Larco Eye Clinic — inicio">
+          <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+          <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+        </a>
+        <p class="footer__tag"><strong>70 años</strong> cuidando <strong>tu visión</strong> con la tecnología del mañana</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Clínica</div>
+        <div class="footer__links">
+          <a href="sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="sobre-nosotros.html#equipo">Doctores</a>
+          <a href="casos-clinicos.html">Casos Clínicos</a>
+          <a href="contactanos.html">Contáctanos</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Servicios</div>
+        <div class="footer__links">
+          <a href="consultas-examenes.html">Consultas y Exámenes</a>
+          <a href="especialidades.html#cornea">Córnea</a>
+          <a href="especialidades.html#retina">Retina y Vítreo</a>
+          <a href="especialidades.html#glaucoma">Glaucoma</a>
+          <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+          <a href="especialidades.html#optica">Óptica y baja visión</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Contacto</div>
+        <div class="footer__links">
+          <a href="contactanos.html">Agendar cita</a>
+          <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+        </div>
+
+        <div class="footer__block">
+          <div class="footer__col-title">Horario</div>
+          <p class="footer__address footer__address--muted">Horario de atención por confirmar</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <a href="contactanos.html">Aviso legal</a>
+      <a href="contactanos.html">Política de privacidad</a>
+      <span class="footer__note">Fotografía y contenidos de muestra · pendiente de reemplazo</span>
+      <span class="footer__copy">© 2026 Larco Visión</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="contactanos.html" data-whatsapp rel="noopener" title="WhatsApp" aria-label="Escríbenos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.2-.2Z"/></svg>
+</a>
+<script src="assets/js/site.js?v=230" defer></script>
+</body>
+</html>

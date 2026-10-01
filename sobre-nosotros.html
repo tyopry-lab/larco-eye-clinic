@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre Nosotros — Larco Visión</title>
+<meta name="description" content="Un legado que recorre tres generaciones de cirujanos oftalmólogos, desde el primer consultorio en Ibarra en 1950 hasta la clínica de hoy en Quito.">
+<meta name="theme-color" content="#F4F2ED">
+<!-- Preview para el cliente: contenido y fotografía son placeholders. Quitar esta
+     línea al publicar el sitio definitivo con el contenido real de la clínica. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:title" content="Sobre Nosotros — Larco Visión">
+<meta property="og:description" content="Un legado que recorre tres generaciones: nuestra historia, nuestro equipo y las instalaciones de la clínica.">
+<!-- TODO(dominio): og:image y og:url deben ser absolutos, y el card quiere un JPEG 1200x630 propio. -->
+<meta property="og:image" content="assets/img/photos/hero-ojo.webp">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=230">
+<link rel="stylesheet" href="assets/css/tokens.css?v=230">
+<link rel="stylesheet" href="assets/css/components.css?v=230">
+<link rel="stylesheet" href="assets/css/site.css?v=230">
+<link rel="stylesheet" href="assets/css/pages.css?v=230">
+<noscript><style>
+  /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
+  @media (max-width: 1024px) {
+    .nav-toggle { display: none; }
+    .site-header { position: static; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+    .nav { position: static; display: flex; max-height: none; padding: 12px 0; box-shadow: none; }
+    .hero__inner { padding-top: 48px; }
+    .page-hero { padding-top: 48px; }
+  }
+</style></noscript>
+</head>
+<body data-page="sobre-nosotros">
+<script>/* Paint the stored theme before first paint; site.js re-applies it idempotently. */
+try{if(localStorage.getItem('lv-dark')==='1'){document.body.classList.add('lv-dark');
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E';}}catch(e){}</script>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="Larco Eye Clinic — inicio">
+      <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+      <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg data-icon="open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg data-icon="close" hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+
+      <div class="menu">
+        <a class="nav__link nav__link--current" aria-current="page" href="sobre-nosotros.html" aria-haspopup="true">Sobre Nosotros <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sobre" aria-label="Desplegar Sobre Nosotros"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-sobre">
+          <div class="menu__inner">
+            <a class="menu__item" href="sobre-nosotros.html#historia">
+              <span class="menu__item-title">Nuestra Historia</span>
+              <span class="menu__item-note">Un legado de tres generaciones</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#equipo">
+              <span class="menu__item-title">Nuestro Equipo</span>
+              <span class="menu__item-note">Conoce a nuestros especialistas</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#instalaciones">
+              <span class="menu__item-title">Instalaciones</span>
+              <span class="menu__item-note">Tecnología y espacios de la clínica</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu menu--wide">
+        <a class="nav__link" href="consultas-examenes.html" aria-haspopup="true">Servicios <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-servicios" aria-label="Desplegar Servicios"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-servicios">
+          <div class="menu__inner">
+            <div class="menu__col">
+              <a href="consultas-examenes.html"><span class="menu__col-title">Consultas y Exámenes</span></a>
+              <div class="menu__sublinks">
+                <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
+                <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
+                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+              </div>
+            </div>
+            <div class="menu__col">
+              <a href="especialidades.html"><span class="menu__col-title">Especialidades</span></a>
+              <div class="menu__sublinks">
+                <a href="especialidades.html#cornea">Córnea</a>
+                <a href="especialidades.html#catarata">Catarata</a>
+                <a href="especialidades.html#retina">Retina y Vítreo</a>
+                <a href="especialidades.html#glaucoma">Glaucoma</a>
+                <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+                <a href="especialidades.html#optica">Óptica y baja visión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link" href="casos-clinicos.html">Casos Clínicos</a>
+      <a class="nav__link" href="contactanos.html">Contáctanos</a>
+
+      <div class="nav__divider" aria-hidden="true"></div>
+
+      <div class="nav__tools">
+        <button class="nav__tool" type="button" data-cycle-zoom title="Cambiar tamaño del texto" aria-label="Cambiar tamaño del texto">A</button>
+        <button class="nav__tool" type="button" data-toggle-dark aria-pressed="false" aria-label="Modo claro y oscuro" title="Modo claro y oscuro">
+          <svg data-icon="sun" hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <svg data-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ====================================================================
+       Portada
+       ==================================================================== -->
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="assets/img/photos/hero-sobre.webp"
+           srcset="assets/img/photos/hero-sobre-800.webp 800w, assets/img/photos/hero-sobre.webp 2000w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" width="1500" height="1000">
+    </div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Un legado que recorre <span class="u-accent-phrase">tres generaciones</span></h1>
+      <p class="page-hero__lede">Desde el primer consultorio en Ibarra, en 1950, hasta la clínica de hoy en Quito.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Historia
+       ==================================================================== -->
+  <section id="historia" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="story" data-rev>
+        <span class="story__label">Nuestra historia</span>
+        <img class="story__photo" src="assets/img/photos/area-recepcion.webp" alt="" loading="lazy" decoding="async">
+        <h2 class="story__headline">Todo comenzó en 1950, cuando el oftalmólogo <span class="u-accent-phrase">Hugo Larco abrió el primer consultorio oftalmológico en Ibarra.</span></h2>
+        <div class="story__body">
+          <p>Su combinación de rigor profesional y trato humano hizo que su nombre trascendiera: recibía pacientes de todo el norte del país e incluso del sur de Colombia. Ese fue el inicio de una vocación que marcaría a la familia por generaciones.</p>
+          <p>Inspirados en su ejemplo, sus hijos siguieron el mismo camino: el Dr. Marcelo Larco, especialista en córnea, catarata y cirugía refractiva, y el Dr. Roberto Larco, especialista en retina, mácula y vítreo, continúan hoy ese legado con Larco Eye Clinic, uniendo la herencia médica de la familia con la tecnología más avanzada de la oftalmología moderna.</p>
+          <p>Porque si algo hemos aprendido en estas tres generaciones es que la medicina evoluciona, pero el compromiso no cambia: devolver y cuidar la visión de cada paciente con la misma dedicación con la que todo empezó.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Misión y Visión
+       ==================================================================== -->
+  <section id="mision-vision" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="section-head" data-rev>
+        <h2 class="section__title">
+          Misión y <span class="u-accent-phrase">Visión</span>
+        </h2>
+      </div>
+
+      <div class="mv" data-rev>
+        <div class="mv__col">
+          <span class="mv__label">Misión</span>
+          <p>Brindar atención oftalmológica integral, humana y de excelencia, respaldada por 70 años de experiencia, con tecnología de vanguardia y un profundo compromiso con la salud visual de nuestros pacientes, contribuyendo a mejorar su calidad de vida con ética, calidez y profesionalismo.</p>
+        </div>
+        <div class="mv__col">
+          <span class="mv__label">Visión</span>
+          <p>Ser una clínica oftalmológica referente en Ecuador y Latinoamérica, reconocida por la excelencia médica, la innovación continua, el trato humano y el legado de una familia dedicada por generaciones al cuidado de la visión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Equipo
+       ==================================================================== -->
+  <section id="equipo" class="section section--white">
+    <div class="u-shell">
+      <div class="section-head" data-rev>
+        <h2 class="section__title">
+          Nuestro <span class="u-accent-phrase">Equipo</span>
+        </h2>
+      </div>
+
+      <!-- Carrusel de dos fichas por vista, con el formato de las fichas de
+           doctor de la portada: a tres columnas se veía apretado. -->
+      <div class="carousel carousel--2" data-carousel data-rev>
+        <div class="carousel__viewport">
+          <div class="carousel__track" data-carousel-track>
+            <article class="doc doc--bio">
+              <div class="doc__body">
+                <h3 class="doc__name">Dr. Marcelo Larco</h3>
+                <p class="doc__note">Cirujano oftalmólogo · Córnea, catarata y cirugía refractiva</p>
+                <dl class="person__meta">
+              <dt>Formación</dt>
+              <dd>Oftalmología y subespecialidad, Escuela Paulista de Medicina, São Paulo, Brasil.</dd>
+              <dt>Trayectoria</dt>
+              <dd><ul class="person__list"><li>Expresidente de la Sociedad Ecuatoriana de Oftalmología.</li><li>Expresidente de la Sociedad Ecuatoriana de Córnea y Segmento Anterior (SECSA).</li><li>Miembro de la Academia Americana de Oftalmología.</li><li>Pionero de la cirugía de catarata con láser en Quito.</li></ul></dd>
+              <dt>Publicaciones</dt>
+              <dd><ul class="person__list"><li>Autor del Manual de Facoemulsificación (2010, 1.ª edición, 500 ejemplares).</li><li>Coautor de Cirugía de Catarata con Láser (2014).</li></ul></dd>
+              <dt>Áreas</dt>
+              <dd>Córnea, catarata, cirugía refractiva, queratocono, defectos refractivos.</dd>
+              </dl>
+              </div>
+              <img class="doc__photo" src="assets/img/photos/dr-marcelo-larco-4.webp" alt="Dr. Marcelo Larco, cirujano oftalmólogo" loading="lazy" decoding="async">
+            </article>
+            <article class="doc doc--bio">
+              <div class="doc__body">
+                <h3 class="doc__name">Dr. Roberto Larco</h3>
+                <p class="doc__note">Cirujano oftalmólogo · Retina, mácula y vítreo. Especialidad en Brasil, con amplia experiencia en cirugía de retina y mácula, inyecciones intraoculares y tratamiento de la degeneración macular.</p>
+                <dl class="person__meta">
+              <dt>Formación</dt>
+              <dd>Medicina, Facultad de Medicina de Marília, São Paulo, Brasil; certificación del Consejo Brasileño de Oftalmología; fellowship en retina y vítreo.</dd>
+              <dt>Trayectoria</dt>
+              <dd><ul class="person__list"><li>Miembro del directorio de la Sociedad Ecuatoriana de Oftalmología.</li><li>Miembro de la Academia Americana de Oftalmología.</li><li>Miembro de la Sociedad Panamericana de Oftalmología.</li></ul></dd>
+              <dt>Áreas</dt>
+              <dd>Retina, mácula y vítreo; cirugía vitreorretiniana; inyecciones intraoculares; tratamiento de la degeneración macular.</dd>
+              </dl>
+              </div>
+              <img class="doc__photo" src="assets/img/photos/dr-roberto-larco-4.webp" alt="Dr. Roberto Larco, cirujano oftalmólogo" loading="lazy" decoding="async">
+            </article>
+            <article class="doc doc--bio">
+              <div class="doc__body">
+                <h3 class="doc__name">Dra. Gabriela Larco</h3>
+                <p class="doc__note">Cirujana oftalmóloga</p>
+                <dl class="person__meta">
+              <dt>Formación</dt>
+              <dd><ul class="person__list">
+              <li>Máster en Patología y Cirugía del Segmento Posterior del Globo Ocular, Barraquer / Universitat Autònoma de Barcelona (UAB), Institut Universitari. Octubre 2025 – junio 2026, modalidad online, 60 ECTS, superado con éxito.</li>
+              <li>Residencia Médica en Oftalmología, Universidad del Salvador (USAL) y Charles Centro Oftalmológico, Buenos Aires, Argentina. Junio 2022 – mayo 2026, residencia de cuatro años completada.</li>
+              <li>Médica, Universidad San Francisco de Quito (USFQ), Ecuador. Octubre 2020, GPA 3,36/4,00 (equivalente a 9,04/10,00), carga académica total: 12.420 horas.</li>
+              </ul></dd>
+              <dt>Áreas</dt>
+              <dd class="u-muted">Por confirmar con la clínica.</dd>
+              </dl>
+              </div>
+              <img class="doc__photo" src="assets/img/photos/dra-gabriela-larco.webp" alt="" loading="lazy" decoding="async">
+            </article>
+          </div>
+        </div>
+        <div class="carousel__controls">
+          <div class="carousel__dots" data-carousel-dots></div>
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Doctor anterior">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Doctor siguiente">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Instalaciones — áreas de la clínica
+       ==================================================================== -->
+  <section id="instalaciones" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="head-split" data-rev>
+        <h2 class="section__title">
+          Instalaciones y <span class="u-accent-phrase">Tecnología</span>
+        </h2>
+        <div class="head-split__aside head-split__aside--wide">
+          <p>Equipos de última generación y espacios diseñados para diagnósticos precisos y tratamientos seguros, <span class="u-muted">con el respaldo de marcas líderes como ZEIZZ.</span></p>
+        </div>
+      </div>
+
+      <div class="cards cards--3" data-rev>
+        <article class="card card--wide card--reveal card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/area-quirofano.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Quirófano</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Área</span>
+              <h3 class="flip__title">Quirófano</h3>
+              <p class="flip__text">Totalmente equipado para cirugía oftalmológica ambulatoria.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/area-sala-examenes.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Sala de exámenes</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Área</span>
+              <h3 class="flip__title">Sala de exámenes</h3>
+              <p class="flip__text">Donde se realizan los estudios de diagnóstico previos a cada consulta y cirugía.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/area-laser.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Sala de Láser</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Área</span>
+              <h3 class="flip__title">Sala de Láser</h3>
+              <p class="flip__text">Espacio dedicado a los tratamientos con tecnología láser.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Equipos — diagnóstico y tratamiento en un solo carrusel (tablero)
+       Fichas más pequeñas que antes y todas en un carril con flechas y puntos.
+       El carril se mueve por transform, no por scroll: un contenedor con
+       scroll-snap horizontal secuestra la rueda y el trackpad, que es lo que
+       hizo que el sitio se sintiera raro la vez anterior.
+       ==================================================================== -->
+  <section id="equipos-diagnostico" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="head-split" data-rev>
+        <h2 class="section__title">
+          Equipos de <span class="u-accent-phrase">diagnóstico y tratamiento</span>
+        </h2>
+        <div class="head-split__aside">
+          <p>Tecnología de diagnóstico y tratamiento con el respaldo de marcas líderes en oftalmología. <span class="u-muted">Pasa el cursor o toca una ficha para ver el detalle.</span></p>
+        </div>
+      </div>
+
+      <div class="carousel" data-carousel data-rev>
+        <div class="carousel__viewport">
+          <div class="carousel__track" data-carousel-track>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-optica.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Óptica ZEIZZ Vision Center</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Óptica</span>
+              <h3 class="flip__title">Óptica ZEIZZ Vision Center</h3>
+              <p class="flip__text">Óptica con tecnología alemana ZEIZZ para medir con precisión tu graduación y elaborar lentes a tu medida.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-iol-master.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">IOL Master 700</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">IOL Master 700</h3>
+              <p class="flip__text">Última tecnología en Ecuador; calcula con exactitud el lente intraocular antes de una cirugía de catarata.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-pentacam.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Pentacam OCT</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">Pentacam OCT</h3>
+              <p class="flip__text">Diagnóstico detallado de enfermedades de la córnea.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-oct-triton.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">OCT Triton Plus</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">OCT Triton Plus</h3>
+              <p class="flip__text">Estudio de alta resolución de la retina y el nervio óptico.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-camara-retina.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Cámara de retina</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">Cámara de retina</h3>
+              <p class="flip__text">Registro fotográfico del fondo del ojo para detectar y seguir enfermedades retinianas.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-humphrey.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Humphrey Field Analyzer 3</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">Humphrey Field Analyzer 3</h3>
+              <p class="flip__text">Análisis del campo visual, clave en el diagnóstico y seguimiento del glaucoma.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-microscopio-especular.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Microscopio especular</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">Microscopio especular</h3>
+              <p class="flip__text">Evaluación de las células de la córnea.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-ecografia.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Sonomed Escalon</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Diagnóstico</span>
+              <h3 class="flip__title">Sonomed Escalon</h3>
+              <p class="flip__text">Ecografía ocular para explorar el interior del ojo.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-laser-pascal.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">Láser Pascal 577 (Iridex)</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Tratamiento</span>
+              <h3 class="flip__title">Láser Pascal 577 (Iridex)</h3>
+              <p class="flip__text">Tratamiento de precisión para enfermedades de la retina.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-visi-laser.webp" alt="" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <h3 class="card__title">VISI Láser (Q-LAS A/c Laser)</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Tratamiento</span>
+              <h3 class="flip__title">VISI Láser (Q-LAS A/c Laser)</h3>
+              <p class="flip__text">Procedimientos láser para catarata secundaria y glaucoma.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+          </div>
+        </div>
+        <div class="carousel__controls">
+          <div class="carousel__dots" data-carousel-dots></div>
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Equipos anteriores">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Equipos siguientes">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Cierre
+       ==================================================================== -->
+  <section id="agenda" class="section section--white">
+    <div class="u-shell">
+      <div class="cta-band" data-rev>
+        <span class="cta-band__label">Revisa tu visión con nosotros</span>
+        <h2 class="cta-band__title">Agenda tu cita</h2>
+        <p class="cta-band__text">Evaluación oftalmológica integral con nuestros especialistas. Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco (Cumbayá). Teléfono y horarios por confirmar.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html">Agendar cita <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================================
+     Footer
+     ====================================================================== -->
+<footer class="site-footer">
+  <div class="u-shell">
+    <!-- Mapa de la zona. La imagen es una tesela de OpenStreetMap alojada aquí
+         mismo —ninguna petición a terceros al cargar—; el enlace a Google Maps
+         sólo se sigue si el visitante lo pulsa. La chincheta marca el cruce
+         de la Av. Oswaldo Guayasamín con la Calle 1. -->
+    <div class="footer__map map-wide" data-rev>
+      <img src="assets/img/mapa-cumbaya.webp" alt="Mapa de Cumbayá: Av. Oswaldo Guayasamín y Calle 1" loading="lazy" decoding="async" width="2200" height="880">
+      <span class="map-pin" aria-hidden="true"></span>
+      <div class="footer__map-card">
+        <div class="footer__col-title">Dónde estamos</div>
+        <p class="footer__address">Cumbayá · Quito, Ecuador</p>
+        <p class="footer__address footer__address--muted">Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco · 170157</p>
+        <a class="footer__map-link" href="https://www.google.com/maps/search/Av.+Oswaldo+Guayasam%C3%ADn+y+Calle+1,+Cumbay%C3%A1,+170157+Quito" target="_blank" rel="noopener">Abrir en Google Maps <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" aria-label="Larco Eye Clinic — inicio">
+          <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+          <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+        </a>
+        <p class="footer__tag"><strong>70 años</strong> cuidando <strong>tu visión</strong> con la tecnología del mañana</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Clínica</div>
+        <div class="footer__links">
+          <a href="sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="sobre-nosotros.html#equipo">Doctores</a>
+          <a href="casos-clinicos.html">Casos Clínicos</a>
+          <a href="contactanos.html">Contáctanos</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Servicios</div>
+        <div class="footer__links">
+          <a href="consultas-examenes.html">Consultas y Exámenes</a>
+          <a href="especialidades.html#cornea">Córnea</a>
+          <a href="especialidades.html#retina">Retina y Vítreo</a>
+          <a href="especialidades.html#glaucoma">Glaucoma</a>
+          <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+          <a href="especialidades.html#optica">Óptica y baja visión</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Contacto</div>
+        <div class="footer__links">
+          <a href="contactanos.html">Agendar cita</a>
+          <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+        </div>
+
+        <div class="footer__block">
+          <div class="footer__col-title">Horario</div>
+          <p class="footer__address footer__address--muted">Horario de atención por confirmar</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <a href="contactanos.html">Aviso legal</a>
+      <a href="contactanos.html">Política de privacidad</a>
+      <span class="footer__note">Fotografía y contenidos de muestra · pendiente de reemplazo</span>
+      <span class="footer__copy">© 2026 Larco Visión</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="contactanos.html" data-whatsapp rel="noopener" title="WhatsApp" aria-label="Escríbenos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.2-.2Z"/></svg>
+</a>
+<script src="assets/js/site.js?v=230" defer></script>
+</body>
+</html>

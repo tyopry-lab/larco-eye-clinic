@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Roberto Larco — Larco Visión</title>
+<meta name="description" content="Dr. Roberto Larco, cirujano oftalmólogo especialista en retina, mácula y vítreo, con formación en Brasil.">
+<meta name="theme-color" content="#F4F2ED">
+<!-- Preview para el cliente: contenido y fotografía son placeholders. Quitar esta
+     línea al publicar el sitio definitivo con el contenido real de la clínica. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+<meta property="og:title" content="Dr. Roberto Larco — Larco Visión">
+<meta property="og:description" content="Cirujano oftalmólogo · retina, mácula y vítreo.">
+<!-- TODO(dominio): og:image y og:url deben ser absolutos, y el card quiere un JPEG 1200x630 propio. -->
+<meta property="og:image" content="assets/img/photos/hero-ojo.webp">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=230">
+<link rel="stylesheet" href="assets/css/tokens.css?v=230">
+<link rel="stylesheet" href="assets/css/components.css?v=230">
+<link rel="stylesheet" href="assets/css/site.css?v=230">
+<link rel="stylesheet" href="assets/css/pages.css?v=230">
+<noscript><style>
+  /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
+  @media (max-width: 1024px) {
+    .nav-toggle { display: none; }
+    .site-header { position: static; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+    .nav { position: static; display: flex; max-height: none; padding: 12px 0; box-shadow: none; }
+    .hero__inner { padding-top: 48px; }
+    .page-hero { padding-top: 48px; }
+  }
+</style></noscript>
+</head>
+<body data-page="dr-roberto-larco">
+<script>/* Paint the stored theme before first paint; site.js re-applies it idempotently. */
+try{if(localStorage.getItem('lv-dark')==='1'){document.body.classList.add('lv-dark');
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E';}}catch(e){}</script>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html" aria-label="Larco Eye Clinic — inicio">
+      <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+      <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg data-icon="open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg data-icon="close" hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+
+      <div class="menu">
+        <a class="nav__link nav__link--current" aria-current="page" href="sobre-nosotros.html" aria-haspopup="true">Sobre Nosotros <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-sobre" aria-label="Desplegar Sobre Nosotros"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-sobre">
+          <div class="menu__inner">
+            <a class="menu__item" href="sobre-nosotros.html#historia">
+              <span class="menu__item-title">Nuestra Historia</span>
+              <span class="menu__item-note">Un legado de tres generaciones</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#equipo">
+              <span class="menu__item-title">Nuestro Equipo</span>
+              <span class="menu__item-note">Conoce a nuestros especialistas</span>
+            </a>
+            <a class="menu__item" href="sobre-nosotros.html#instalaciones">
+              <span class="menu__item-title">Instalaciones</span>
+              <span class="menu__item-note">Tecnología y espacios de la clínica</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu menu--wide">
+        <a class="nav__link" href="consultas-examenes.html" aria-haspopup="true">Servicios <span class="nav__caret" aria-hidden="true">▾</span></a>
+        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-servicios" aria-label="Desplegar Servicios"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="menu__panel" id="menu-servicios">
+          <div class="menu__inner">
+            <div class="menu__col">
+              <a href="consultas-examenes.html"><span class="menu__col-title">Consultas y Exámenes</span></a>
+              <div class="menu__sublinks">
+                <a href="consultas-examenes.html#consulta">Consulta oftalmológica</a>
+                <a href="consultas-examenes.html#examenes">Exámenes de diagnóstico</a>
+                <a href="consultas-examenes.html#cita">Agenda tu cita</a>
+              </div>
+            </div>
+            <div class="menu__col">
+              <a href="especialidades.html"><span class="menu__col-title">Especialidades</span></a>
+              <div class="menu__sublinks">
+                <a href="especialidades.html#cornea">Córnea</a>
+                <a href="especialidades.html#catarata">Catarata</a>
+                <a href="especialidades.html#retina">Retina y Vítreo</a>
+                <a href="especialidades.html#glaucoma">Glaucoma</a>
+                <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+                <a href="especialidades.html#optica">Óptica y baja visión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link" href="casos-clinicos.html">Casos Clínicos</a>
+      <a class="nav__link" href="contactanos.html">Contáctanos</a>
+
+      <div class="nav__divider" aria-hidden="true"></div>
+
+      <div class="nav__tools">
+        <button class="nav__tool" type="button" data-cycle-zoom title="Cambiar tamaño del texto" aria-label="Cambiar tamaño del texto">A</button>
+        <button class="nav__tool" type="button" data-toggle-dark aria-pressed="false" aria-label="Modo claro y oscuro" title="Modo claro y oscuro">
+          <svg data-icon="sun" hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <svg data-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a class="btn btn--primary btn--sm" data-ondark="nav" href="contactanos.html">Agendar cita</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ====================================================================
+       Perfil individual — Dr. Roberto Larco
+       ==================================================================== -->
+  <section class="section section--dark section--night section--first profile-page">
+    <div class="u-shell">
+      <p class="profile-page__back" data-rev><a href="sobre-nosotros.html#equipo">← Nuestro equipo</a></p>
+      <div class="profile-page__card" data-rev>
+        <article class="doc doc--bio">
+          <div class="doc__body">
+          <h1 class="doc__name">Dr. Roberto Larco</h1>
+          <p class="doc__note">Cirujano oftalmólogo · Retina, mácula y vítreo. Especialidad en Brasil, con amplia experiencia en cirugía de retina y mácula, inyecciones intraoculares y tratamiento de la degeneración macular.</p>
+          <dl class="person__meta">
+          <dt>Formación</dt>
+          <dd>Medicina, Facultad de Medicina de Marília, São Paulo, Brasil; certificación del Consejo Brasileño de Oftalmología; fellowship en retina y vítreo.</dd>
+          <dt>Trayectoria</dt>
+          <dd><ul class="person__list"><li>Miembro del directorio de la Sociedad Ecuatoriana de Oftalmología.</li><li>Miembro de la Academia Americana de Oftalmología.</li><li>Miembro de la Sociedad Panamericana de Oftalmología.</li></ul></dd>
+          <dt>Áreas</dt>
+          <dd>Retina, mácula y vítreo; cirugía vitreorretiniana; inyecciones intraoculares; tratamiento de la degeneración macular.</dd>
+          </dl>
+          </div>
+          <img class="doc__photo" src="assets/img/photos/dr-roberto-larco-4.webp" alt="Dr. Roberto Larco, cirujano oftalmólogo" loading="lazy" decoding="async">
+          </article>
+      </div>
+      <p class="profile-page__next" data-rev>Conoce también al <a href="dr-marcelo-larco.html">Dr. Marcelo Larco</a></p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       Cierre
+       ==================================================================== -->
+  <section id="agenda" class="section section--dark section--night">
+    <div class="u-shell">
+      <div class="cta-band" data-rev>
+        <span class="cta-band__label">Revisa tu visión con nosotros</span>
+        <h2 class="cta-band__title">Agenda tu cita con el Dr. Roberto Larco</h2>
+        <p class="cta-band__text">Evaluación oftalmológica integral en Cumbayá: Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" data-ondark="theme" href="contactanos.html">Agendar cita <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================================
+     Footer
+     ====================================================================== -->
+<footer class="site-footer">
+  <div class="u-shell">
+    <!-- Mapa de la zona. La imagen es una tesela de OpenStreetMap alojada aquí
+         mismo —ninguna petición a terceros al cargar—; el enlace a Google Maps
+         sólo se sigue si el visitante lo pulsa. La chincheta marca el cruce
+         de la Av. Oswaldo Guayasamín con la Calle 1. -->
+    <div class="footer__map map-wide" data-rev>
+      <img src="assets/img/mapa-cumbaya.webp" alt="Mapa de Cumbayá: Av. Oswaldo Guayasamín y Calle 1" loading="lazy" decoding="async" width="2200" height="880">
+      <span class="map-pin" aria-hidden="true"></span>
+      <div class="footer__map-card">
+        <div class="footer__col-title">Dónde estamos</div>
+        <p class="footer__address">Cumbayá · Quito, Ecuador</p>
+        <p class="footer__address footer__address--muted">Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco · 170157</p>
+        <a class="footer__map-link" href="https://www.google.com/maps/search/Av.+Oswaldo+Guayasam%C3%ADn+y+Calle+1,+Cumbay%C3%A1,+170157+Quito" target="_blank" rel="noopener">Abrir en Google Maps <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" aria-label="Larco Eye Clinic — inicio">
+          <img class="brand__logo--on-light" src="assets/img/logo.svg" alt="Larco Eye Clinic" width="748" height="418">
+          <img class="brand__logo--on-dark" src="assets/img/logo-white.svg" alt="Larco Eye Clinic" width="759" height="424">
+        </a>
+        <p class="footer__tag"><strong>70 años</strong> cuidando <strong>tu visión</strong> con la tecnología del mañana</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Clínica</div>
+        <div class="footer__links">
+          <a href="sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="sobre-nosotros.html#equipo">Doctores</a>
+          <a href="casos-clinicos.html">Casos Clínicos</a>
+          <a href="contactanos.html">Contáctanos</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Servicios</div>
+        <div class="footer__links">
+          <a href="consultas-examenes.html">Consultas y Exámenes</a>
+          <a href="especialidades.html#cornea">Córnea</a>
+          <a href="especialidades.html#retina">Retina y Vítreo</a>
+          <a href="especialidades.html#glaucoma">Glaucoma</a>
+          <a href="especialidades.html#refractiva">Cirugía Refractiva</a>
+          <a href="especialidades.html#optica">Óptica y baja visión</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Contacto</div>
+        <div class="footer__links">
+          <a href="contactanos.html">Agendar cita</a>
+          <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+        </div>
+
+        <div class="footer__block">
+          <div class="footer__col-title">Horario</div>
+          <p class="footer__address footer__address--muted">Horario de atención por confirmar</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <a href="contactanos.html">Aviso legal</a>
+      <a href="contactanos.html">Política de privacidad</a>
+      <span class="footer__note">Fotografía y contenidos de muestra · pendiente de reemplazo</span>
+      <span class="footer__copy">© 2026 Larco Visión</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="contactanos.html" data-whatsapp rel="noopener" title="WhatsApp" aria-label="Escríbenos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.2-.2Z"/></svg>
+</a>
+<script src="assets/js/site.js?v=230" defer></script>
+</body>
+</html>
