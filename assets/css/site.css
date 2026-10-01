@@ -1180,23 +1180,71 @@ body.lv-dark .footer__brand .brand__logo--on-light { display: none; }
   z-index: 70;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-pill);
-  background: var(--accent);
-  color: var(--accent-ink);
-  box-shadow: var(--shadow-float);
-  transition: background var(--dur-fast) var(--ease-out),
-              transform var(--dur-fast) var(--ease-out);
+  gap: 12px;
+  text-decoration: none;
 }
 
 body.nav-open .wa-fab { display: none; }
 
-.wa-fab:hover {
-  background: var(--accent-hover);
-  color: var(--accent-ink);
-  transform: translateY(-2px);
+/* Círculo verde WhatsApp con degradado suave, borde claro y halo pulsante. */
+.wa-fab__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  background: linear-gradient(145deg, #2EE071 0%, #25D366 45%, #1EBE5A 100%);
+  border: 2px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 10px 24px rgba(18, 140, 126, .38), 0 2px 6px rgba(0, 0, 0, .18);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.wa-fab__icon::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: wa-pulse 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-pulse {
+  0%   { transform: scale(1);    opacity: .7; }
+  70%  { transform: scale(1.45); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+/* Etiqueta tipo burbuja de chat, solo en pantallas amplias. */
+.wa-fab__label {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: 14px 14px 4px 14px;
+  background: #FFFFFF;
+  color: #1F2A44;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.35;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+
+.wa-fab__label strong { display: block; color: #128C7E; font-weight: var(--weight-semibold); }
+
+.wa-fab:hover .wa-fab__icon,
+.wa-fab:focus-visible .wa-fab__icon {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(18, 140, 126, .45), 0 3px 8px rgba(0, 0, 0, .2);
+}
+
+.wa-fab:hover .wa-fab__label { transform: translateX(-3px); }
+.wa-fab:focus-visible { outline: none; }
+.wa-fab:focus-visible .wa-fab__icon { outline: 3px solid #128C7E; outline-offset: 3px; }
+
+@media (max-width: 1024px) {
+  .wa-fab__label { display: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1504,6 +1552,7 @@ body.js [data-rev].is-pending {
 
 
   .wa-fab { bottom: 18px; right: 18px; }
+  .wa-fab__icon { width: 56px; height: 56px; }
 }
 
 /* --------------------------------------------------------------------------
