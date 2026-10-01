@@ -23,7 +23,12 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 230
+ASSET_VERSION = 231
+
+# Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
+# Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
+FORM_EMAIL = "tyopry@gmail.com"
+SITE_URL = "https://tyopry-lab.github.io/larco-eye-clinic/"
 
 PAGES = [
     {
@@ -112,6 +117,35 @@ PAGES = [
         "og_title": "Dr. Roberto Larco — Larco Visión",
         "og_description": "Cirujano oftalmólogo · retina, mácula y vítreo.",
     },
+    {
+        "slug": "consentimiento",
+        "content": "consentimiento",
+        "nav": "contacto",
+        "title": "Consentimiento de datos — Larco Visión",
+        "description": "Acepta la política de tratamiento de datos personales de pacientes de "
+                       "Larco Eye Clinic.",
+        "og_title": "Consentimiento de datos — Larco Visión",
+        "og_description": "Aceptar políticas de tratamiento de datos de pacientes.",
+    },
+    {
+        "slug": "politica-privacidad",
+        "content": "politica-privacidad",
+        "nav": "contacto",
+        "title": "Política de tratamiento de datos — Larco Visión",
+        "description": "Cómo Larco Eye Clinic recoge, usa y protege los datos personales de "
+                       "sus pacientes.",
+        "og_title": "Política de tratamiento de datos — Larco Visión",
+        "og_description": "Cómo protegemos los datos personales de nuestros pacientes.",
+    },
+    {
+        "slug": "gracias",
+        "content": "gracias",
+        "nav": "contacto",
+        "title": "Recibimos tu información — Larco Visión",
+        "description": "Confirmación de envío.",
+        "og_title": "Recibimos tu información — Larco Visión",
+        "og_description": "Confirmación de envío.",
+    },
 ]
 
 HEAD = """<!DOCTYPE html>
@@ -199,6 +233,8 @@ def render(page: str) -> str:
     head_html = mark_active(header, page["nav"]).rstrip("\n")
     head_html = head_html.replace("<body>", f'<body data-page="{page["slug"]}">', 1)
     out += head_html + "\n\n"
+    body = (body.replace("{{FORM_ACTION}}", f"https://formsubmit.co/{FORM_EMAIL}")
+                .replace("{{SITE_URL}}", SITE_URL))
     out += body.rstrip("\n") + "\n\n"
     out += footer.rstrip("\n") + "\n"
     out += SCRIPTS.format(v=ASSET_VERSION)

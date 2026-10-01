@@ -1,0 +1,64 @@
+<main id="contenido">
+
+  <!-- ====================================================================
+       Consentimiento de tratamiento de datos de pacientes
+       (equivalente a retinal.com.ec/aceptar-consentimiento). Los datos se
+       envían por FormSubmit al correo FORM_EMAIL de tools/build.py.
+       ==================================================================== -->
+  <section id="consentimiento" class="section section--dark section--night section--first">
+    <div class="u-shell">
+      <div class="head-split" data-rev>
+        <h1 class="section__title">
+          Aceptar políticas de tratamiento de <span class="u-accent-phrase">datos de pacientes</span>
+        </h1>
+        <div class="head-split__aside">
+          <p>Para atenderte necesitamos tu autorización para tratar tus datos personales y de salud, conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador. Completa el formulario y acepta la política.</p>
+        </div>
+      </div>
+
+      <div class="consent" data-rev>
+        <form class="form" action="{{FORM_ACTION}}" method="POST">
+          <input type="hidden" name="_subject" value="Consentimiento de datos — Larco Eye Clinic">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="{{SITE_URL}}gracias.html">
+          <input type="text" name="_honey" class="u-visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field">
+            <label class="field__label" for="c-nombres">Nombres</label>
+            <input id="c-nombres" name="Nombres" type="text" autocomplete="given-name" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-apellidos">Apellidos</label>
+            <input id="c-apellidos" name="Apellidos" type="text" autocomplete="family-name" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-cedula">Número de cédula o pasaporte</label>
+            <input id="c-cedula" name="Cédula" type="text" inputmode="numeric" autocomplete="off" required minlength="6" maxlength="20">
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-telefono">Teléfono</label>
+            <input id="c-telefono" name="Teléfono" type="tel" autocomplete="tel" required>
+          </div>
+
+          <div class="field field--wide">
+            <label class="field__label" for="c-correo">Correo electrónico</label>
+            <input id="c-correo" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field field--wide field--check">
+            <input id="c-acepto" name="Acepta la política" type="checkbox" value="Sí, acepta" required>
+            <label for="c-acepto">He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">Política de tratamiento de datos personales</a> de Larco Eye Clinic y autorizo el tratamiento de mis datos personales y de salud para fines de atención médica.</label>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Aceptar y enviar</button>
+            <p class="form__note">Tus datos se envían de forma segura a la clínica y no se publican en el sitio.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>

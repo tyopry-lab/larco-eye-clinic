@@ -860,3 +860,19 @@
   .profile-page__card .doc--bio { grid-template-columns: 1fr; }
   .profile-page__card .doc--bio .doc__photo { order: -1; aspect-ratio: 4 / 3; height: auto; width: 100%; object-fit: cover; object-position: 50% 15%; }
 }
+
+/* ---- Consentimiento y política de datos ---- */
+.consent { max-width: 860px; }
+.field--check { display: flex; align-items: flex-start; gap: 12px; }
+.field--check input[type="checkbox"] {
+  width: 20px; height: 20px; flex: 0 0 20px; margin: 2px 0 0; padding: 0;
+  accent-color: var(--accent-strong);
+}
+.field--check label { font-size: var(--text-small); line-height: 1.6; color: var(--text-body); }
+.field--check a, .form__note a, .legal a:not(.btn) { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.u-visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.legal { max-width: 760px; }
+.legal h2 { margin: 32px 0 8px; font-size: clamp(18px, 1.6vw, 22px); }
+.legal p, .legal li { line-height: 1.7; color: var(--text-muted); }
+.legal ul { padding-left: 20px; }
+.legal .btn { margin-top: 24px; }

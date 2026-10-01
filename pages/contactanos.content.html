@@ -16,7 +16,11 @@
       </div>
 
       <div class="split" data-rev>
-        <form class="form" action="#" method="post" novalidate>
+        <form class="form" action="{{FORM_ACTION}}" method="POST">
+          <input type="hidden" name="_subject" value="Mensaje desde el sitio — Larco Eye Clinic">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="{{SITE_URL}}gracias.html">
+          <input type="text" name="_honey" class="u-visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field">
             <label class="field__label" for="nombre">Nombre</label>
             <input id="nombre" name="nombre" type="text" autocomplete="given-name" required>
@@ -42,7 +46,7 @@
 
           <div class="field">
             <label class="field__label" for="correo">Correo electrónico</label>
-            <input id="correo" name="correo" type="email" autocomplete="email" required>
+            <input id="correo" name="email" type="email" autocomplete="email" required>
           </div>
 
           <div class="field">
@@ -57,7 +61,7 @@
 
           <div class="form__actions">
             <button class="btn btn--primary" type="submit">Enviar mensaje</button>
-            <p class="form__note">El envío de este formulario todavía no está conectado; mientras tanto puedes escribirnos por <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>.</p>
+            <p class="form__note">También puedes escribirnos por <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>. ¿Eres paciente? <a href="consentimiento.html">Acepta la política de datos</a>.</p>
           </div>
         </form>
 
@@ -75,6 +79,10 @@
             <div>
               <dt>WhatsApp</dt>
               <dd><a href="contactanos.html" data-whatsapp rel="noopener">Escríbenos por WhatsApp</a></dd>
+            </div>
+            <div>
+              <dt>Pacientes</dt>
+              <dd><a href="consentimiento.html">Aceptar consentimiento de datos</a></dd>
             </div>
             <div>
               <dt>Correo</dt>

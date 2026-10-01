@@ -17,7 +17,8 @@
     // Leave empty until the clinic's real number is known. While it is empty
     // every WhatsApp link keeps its HTML fallback (the contact page) rather
     // than dialling a number that belongs to somebody else.
-    whatsapp: '',
+    whatsapp: '593999522699',
+    whatsappText: 'Hola, quisiera información o agendar una cita en Larco Eye Clinic.',
     animations: true
   };
 
@@ -56,7 +57,8 @@
     var digits = String(CONFIG.whatsapp || '').replace(/[^0-9]/g, '');
     if (digits.length < 8) return; // not configured — keep the HTML fallback
 
-    var href = 'https://wa.me/' + digits;
+    var href = 'https://wa.me/' + digits +
+      (CONFIG.whatsappText ? '?text=' + encodeURIComponent(CONFIG.whatsappText) : '');
     var links = document.querySelectorAll('[data-whatsapp]');
     for (var i = 0; i < links.length; i++) {
       links[i].setAttribute('href', href);
