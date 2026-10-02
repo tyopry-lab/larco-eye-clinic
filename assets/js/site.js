@@ -73,9 +73,17 @@
     if (!v || reduceMotion) return;
     var small = window.matchMedia('(max-width: 900px)').matches;
     v.src = small ? v.getAttribute('data-src-sm') : v.getAttribute('data-src-lg');
+    v.autoplay = true;
     v.addEventListener('playing', function () { v.classList.add('is-playing'); });
-    var p = v.play();
-    if (p && p.catch) p.catch(function () { /* autoplay bloqueado: queda la foto */ });
+    function tryPlay() {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { /* autoplay bloqueado: queda la foto */ });
+    }
+    tryPlay();
+    // Si la pestaña se abrió en segundo plano, arranca al volverse visible.
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && v.paused) tryPlay();
+    });
   }
 
   /* ------------------------------------------------------------------
