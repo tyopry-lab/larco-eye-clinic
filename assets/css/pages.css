@@ -893,3 +893,5 @@
 /* ---- Portada con fotos que rotan (Casos clínicos) ---- */
 .hero-slides img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s var(--ease-out); }
 .hero-slides img.is-active { opacity: 1; }
+
+.head-split--sub { margin-top: clamp(48px, 7vh, 88px); }

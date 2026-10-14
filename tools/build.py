@@ -23,7 +23,7 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 235
+ASSET_VERSION = 236
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
@@ -145,6 +145,24 @@ PAGES = [
         "description": "Confirmación de envío.",
         "og_title": "Recibimos tu información — Larco Visión",
         "og_description": "Confirmación de envío.",
+    },
+    {
+        "slug": "dra-maria-gabriela-larco",
+        "content": "dra-maria-gabriela-larco",
+        "nav": "sobre",
+        "title": "Dra. María Gabriela Larco — Larco Visión",
+        "description": "Dra. María Gabriela Larco, cirujana oftalmóloga.",
+        "og_title": "Dra. María Gabriela Larco — Larco Visión",
+        "og_description": "Cirujana oftalmóloga.",
+    },
+    {
+        "slug": "dr-jose-alvarez",
+        "content": "dr-jose-alvarez",
+        "nav": "sobre",
+        "title": "Dr. José Álvarez Hermosa — Larco Visión",
+        "description": "Dr. José Álvarez Hermosa, cirugía plástica ocular.",
+        "og_title": "Dr. José Álvarez Hermosa — Larco Visión",
+        "og_description": "Oftalmólogo, cirugía plástica ocular.",
     },
 ]
 
