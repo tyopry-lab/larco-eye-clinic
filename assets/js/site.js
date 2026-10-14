@@ -86,6 +86,20 @@
     });
   }
 
+  /* Portadas con varias fotos: cambian cada 6 s (no si se pidió menos movimiento). */
+  function startHeroSlides() {
+    var box = document.querySelector('[data-slides]');
+    if (!box || reduceMotion) return;
+    var imgs = box.querySelectorAll('img');
+    if (imgs.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      imgs[i].classList.remove('is-active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('is-active');
+    }, 6000);
+  }
+
   /* ------------------------------------------------------------------
      Header: solid once the page leaves the hero, and while the mobile
      menu is open.
@@ -590,6 +604,7 @@
 
   applyWhatsApp();
   startHeroVideo();
+  startHeroSlides();
   /* Oscuro por defecto: es el aspecto aprobado por el cliente. El claro es la
      elección explícita del visitante y se recuerda. */
   applyDark(read(STORAGE_DARK) !== '0', false);

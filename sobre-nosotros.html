@@ -19,11 +19,11 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=234">
-<link rel="stylesheet" href="assets/css/tokens.css?v=234">
-<link rel="stylesheet" href="assets/css/components.css?v=234">
-<link rel="stylesheet" href="assets/css/site.css?v=234">
-<link rel="stylesheet" href="assets/css/pages.css?v=234">
+<link rel="stylesheet" href="assets/css/fonts.css?v=235">
+<link rel="stylesheet" href="assets/css/tokens.css?v=235">
+<link rel="stylesheet" href="assets/css/components.css?v=235">
+<link rel="stylesheet" href="assets/css/site.css?v=235">
+<link rel="stylesheet" href="assets/css/pages.css?v=235">
 <noscript><style>
   /* Sin JS la hamburguesa no puede abrir nada, así que el menú va en línea. */
   @media (max-width: 1024px) {
@@ -206,8 +206,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         </h2>
       </div>
 
-      <!-- Carrusel de dos fichas por vista, con el formato de las fichas de
-           doctor de la portada: a tres columnas se veía apretado. -->
+      <h3 class="team__group" id="medicos-socios" data-rev>Médicos <span class="u-accent-phrase">Socios</span></h3>
       <div class="carousel carousel--2" data-carousel data-rev>
         <div class="carousel__viewport">
           <div class="carousel__track" data-carousel-track>
@@ -243,9 +242,28 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               </div>
               <img class="doc__photo" src="assets/img/photos/dr-roberto-larco-4.webp" alt="Dr. Roberto Larco, cirujano oftalmólogo" loading="lazy" decoding="async">
             </article>
+          </div>
+        </div>
+        <div class="carousel__controls">
+          <div class="carousel__dots" data-carousel-dots></div>
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Médico socio anterior">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Médico socio siguiente">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="team__group" id="medicos-asociados" data-rev>Médicos <span class="u-accent-phrase">Asociados</span></h3>
+      <div class="carousel carousel--2" data-carousel data-rev>
+        <div class="carousel__viewport">
+          <div class="carousel__track" data-carousel-track>
             <article class="doc doc--bio">
               <div class="doc__body">
-                <h3 class="doc__name">Dra. Gabriela Larco</h3>
+                <h3 class="doc__name">Dra. María Gabriela Larco</h3>
                 <p class="doc__note">Cirujana oftalmóloga</p>
                 <dl class="person__meta">
               <dt>Formación</dt>
@@ -258,17 +276,30 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
               <dd class="u-muted">Por confirmar con la clínica.</dd>
               </dl>
               </div>
-              <img class="doc__photo" src="assets/img/photos/dra-gabriela-larco.webp" alt="" loading="lazy" decoding="async">
+              <img class="doc__photo" src="assets/img/photos/dra-gabriela-larco.webp" alt="Dra. María Gabriela Larco, cirujana oftalmóloga" loading="lazy" decoding="async">
+            </article>
+            <article class="doc doc--bio">
+              <div class="doc__body">
+                <h3 class="doc__name">Dr. José Álvarez</h3>
+                <p class="doc__note">Oftalmólogo · Cirugía plástica ocular</p>
+                <dl class="person__meta">
+              <dt>Formación</dt>
+              <dd class="u-muted">Por completar con el currículum enviado por la clínica.</dd>
+              <dt>Áreas</dt>
+              <dd>Oftalmología; cirugía plástica ocular.</dd>
+              </dl>
+              </div>
+              <img class="doc__photo" src="assets/img/photos/dr-jose-alvarez.webp" alt="Dr. José Álvarez, oftalmólogo" loading="lazy" decoding="async">
             </article>
           </div>
         </div>
         <div class="carousel__controls">
           <div class="carousel__dots" data-carousel-dots></div>
           <div class="carousel__arrows">
-            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Doctor anterior">
+            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Médico asociado anterior">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Doctor siguiente">
+            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Médico asociado siguiente">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
@@ -287,7 +318,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           Instalaciones y <span class="u-accent-phrase">Tecnología</span>
         </h2>
         <div class="head-split__aside head-split__aside--wide">
-          <p>Equipos de última generación y espacios diseñados para diagnósticos precisos y tratamientos seguros, <span class="u-muted">con el respaldo de marcas líderes como ZEIZZ.</span></p>
+          <p>Equipos de última generación y espacios diseñados para diagnósticos precisos y tratamientos seguros, <span class="u-muted">con el respaldo de marcas líderes como ZEISS.</span></p>
         </div>
       </div>
 
@@ -367,7 +398,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           Equipos de <span class="u-accent-phrase">diagnóstico y tratamiento</span>
         </h2>
         <div class="head-split__aside">
-          <p>Tecnología de diagnóstico y tratamiento con el respaldo de marcas líderes en oftalmología. <span class="u-muted">Pasa el cursor o toca una ficha para ver el detalle.</span></p>
+          <p>Nuestros equipos en la sala de exámenes especiales, la sala de láser y el quirófano. <span class="u-muted">Pasa el cursor o toca una ficha para ver el detalle.</span></p>
         </div>
       </div>
 
@@ -377,15 +408,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-optica.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-oct-triton.webp" alt="OCT Tritón" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Óptica ZEIZZ Vision Center</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">OCT Tritón</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Óptica</span>
-              <h3 class="flip__title">Óptica ZEIZZ Vision Center</h3>
-              <p class="flip__text">Óptica con tecnología alemana ZEIZZ para medir con precisión tu graduación y elaborar lentes a tu medida.</p>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">OCT Tritón</h3>
+              <p class="flip__text">Tomografía de alta resolución de la retina y el nervio óptico.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -396,15 +428,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-iol-master.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-microscopio-especular.webp" alt="Microscopio Especular" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">IOL Master 700</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">Microscopio Especular</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">IOL Master 700</h3>
-              <p class="flip__text">Última tecnología en Ecuador; calcula con exactitud el lente intraocular antes de una cirugía de catarata.</p>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">Microscopio Especular</h3>
+              <p class="flip__text">Cuenta y evalúa las células de la córnea antes de una cirugía.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -415,15 +448,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-pentacam.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-ecografia.webp" alt="Ecógrafo, Ecobiómetro, UBM-GURU" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Pentacam OCT</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">Ecógrafo, Ecobiómetro, UBM-GURU</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">Pentacam OCT</h3>
-              <p class="flip__text">Diagnóstico detallado de enfermedades de la córnea.</p>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">Ecógrafo, Ecobiómetro, UBM-GURU</h3>
+              <p class="flip__text">Ecografía ocular, cálculo del lente intraocular por ultrasonido y biomicroscopía ultrasónica del segmento anterior.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -434,15 +468,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-oct-triton.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-pentacam.webp" alt="Pentacam córnea con OCT" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">OCT Triton Plus</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">Pentacam córnea con OCT</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">OCT Triton Plus</h3>
-              <p class="flip__text">Estudio de alta resolución de la retina y el nervio óptico.</p>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">Pentacam córnea con OCT</h3>
+              <p class="flip__text">Tomografía completa de la córnea: queratocono, cirugía refractiva y cálculo de lentes.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -453,15 +488,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-camara-retina.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-camara-retina.webp" alt="Cámara Retinal Clarus 700" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Cámara de retina</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">Cámara Retinal Clarus 700</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">Cámara de retina</h3>
-              <p class="flip__text">Registro fotográfico del fondo del ojo para detectar y seguir enfermedades retinianas.</p>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">Cámara Retinal Clarus 700</h3>
+              <p class="flip__text">Fotografía de campo amplio del fondo del ojo para detectar y seguir enfermedades de la retina.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -472,14 +508,35 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-humphrey.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-iol-master.webp" alt="IOL Master 700 Full con IR" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Humphrey Field Analyzer 3</h3>
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">IOL Master 700 Full con IR</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">Humphrey Field Analyzer 3</h3>
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">IOL Master 700 Full con IR</h3>
+              <p class="flip__text">Calcula con exactitud el lente intraocular antes de una cirugía de catarata.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-humphrey.webp" alt="HFA 860 (Campímetro)" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <span class="card__label card__label--front">Sala de exámenes especiales</span>
+                <h3 class="card__title">HFA 860 (Campímetro)</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Sala de exámenes especiales</span>
+              <h3 class="flip__title">HFA 860 (Campímetro)</h3>
               <p class="flip__text">Análisis del campo visual, clave en el diagnóstico y seguimiento del glaucoma.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
@@ -491,15 +548,16 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-microscopio-especular.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-visi-laser.webp" alt="Yag Láser" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Microscopio especular</h3>
+                <span class="card__label card__label--front">Sala de láser</span>
+                <h3 class="card__title">Yag Láser</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">Microscopio especular</h3>
-              <p class="flip__text">Evaluación de las células de la córnea.</p>
+              <span class="card__label">Sala de láser</span>
+              <h3 class="flip__title">Yag Láser</h3>
+              <p class="flip__text">Tratamiento de la catarata secundaria y procedimientos láser para glaucoma.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -510,33 +568,15 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-ecografia.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/equipo-laser-pascal.webp" alt="Láser Pascal" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">Sonomed Escalon</h3>
+                <span class="card__label card__label--front">Sala de láser</span>
+                <h3 class="card__title">Láser Pascal</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Diagnóstico</span>
-              <h3 class="flip__title">Sonomed Escalon</h3>
-              <p class="flip__text">Ecografía ocular para explorar el interior del ojo.</p>
-              <div class="flip__actions">
-                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
-                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="card card--wide card--reveal card--compact card--flip">
-          <div class="flip__inner">
-            <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-laser-pascal.webp" alt="" loading="lazy" decoding="async">
-              <div class="card__foot">
-                <h3 class="card__title">Láser Pascal 577 (Iridex)</h3>
-              </div>
-            </div>
-            <div class="flip__back">
-              <span class="card__label">Tratamiento</span>
-              <h3 class="flip__title">Láser Pascal 577 (Iridex)</h3>
+              <span class="card__label">Sala de láser</span>
+              <h3 class="flip__title">Láser Pascal</h3>
               <p class="flip__text">Tratamiento de precisión para enfermedades de la retina.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
@@ -548,15 +588,36 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
         <article class="card card--wide card--reveal card--compact card--flip">
           <div class="flip__inner">
             <div class="flip__front">
-              <img class="card__media" src="assets/img/photos/equipo-visi-laser.webp" alt="" loading="lazy" decoding="async">
+              <img class="card__media" src="assets/img/photos/area-quirofano.webp" alt="DORC (Faco)" loading="lazy" decoding="async">
               <div class="card__foot">
-                <h3 class="card__title">VISI Láser (Q-LAS A/c Laser)</h3>
+                <span class="card__label card__label--front">Quirófano</span>
+                <h3 class="card__title">DORC (Faco)</h3>
               </div>
             </div>
             <div class="flip__back">
-              <span class="card__label">Tratamiento</span>
-              <h3 class="flip__title">VISI Láser (Q-LAS A/c Laser)</h3>
-              <p class="flip__text">Procedimientos láser para catarata secundaria y glaucoma.</p>
+              <span class="card__label">Quirófano</span>
+              <h3 class="flip__title">DORC (Faco)</h3>
+              <p class="flip__text">Plataforma quirúrgica para facoemulsificación (cirugía de catarata) y cirugía de retina.</p>
+              <div class="flip__actions">
+                <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
+                <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card card--wide card--reveal card--compact card--flip">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img class="card__media" src="assets/img/photos/equipo-artevo-850.webp" alt="ARTEVO 850 con OCT" loading="lazy" decoding="async">
+              <div class="card__foot">
+                <span class="card__label card__label--front">Quirófano</span>
+                <h3 class="card__title">ARTEVO 850 con OCT</h3>
+              </div>
+            </div>
+            <div class="flip__back">
+              <span class="card__label">Quirófano</span>
+              <h3 class="flip__title">ARTEVO 850 con OCT</h3>
+              <p class="flip__text">Microscopio quirúrgico digital con OCT integrado: imagen en 3D durante la cirugía.</p>
               <div class="flip__actions">
                 <a class="btn btn--primary btn--sm" data-ondark="always" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
                 <button class="flip__close" type="button" data-flip aria-label="Volver a la foto">Volver</button>
@@ -589,7 +650,7 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
       <div class="cta-band" data-rev>
         <span class="cta-band__label">Revisa tu visión con nosotros</span>
         <h2 class="cta-band__title">Agenda tu cita</h2>
-        <p class="cta-band__text">Evaluación oftalmológica integral con nuestros especialistas. Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco (Cumbayá). Teléfono y horarios por confirmar.</p>
+        <p class="cta-band__text">Evaluación oftalmológica integral con nuestros especialistas. Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco (Cumbayá). Teléfono 099-952-2699 · lunes a viernes, 8h00 a 17h00.</p>
         <div class="cta-band__actions">
           <a class="btn btn--primary" data-ondark="theme" href="contactanos.html" data-whatsapp rel="noopener">Agendar cita <span aria-hidden="true">↗</span></a>
         </div>
@@ -656,13 +717,12 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
           <a href="contactanos.html" data-whatsapp rel="noopener">Agendar cita</a>
           <a href="contactanos.html" data-whatsapp rel="noopener">WhatsApp</a>
           <a href="consentimiento.html">Consentimiento de datos</a>
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
+          <a href="https://www.facebook.com/LarcoVision/" target="_blank" rel="noopener">Facebook</a>
         </div>
 
         <div class="footer__block">
           <div class="footer__col-title">Horario</div>
-          <p class="footer__address footer__address--muted">Horario de atención por confirmar</p>
+          <p class="footer__address footer__address--muted">Lunes a viernes, 8h00 a 17h00<br><a href="tel:+593999522699">099-952-2699</a><br><a href="mailto:larcoeyeclinic@gmail.com">larcoeyeclinic@gmail.com</a></p>
         </div>
       </div>
     </div>
@@ -680,6 +740,6 @@ var m=document.querySelector('meta[name="theme-color"]');if(m)m.content='#12110E
   <span class="wa-fab__label"><strong>¿Agendamos tu cita?</strong> Escríbenos por WhatsApp</span>
   <span class="wa-fab__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
 </a>
-<script src="assets/js/site.js?v=234" defer></script>
+<script src="assets/js/site.js?v=235" defer></script>
 </body>
 </html>

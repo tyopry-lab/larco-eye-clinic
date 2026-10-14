@@ -23,11 +23,11 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 234
+ASSET_VERSION = 235
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
-FORM_EMAIL = "tyopry@gmail.com"
+FORM_EMAIL = "larcoeyeclinic@gmail.com"
 SITE_URL = "https://tyopry-lab.github.io/larco-eye-clinic/"
 
 PAGES = [
@@ -37,7 +37,7 @@ PAGES = [
         "nav": "inicio",
         "title": "Larco Visión — 70 años cuidando tu visión",
         "description": "Clínica oftalmológica en Cumbayá, Quito. Tres generaciones de cirujanos "
-                       "oftalmólogos, tecnología ZEIZZ y atención personalizada en córnea, "
+                       "oftalmólogos, tecnología ZEISS y atención personalizada en córnea, "
                        "catarata, retina, glaucoma y cirugía refractiva.",
         "og_title": "Larco Visión — 70 años cuidando tu visión",
         "og_description": "Tres generaciones de cirujanos oftalmólogos en Quito. Tradición médica familiar "
