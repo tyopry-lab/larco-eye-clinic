@@ -2021,11 +2021,16 @@ body.js [data-rev].is-pending {
    encima), así que van al tamaño de un titular de sección. */
 .mv__label {
   display: block;
-  margin: 0 0 20px;
-  font-size: var(--text-h2);
-  line-height: 1.1;
-  color: var(--accent);
+  margin: 0 0 22px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.4vw, 76px);
+  font-weight: var(--weight-bold);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: none;
 }
+.mv__label--white { color: var(--text-body); }
+.mv__label--accent { color: var(--accent); }
 
 .mv__col p {
   margin: 0;
@@ -2584,7 +2589,7 @@ body:not(.lv-dark) .stats-band { background: #EEF2F7; }
 body:not(.lv-dark) .stats-band .figure__num { color: #3576B4; }
 
 /* Texto PEQUEÑO en acento usa el acento fuerte: 15 y 11px necesitan 4,5:1. */
-.topic__name, .mv__label { color: var(--accent-strong); }
+.topic__name { color: var(--accent-strong); }
 
 /* ---- Testimonios en vídeo: reels verticales (9:16), acotados en ancho para
    que tres quepan en fila sin ocupar media pantalla de alto. Controles
