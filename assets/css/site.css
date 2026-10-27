@@ -2516,6 +2516,12 @@ body.lv-dark main > section.section--alt:not(.section--dark):not(.section--night
   .section--mirror .topic__text { order: 0; text-align: left; margin-left: 0; }
 }
 
+/* ---- Instalaciones: carrusel de tres fichas a la vista (dos en tableta, una
+   en celular), con la misma altura que tenían en la cuadrícula. ---- */
+.carousel--3 .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap) * 2) / 3); }
+@media (max-width: 1100px) { .carousel--3 .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap)) / 2); } }
+@media (max-width: 640px)  { .carousel--3 .carousel__track > * { flex-basis: 100%; } }
+
 /* ---- Botón fijo "Inicio": abajo a la izquierda (WhatsApp ocupa la derecha),
    en todas las páginas menos la portada, donde no hace falta. ---- */
 .home-fab {
