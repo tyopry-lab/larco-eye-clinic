@@ -2017,13 +2017,13 @@ body.js [data-rev].is-pending {
   padding: clamp(8px, 2vw, 32px) clamp(16px, 7vw, 140px) 0;
 }
 
+/* "Misión" y "Visión" son el titular de cada columna (sin título general
+   encima), así que van al tamaño de un titular de sección. */
 .mv__label {
   display: block;
-  margin-bottom: 14px;
-  font-size: var(--text-label);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
+  margin: 0 0 20px;
+  font-size: var(--text-h2);
+  line-height: 1.1;
   color: var(--accent);
 }
 
@@ -2652,7 +2652,7 @@ body:not(.lv-dark) .stats-band .figure__num { color: #3576B4; }
 /* ---- Misión y Visión: el aire entre el titular y las columnas (2) igual al
    aire sobre el titular (1). ---- */
 #mision-vision .section-head { margin-bottom: 0; }
-#mision-vision .mv { padding-top: var(--space-section); }
+#mision-vision .mv { padding-top: 0; }
 
 /* ---- Pie de cada testimonio en una cajita de color pegada al vídeo, para que
    no se lea plano. En claro, papel-2 con el texto en marino (tokens). ---- */
