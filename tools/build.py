@@ -28,7 +28,7 @@ ASSET_VERSION = 240
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
 FORM_EMAIL = "larcoeyeclinic@gmail.com"
-SITE_URL = "https://tyopry-lab.github.io/larco-eye-clinic/"
+SITE_URL = "https://larcoeyeclinic.com/"
 
 PAGES = [
     {
