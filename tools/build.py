@@ -28,6 +28,8 @@ ASSET_VERSION = 246
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
 FORM_EMAIL = "larcoeyeclinic@gmail.com"
+# El consentimiento de datos de pacientes va a su propio buzón.
+FORM_EMAIL_DATOS = "protecciondatos@larcoeyeclinic.com"
 SITE_URL = "https://larcoeyeclinic.com/"
 
 PAGES = [
@@ -251,7 +253,8 @@ def render(page: str) -> str:
     head_html = mark_active(header, page["nav"]).rstrip("\n")
     head_html = head_html.replace("<body>", f'<body data-page="{page["slug"]}">', 1)
     out += head_html + "\n\n"
-    body = (body.replace("{{FORM_ACTION}}", f"https://formsubmit.co/{FORM_EMAIL}")
+    form_email = FORM_EMAIL_DATOS if page["slug"] == "consentimiento" else FORM_EMAIL
+    body = (body.replace("{{FORM_ACTION}}", f"https://formsubmit.co/{form_email}")
                 .replace("{{SITE_URL}}", SITE_URL))
     out += body.rstrip("\n") + "\n\n"
     out += footer.rstrip("\n") + "\n"
