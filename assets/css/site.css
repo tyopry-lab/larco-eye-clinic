@@ -1063,6 +1063,12 @@ body.lv-dark .section--dark { background: var(--surface-raised); }
 
 .footer__map-link:hover { color: var(--text-body); }
 
+/* Toda la imagen del mapa abre Google Maps; la tarjeta queda encima y la
+   chincheta no intercepta el toque. */
+.footer__map-hit { position: absolute; inset: 0; }
+.footer__map .map-pin { pointer-events: none; }
+.footer__map-card .footer__address a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
 @media (max-width: 560px) {
   .footer__map { height: 260px; }
   .footer__map-card { left: 10px; right: 10px; bottom: 10px; max-width: none; }
