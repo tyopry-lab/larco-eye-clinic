@@ -1119,6 +1119,21 @@ body.lv-dark .footer__brand .brand__logo--on-light { display: none; }
 .footer__links a { color: var(--text-muted); }
 .footer__links a:hover { color: var(--text-body); }
 
+/* Iconos de redes en el pie, bajo el lema de la marca. */
+.footer__social { display: flex; gap: 12px; margin-top: 20px; }
+.footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-hairline);
+  border-radius: 999px;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.footer__social a:hover, .footer__social a:focus-visible { color: var(--text-body); border-color: currentColor; transform: translateY(-2px); }
+
 .footer__block { margin-top: clamp(32px, 4vw, 56px); }
 
 .footer__address {

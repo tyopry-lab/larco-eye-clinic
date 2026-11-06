@@ -608,7 +608,9 @@
   /* Oscuro por defecto: es el aspecto aprobado por el cliente. El claro es la
      elección explícita del visitante y se recuerda. */
   applyDark(read(STORAGE_DARK) !== '0', false);
-  applyZoom(parseInt(read(STORAGE_ZOOM) || '0', 10) || 0, false);
+  /* Sin el botón «A» en el menú, se vuelve al 100% y se olvida el tamaño que
+     hubiera guardado un visitante, para que nadie quede con la letra ampliada. */
+  applyZoom(zoomToggle ? (parseInt(read(STORAGE_ZOOM) || '0', 10) || 0) : 0, !zoomToggle);
 
   if (darkToggle) {
     darkToggle.addEventListener('click', function () { applyDark(!isDark, true); });
