@@ -686,6 +686,10 @@
   color: var(--text-muted);
 }
 
+/* La dirección dentro del texto abre Google Maps (la app en el celular). */
+.cta-band__text a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.cta-band__text a:hover { color: var(--text-body); }
+
 .cta-band__actions {
   display: flex;
   justify-content: center;
