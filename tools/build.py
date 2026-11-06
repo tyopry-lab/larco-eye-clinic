@@ -23,7 +23,7 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 247
+ASSET_VERSION = 248
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
@@ -142,6 +142,7 @@ PAGES = [
     },
     {
         "slug": "gracias",
+        "robots": "noindex, follow",
         "content": "gracias",
         "nav": "contacto",
         "title": "Recibimos tu información — Larco Eye Clinic",
@@ -177,19 +178,23 @@ HEAD = """<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{description}">
 <meta name="theme-color" content="#F4F2ED">
-<!-- Preview para el cliente: contenido y fotografía son placeholders. Quitar esta
-     línea al publicar el sitio definitivo con el contenido real de la clínica. -->
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="{robots}">
+<link rel="canonical" href="{canonical}">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_EC">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{og_description}">
-<!-- TODO(dominio): og:image y og:url deben ser absolutos, y el card quiere un JPEG 1200x630 propio. -->
-<meta property="og:image" content="assets/img/photos/hero-ojo.webp">
+<meta property="og:site_name" content="Larco Eye Clinic">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{site}assets/img/og-larco-eye-clinic.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Edificio de Larco Eye Clinic en Cumbayá, Quito">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
-<link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+{jsonld}<link rel="preload" href="assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css?v={v}">
 <link rel="stylesheet" href="assets/css/tokens.css?v={v}">
 <link rel="stylesheet" href="assets/css/components.css?v={v}">
@@ -206,6 +211,25 @@ HEAD = """<!DOCTYPE html>
   }}
 </style></noscript>
 </head>
+"""
+
+# Datos estructurados para Google (ficha de la clínica). Se insertan en Inicio
+# y Contáctanos como valor de str.format, así que las llaves van simples.
+JSONLD = """<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalClinic","@id":"https://larcoeyeclinic.com/#clinica",
+"name":"Larco Eye Clinic","alternateName":"Nueva Clínica Doctores Larco",
+"description":"Clínica oftalmológica en Cumbayá, Quito: córnea, catarata, retina y vítreo, glaucoma, cirugía refractiva, óptica y exámenes de diagnóstico.",
+"url":"https://larcoeyeclinic.com/","logo":"https://larcoeyeclinic.com/assets/img/logo.svg",
+"image":"https://larcoeyeclinic.com/assets/img/og-larco-eye-clinic.jpg",
+"telephone":"+593999522699","email":"larcoeyeclinic@gmail.com",
+"address":{"@type":"PostalAddress","streetAddress":"Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco","addressLocality":"Cumbayá, Quito","addressRegion":"Pichincha","postalCode":"170157","addressCountry":"EC"},
+"geo":{"@type":"GeoCoordinates","latitude":-0.1997235,"longitude":-78.4377163},
+"hasMap":"https://www.google.com/maps/search/?api=1&query=LARCO%20Eye%20Clinic&query_place_id=ChIJx-hFJQCR1ZERc1__6dP2OqU",
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],
+"areaServed":["Quito","Cumbayá","Tumbaco","Ecuador"],
+"availableService":[{"@type":"MedicalProcedure","name":"Cirugía de catarata"},{"@type":"MedicalProcedure","name":"Cirugía refractiva"},{"@type":"MedicalProcedure","name":"Tratamiento de retina y vítreo"},{"@type":"MedicalProcedure","name":"Tratamiento de glaucoma"},{"@type":"MedicalProcedure","name":"Cirugía de córnea"}],
+"sameAs":["https://www.facebook.com/larcoeyeclinic/","https://www.instagram.com/larco.eyeclinic/","https://www.tiktok.com/@larcoeyeclinic"]}
+</script>
 """
 
 SCRIPTS = '<script src="assets/js/site.js?v={v}" defer></script>\n</body>\n</html>\n'
@@ -246,8 +270,11 @@ def render(page: str) -> str:
     footer = (PARTIALS / "footer.html").read_text(encoding="utf-8")
     body = (CONTENT / f"{page['content']}.content.html").read_text(encoding="utf-8")
 
-    out = HEAD.format(v=ASSET_VERSION, **{k: page[k] for k in
-                                          ("title", "description", "og_title", "og_description")})
+    url = SITE_URL if page["slug"] == "index" else f"{SITE_URL}{page['slug']}.html"
+    out = HEAD.format(v=ASSET_VERSION, site=SITE_URL, canonical=url,
+                      robots=page.get("robots", "index, follow, max-image-preview:large"),
+                      jsonld=JSONLD if page["slug"] in ("index", "contactanos") else "",
+                      **{k: page[k] for k in ("title", "description", "og_title", "og_description")})
     # El pie es el mismo en las seis páginas, pero alguna necesita apagarle una
     # fila (contactanos ya tiene su propio mapa). Sellar el slug en <body> deja
     # que eso se resuelva en CSS, sin partir el parcial en variantes.

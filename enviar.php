@@ -16,8 +16,56 @@
 declare(strict_types=1);
 date_default_timezone_set('America/Guayaquil');
 mb_internal_encoding('UTF-8');
+ini_set('display_errors', '0');          // nunca mostrar errores al visitante
+header_remove('X-Powered-By');            // no anunciar la versión de PHP
+header('X-Content-Type-Options: nosniff');
+header('Cache-Control: no-store');
+// Sin cabeceras CORS a propósito: solo las páginas del propio sitio pueden
+// usar este script desde el navegador.
 
 const REMITENTE = 'info@larcoeyeclinic.com';
+const HOSTS_PERMITIDOS = ['larcoeyeclinic.com', 'www.larcoeyeclinic.com'];
+// Límite de envíos por IP: ráfaga corta y tope diario.
+const LIMITE_10MIN = 5;
+const LIMITE_DIA   = 20;
+
+// Carpeta privada FUERA de public_html para el límite de envíos y el registro.
+$PRIVADO = dirname(__DIR__) . '/larco-forms';
+if (!is_dir($PRIVADO)) @mkdir($PRIVADO, 0700, true);
+
+/** Registra un evento sospechoso (sin datos personales del formulario). */
+function registrar(string $motivo): void
+{
+    global $PRIVADO;
+    $log = $PRIVADO . '/seguridad.log';
+    if (is_file($log) && filesize($log) > 1048576) @rename($log, $log . '.1'); // rota a 1 MB
+    $ua = substr(preg_replace('/[\r\n\t]+/', ' ', (string)($_SERVER['HTTP_USER_AGENT'] ?? '')), 0, 160);
+    @file_put_contents($log, sprintf("%s\t%s\t%s\t%s\n", date('c'), $_SERVER['REMOTE_ADDR'] ?? '-', $motivo, $ua), FILE_APPEND | LOCK_EX);
+}
+
+/** true si la IP superó el límite; si no, apunta este intento. */
+function excedeLimite(): bool
+{
+    global $PRIVADO;
+    $ip   = $_SERVER['REMOTE_ADDR'] ?? 'desconocida';
+    $file = $PRIVADO . '/rl-' . hash('sha256', $ip) . '.json';
+    $now  = time();
+    $fh   = @fopen($file, 'c+');
+    if (!$fh) return false; // si el disco falla, no bloquear a pacientes
+    flock($fh, LOCK_EX);
+    $marcas = json_decode((string)stream_get_contents($fh), true) ?: [];
+    $marcas = array_values(array_filter($marcas, fn($m) => is_int($m) && $m > $now - 86400));
+    $recientes = count(array_filter($marcas, fn($m) => $m > $now - 600));
+    $excede = $recientes >= LIMITE_10MIN || count($marcas) >= LIMITE_DIA;
+    if (!$excede) $marcas[] = $now;
+    ftruncate($fh, 0); rewind($fh); fwrite($fh, json_encode($marcas));
+    flock($fh, LOCK_UN); fclose($fh);
+    // limpieza ocasional de archivos de IPs viejas
+    if (random_int(1, 50) === 1) {
+        foreach (glob($PRIVADO . '/rl-*.json') ?: [] as $f) if (filemtime($f) < $now - 86400) @unlink($f);
+    }
+    return $excede;
+}
 
 $FORMULARIOS = [
     'contacto' => [
@@ -81,13 +129,36 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     exit('Método no permitido.');
 }
 
+// Protección CSRF: el envío tiene que venir de una página del propio sitio.
+// Los navegadores mandan Origin en todo POST; si falta, se mira Referer.
+$origen = $_SERVER['HTTP_ORIGIN'] ?? ($_SERVER['HTTP_REFERER'] ?? '');
+$hostOrigen = strtolower((string)parse_url($origen, PHP_URL_HOST));
+if (!in_array($hostOrigen, HOSTS_PERMITIDOS, true)) {
+    registrar('origen no permitido: ' . substr($origen, 0, 100));
+    responder(false, 'Envío no permitido.');
+}
+
+// Tamaño razonable: ningún formulario del sitio pasa de unos pocos KB.
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 20000) {
+    registrar('petición demasiado grande');
+    responder(false, 'El mensaje es demasiado largo.');
+}
+
 // Trampa para robots: un campo oculto que una persona nunca llena.
 if (trim((string)($_POST['_honey'] ?? '')) !== '') {
+    registrar('trampa para robots');
     responder(true); // se finge éxito y no se envía nada
+}
+
+if (excedeLimite()) {
+    registrar('límite de envíos superado');
+    header('Retry-After: 600');
+    responder(false, 'Has enviado varios mensajes seguidos. Espera unos minutos o escríbenos por WhatsApp.');
 }
 
 $clave = (string)($_POST['_form'] ?? '');
 if (!isset($FORMULARIOS[$clave])) {
+    registrar('formulario desconocido');
     responder(false, 'Formulario no reconocido.');
 }
 $form = $FORMULARIOS[$clave];
@@ -108,6 +179,7 @@ foreach ($form['campos'] as $campo => [$etiqueta, $obligatorio, $max]) {
 
 $correo = $datos['email'][1];
 if (!filter_var($correo, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $correo)) {
+    registrar('correo inválido o con saltos de línea');
     responder(false, 'El correo electrónico no es válido.');
 }
 
@@ -160,6 +232,7 @@ $enviado = mail(
     '-f' . REMITENTE
 );
 
+if (!$enviado) registrar('mail() falló');
 $enviado
     ? responder(true)
     : responder(false, 'No se pudo enviar el mensaje en este momento. Inténtalo de nuevo o escríbenos por WhatsApp.');

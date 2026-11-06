@@ -1,0 +1,4 @@
+Contact: mailto:tics@larcoeyeclinic.com
+Expires: 2027-11-06T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://larcoeyeclinic.com/.well-known/security.txt

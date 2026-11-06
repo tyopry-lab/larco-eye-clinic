@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /enviar.php
+Disallow: /gracias.html
+
+Sitemap: https://larcoeyeclinic.com/sitemap.xml
