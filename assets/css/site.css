@@ -2545,6 +2545,20 @@ body.lv-dark main > section.section--alt:not(.section--dark):not(.section--night
 @media (max-width: 1100px) { .carousel--3 .carousel__track > * { flex-basis: calc((100% - var(--carousel-gap)) / 2); } }
 @media (max-width: 640px)  { .carousel--3 .carousel__track > * { flex-basis: 100%; } }
 
+/* ---- Instalaciones: las cinco áreas en cuadrícula fija (3 + 2 centradas en
+   computadora, 2 por fila en tableta, 1 en celular), con la altura de las
+   fichas del carrusel. ---- */
+.areas-grid {
+  --areas-gap: clamp(14px, 1.6vw, 24px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--areas-gap);
+}
+.areas-grid > * { flex: 0 0 calc((100% - var(--areas-gap) * 2) / 3); min-width: 0; }
+@media (max-width: 1100px) { .areas-grid > * { flex-basis: calc((100% - var(--areas-gap)) / 2); } }
+@media (max-width: 640px)  { .areas-grid > * { flex-basis: 100%; } }
+
 /* ---- Botón fijo "Inicio": abajo a la izquierda (WhatsApp ocupa la derecha),
    en todas las páginas menos la portada, donde no hace falta. ---- */
 .home-fab {
