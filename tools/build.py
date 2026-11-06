@@ -23,7 +23,7 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 242
+ASSET_VERSION = 243
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
@@ -35,11 +35,11 @@ PAGES = [
         "slug": "index",
         "content": "inicio",
         "nav": "inicio",
-        "title": "Larco Visión — 70 años cuidando tu visión",
+        "title": "Larco Eye Clinic — 70 años cuidando tu visión",
         "description": "Clínica oftalmológica en Cumbayá, Quito. Tres generaciones de cirujanos "
                        "oftalmólogos, tecnología ZEISS y atención personalizada en córnea, "
                        "catarata, retina, glaucoma y cirugía refractiva.",
-        "og_title": "Larco Visión — 70 años cuidando tu visión",
+        "og_title": "Larco Eye Clinic — 70 años cuidando tu visión",
         "og_description": "Tres generaciones de cirujanos oftalmólogos en Quito. Tradición médica familiar "
                           "con diagnóstico y quirófano de última generación.",
     },
@@ -47,10 +47,10 @@ PAGES = [
         "slug": "sobre-nosotros",
         "content": "sobre-nosotros",
         "nav": "sobre",
-        "title": "Sobre Nosotros — Larco Visión",
+        "title": "Sobre Nosotros — Larco Eye Clinic",
         "description": "Un legado que recorre tres generaciones de cirujanos oftalmólogos, desde "
                        "el primer consultorio en Ibarra en 1950 hasta la clínica de hoy en Quito.",
-        "og_title": "Sobre Nosotros — Larco Visión",
+        "og_title": "Sobre Nosotros — Larco Eye Clinic",
         "og_description": "Un legado que recorre tres generaciones: nuestra historia, nuestro "
                           "equipo y las instalaciones de la clínica.",
     },
@@ -58,10 +58,10 @@ PAGES = [
         "slug": "consultas-examenes",
         "content": "consultas-examenes",
         "nav": "servicios",
-        "title": "Consultas y Exámenes — Larco Visión",
+        "title": "Consultas y Exámenes — Larco Eye Clinic",
         "description": "La consulta oftalmológica y los quince exámenes de diagnóstico con que "
                        "confirmamos cada diagnóstico: Pentacam, OCT, Angio-OCT, campimetría y más.",
-        "og_title": "Consultas y Exámenes — Larco Visión",
+        "og_title": "Consultas y Exámenes — Larco Eye Clinic",
         "og_description": "El primer paso hacia una mejor visión: consulta integral y diagnóstico "
                           "de alta precisión.",
     },
@@ -69,10 +69,10 @@ PAGES = [
         "slug": "especialidades",
         "content": "especialidades",
         "nav": "servicios",
-        "title": "Especialidades — Larco Visión",
+        "title": "Especialidades — Larco Eye Clinic",
         "description": "Córnea, catarata, retina y vítreo, glaucoma y cirugía refractiva: en qué "
                        "consiste cada condición y cómo la tratamos.",
-        "og_title": "Especialidades — Larco Visión",
+        "og_title": "Especialidades — Larco Eye Clinic",
         "og_description": "Atención oftalmológica especializada en córnea, catarata, retina, "
                           "glaucoma y cirugía refractiva.",
     },
@@ -80,10 +80,10 @@ PAGES = [
         "slug": "casos-clinicos",
         "content": "casos-clinicos",
         "nav": "casos",
-        "title": "Casos Clínicos — Larco Visión",
+        "title": "Casos Clínicos — Larco Eye Clinic",
         "description": "Casos reales analizados por nuestros especialistas, del diagnóstico al "
                        "resultado, y los testimonios de quienes ya pasaron por la clínica.",
-        "og_title": "Casos Clínicos — Larco Visión",
+        "og_title": "Casos Clínicos — Larco Eye Clinic",
         "og_description": "Casos reales analizados por nuestros especialistas. Del diagnóstico al "
                           "resultado.",
     },
@@ -91,77 +91,77 @@ PAGES = [
         "slug": "contactanos",
         "content": "contactanos",
         "nav": "contacto",
-        "title": "Contáctanos — Larco Visión",
+        "title": "Contáctanos — Larco Eye Clinic",
         "description": "Agenda tu cita con nuestro equipo. Dirección, teléfono, WhatsApp, correo "
                        "y horarios de atención de la clínica en Cumbayá, Quito.",
-        "og_title": "Contáctanos — Larco Visión",
+        "og_title": "Contáctanos — Larco Eye Clinic",
         "og_description": "Estamos para atenderte. Agenda tu cita con nuestro equipo.",
     },
     {
         "slug": "dr-marcelo-larco",
         "content": "dr-marcelo-larco",
         "nav": "sobre",
-        "title": "Dr. Marcelo Larco — Larco Visión",
+        "title": "Dr. Marcelo Larco — Larco Eye Clinic",
         "description": "Dr. Marcelo Larco, cirujano oftalmólogo especialista en córnea, catarata "
                        "y cirugía refractiva. Formación, trayectoria y publicaciones.",
-        "og_title": "Dr. Marcelo Larco — Larco Visión",
+        "og_title": "Dr. Marcelo Larco — Larco Eye Clinic",
         "og_description": "Cirujano oftalmólogo · córnea, catarata y cirugía refractiva.",
     },
     {
         "slug": "dr-roberto-larco",
         "content": "dr-roberto-larco",
         "nav": "sobre",
-        "title": "Dr. Roberto Larco — Larco Visión",
+        "title": "Dr. Roberto Larco — Larco Eye Clinic",
         "description": "Dr. Roberto Larco, cirujano oftalmólogo especialista en retina, mácula y "
                        "vítreo, con formación en Brasil.",
-        "og_title": "Dr. Roberto Larco — Larco Visión",
+        "og_title": "Dr. Roberto Larco — Larco Eye Clinic",
         "og_description": "Cirujano oftalmólogo · retina, mácula y vítreo.",
     },
     {
         "slug": "consentimiento",
         "content": "consentimiento",
         "nav": "contacto",
-        "title": "Consentimiento de datos — Larco Visión",
+        "title": "Consentimiento de datos — Larco Eye Clinic",
         "description": "Acepta la política de tratamiento de datos personales de pacientes de "
                        "Larco Eye Clinic.",
-        "og_title": "Consentimiento de datos — Larco Visión",
+        "og_title": "Consentimiento de datos — Larco Eye Clinic",
         "og_description": "Aceptar políticas de tratamiento de datos de pacientes.",
     },
     {
         "slug": "politica-privacidad",
         "content": "politica-privacidad",
         "nav": "contacto",
-        "title": "Política de tratamiento de datos — Larco Visión",
+        "title": "Política de tratamiento de datos — Larco Eye Clinic",
         "description": "Cómo Larco Eye Clinic recoge, usa y protege los datos personales de "
                        "sus pacientes.",
-        "og_title": "Política de tratamiento de datos — Larco Visión",
+        "og_title": "Política de tratamiento de datos — Larco Eye Clinic",
         "og_description": "Cómo protegemos los datos personales de nuestros pacientes.",
     },
     {
         "slug": "gracias",
         "content": "gracias",
         "nav": "contacto",
-        "title": "Recibimos tu información — Larco Visión",
+        "title": "Recibimos tu información — Larco Eye Clinic",
         "description": "Confirmación de envío.",
-        "og_title": "Recibimos tu información — Larco Visión",
+        "og_title": "Recibimos tu información — Larco Eye Clinic",
         "og_description": "Confirmación de envío.",
     },
     {
         "slug": "dra-maria-gabriela-larco",
         "content": "dra-maria-gabriela-larco",
         "nav": "sobre",
-        "title": "Dra. María Gabriela Larco — Larco Visión",
+        "title": "Dra. María Gabriela Larco — Larco Eye Clinic",
         "description": "Dra. María Gabriela Larco, cirujana oftalmóloga.",
-        "og_title": "Dra. María Gabriela Larco — Larco Visión",
+        "og_title": "Dra. María Gabriela Larco — Larco Eye Clinic",
         "og_description": "Cirujana oftalmóloga.",
     },
     {
         "slug": "dr-jose-alvarez",
         "content": "dr-jose-alvarez",
         "nav": "sobre",
-        "title": "Dr. José Álvarez Hermosa — Larco Visión",
+        "title": "Dr. José Álvarez Hermosa — Larco Eye Clinic",
         "description": "Dr. José Álvarez Hermosa, cirugía plástica ocular.",
-        "og_title": "Dr. José Álvarez Hermosa — Larco Visión",
+        "og_title": "Dr. José Álvarez Hermosa — Larco Eye Clinic",
         "og_description": "Oftalmólogo, cirugía plástica ocular.",
     },
 ]

@@ -2559,6 +2559,39 @@ body[data-page="index"] .home-fab, body.nav-open .home-fab { display: none; }
   .home-fab__label { display: none; }
 }
 
+/* ---- Botón "subir": aparece al bajar por la página y vuelve al encabezado.
+   Va encima del botón Inicio; en la portada (sin Inicio) ocupa su lugar. ---- */
+.top-fab {
+  position: fixed;
+  bottom: 92px;
+  left: 28px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #1F2A44;
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, .85);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-fast), background var(--dur-fast) var(--ease-out);
+}
+.top-fab.is-visible { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.top-fab:hover, .top-fab:focus-visible { background: #2C3B5E; }
+.top-fab:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+body[data-page="index"] .top-fab { bottom: 28px; }
+body.nav-open .top-fab { display: none; }
+.site-header[tabindex="-1"]:focus { outline: none; }
+@media (max-width: 600px) {
+  .top-fab { bottom: 84px; left: 16px; }
+  body[data-page="index"] .top-fab { bottom: 20px; }
+}
+
 /* ---- Especialidades: un solo "Agendar cita" al final de cada sección, del
    lado del titular (a la derecha en las secciones espejo). ---- */
 .topics__cta { margin-top: clamp(32px, 4vw, 56px); display: flex; justify-content: flex-start; }

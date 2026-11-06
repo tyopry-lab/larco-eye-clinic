@@ -625,6 +625,23 @@
 
   window.addEventListener('load', sweepReveals);
 
+  /* Botón "subir": visible tras bajar un poco más de una pantalla; vuelve al
+     encabezado y deja el foco en él para teclado y lectores de pantalla. */
+  var topFab = document.querySelector('.top-fab');
+  if (topFab) {
+    var syncTopFab = function () {
+      topFab.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', syncTopFab, { passive: true });
+    syncTopFab();
+    topFab.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      var header = document.querySelector('.site-header');
+      if (header) { header.setAttribute('tabindex', '-1'); header.focus({ preventScroll: true }); }
+    });
+  }
+
   /* Sin portada fotográfica, el header tiene que seguir al tema (CSS). */
   if (document.querySelector('main > section:first-child.section--first')) body.classList.add('no-hero');
   syncHeader();
