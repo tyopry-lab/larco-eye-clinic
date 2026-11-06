@@ -1119,7 +1119,8 @@ body.lv-dark .footer__brand .brand__logo--on-light { display: none; }
 .footer__links a { color: var(--text-muted); }
 .footer__links a:hover { color: var(--text-body); }
 
-/* Iconos de redes en el pie, bajo el lema de la marca. */
+/* Iconos de redes en el pie, bajo el lema: logos oficiales a color (Simple
+   Icons, CC0) sobre círculo blanco para que se vean en el pie oscuro. */
 .footer__social { display: flex; gap: 12px; margin-top: 20px; }
 .footer__social a {
   display: inline-flex;
@@ -1127,12 +1128,13 @@ body.lv-dark .footer__brand .brand__logo--on-light { display: none; }
   justify-content: center;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--border-hairline);
   border-radius: 999px;
-  color: var(--text-muted);
-  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
-.footer__social a:hover, .footer__social a:focus-visible { color: var(--text-body); border-color: currentColor; transform: translateY(-2px); }
+.footer__social a:hover, .footer__social a:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0, 0, 0, .26); }
+.footer__social a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
 .footer__block { margin-top: clamp(32px, 4vw, 56px); }
 
