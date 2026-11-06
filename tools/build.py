@@ -27,7 +27,8 @@ ASSET_VERSION = 246
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
-FORM_EMAIL = "larcoeyeclinic@gmail.com"
+# Los mensajes de Contáctanos van al buzón de citas de la clínica.
+FORM_EMAIL = "citas@larcoeyeclinic.com"
 # El consentimiento de datos de pacientes va a su propio buzón.
 FORM_EMAIL_DATOS = "protecciondatos@larcoeyeclinic.com"
 SITE_URL = "https://larcoeyeclinic.com/"
