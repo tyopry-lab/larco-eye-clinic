@@ -899,3 +899,29 @@
 .hero-slides img.is-active { opacity: 1; }
 
 .head-split--sub { margin-top: clamp(48px, 7vh, 88px); }
+
+/* ---- Envío de formularios: estado y mensaje «Mensaje enviado» ---- */
+.form [type="submit"][disabled] { opacity: .6; cursor: progress; }
+.form-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: var(--radius-card);
+  font-size: var(--text-body-size);
+  line-height: 1.5;
+}
+.form-status[hidden] { display: none; }
+.form-status--error { border: 1px solid #E5484D; color: var(--text-body); }
+.form-sent {
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+.form-sent__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 999px;
+  background: #1F9D55; color: #FFFFFF; margin-bottom: 16px;
+}
+.form-sent__title { margin: 0; font-size: var(--text-h3, 1.5rem); color: var(--text-body); }
+.form-sent__text { margin: 10px auto 0; max-width: 46ch; color: var(--text-muted); }

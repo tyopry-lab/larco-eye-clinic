@@ -627,6 +627,47 @@
 
   window.addEventListener('load', sweepReveals);
 
+  /* Formularios (Contáctanos y consentimiento): se envían sin salir de la
+     página y, si todo va bien, el formulario se cambia por «Mensaje enviado».
+     Sin JavaScript siguen funcionando: enviar.php redirige a gracias.html. */
+  document.querySelectorAll('form[data-ajax-form]').forEach(function (form) {
+    var button = form.querySelector('[type="submit"]');
+    var label = button ? button.textContent : '';
+    var status = document.createElement('p');
+    status.className = 'form-status form-status--error';
+    status.setAttribute('role', 'alert');
+    status.hidden = true;
+    (form.querySelector('.form__actions') || form).before(status);
+
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch || !window.FormData) return; // envío normal
+      e.preventDefault();
+      status.hidden = true;
+      if (button) { button.disabled = true; button.textContent = 'Enviando…'; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (!res || !res.ok) throw new Error((res && res.error) || '');
+          var done = document.createElement('div');
+          done.className = 'form-sent';
+          done.setAttribute('role', 'status');
+          done.setAttribute('tabindex', '-1');
+          done.innerHTML = '<span class="form-sent__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>' +
+            '<h3 class="form-sent__title">Mensaje enviado</h3>' +
+            '<p class="form-sent__text">Gracias. Recibimos tu información y la clínica se pondrá en contacto contigo.</p>';
+          form.replaceWith(done);
+          done.focus({ preventScroll: true });
+          done.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        })
+        .catch(function (err) {
+          status.textContent = (err && err.message) ||
+            'No se pudo enviar el mensaje. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp.';
+          status.hidden = false;
+          if (button) { button.disabled = false; button.textContent = label; }
+        });
+    });
+  });
+
   /* Botón "subir": visible tras bajar un poco más de una pantalla; vuelve al
      encabezado y deja el foco en él para teclado y lectores de pantalla. */
   var topFab = document.querySelector('.top-fab');

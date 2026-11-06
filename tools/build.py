@@ -23,7 +23,7 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 246
+ASSET_VERSION = 247
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
@@ -254,8 +254,10 @@ def render(page: str) -> str:
     head_html = mark_active(header, page["nav"]).rstrip("\n")
     head_html = head_html.replace("<body>", f'<body data-page="{page["slug"]}">', 1)
     out += head_html + "\n\n"
-    form_email = FORM_EMAIL_DATOS if page["slug"] == "consentimiento" else FORM_EMAIL
-    body = (body.replace("{{FORM_ACTION}}", f"https://formsubmit.co/{form_email}")
+    # Los formularios se envían desde el propio hosting (enviar.php), que
+    # elige el buzón según el campo _form: contacto → FORM_EMAIL,
+    # consentimiento → FORM_EMAIL_DATOS.
+    body = (body.replace("{{FORM_ACTION}}", "enviar.php")
                 .replace("{{SITE_URL}}", SITE_URL))
     out += body.rstrip("\n") + "\n\n"
     out += footer.rstrip("\n") + "\n"

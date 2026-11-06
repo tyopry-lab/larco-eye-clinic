@@ -16,10 +16,8 @@
       </div>
 
       <div class="split" data-rev>
-        <form class="form" action="{{FORM_ACTION}}" method="POST">
-          <input type="hidden" name="_subject" value="Mensaje desde el sitio — Larco Eye Clinic">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="{{SITE_URL}}gracias.html">
+        <form class="form" action="{{FORM_ACTION}}" method="POST" data-ajax-form>
+          <input type="hidden" name="_form" value="contacto">
           <input type="text" name="_honey" class="u-visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field">
             <label class="field__label" for="nombre">Nombre</label>
