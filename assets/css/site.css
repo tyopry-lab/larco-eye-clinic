@@ -649,6 +649,12 @@ body.lv-dark .section--dark { background: var(--surface-raised); }
   font-size: var(--text-h2);
   color: var(--text-body);
 }
+/* Contáctanos no tiene portada: su primer titular de sección es el <h1> de la
+   página, pero tiene que verse igual que los <h2> de sección. */
+h1.section__title {
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-heading);
+}
 
 /* Heading left, action right */
 /* El titular de sección pasó a 46px y con 48px por debajo quedaba pegado a su

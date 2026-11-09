@@ -23,7 +23,7 @@ PARTIALS = ROOT / "_partials"
 CONTENT = ROOT / "pages"
 
 # Subir esto invalida la caché de los navegadores en css y js a la vez.
-ASSET_VERSION = 249
+ASSET_VERSION = 250
 
 # Correo que recibe los formularios (consentimiento y contacto) vía FormSubmit.
 # Cambiarlo aquí y volver a correr el build actualiza todos los formularios.
@@ -38,7 +38,7 @@ PAGES = [
         "slug": "index",
         "content": "inicio",
         "nav": "inicio",
-        "title": "Larco Eye Clinic — 70 años cuidando tu visión",
+        "title": "Clínica oftalmológica en Cumbayá, Quito | Larco Eye Clinic",
         "description": "Clínica oftalmológica en Cumbayá, Quito. Tres generaciones de cirujanos "
                        "oftalmólogos, tecnología ZEISS y atención personalizada en córnea, "
                        "catarata, retina, glaucoma y cirugía refractiva.",
@@ -50,7 +50,7 @@ PAGES = [
         "slug": "sobre-nosotros",
         "content": "sobre-nosotros",
         "nav": "sobre",
-        "title": "Sobre Nosotros — Larco Eye Clinic",
+        "title": "Oftalmólogos en Quito: historia y equipo | Larco Eye Clinic",
         "description": "Un legado que recorre tres generaciones de cirujanos oftalmólogos, desde "
                        "el primer consultorio en Ibarra en 1950 hasta la clínica de hoy en Quito.",
         "og_title": "Sobre Nosotros — Larco Eye Clinic",
@@ -61,7 +61,7 @@ PAGES = [
         "slug": "consultas-examenes",
         "content": "consultas-examenes",
         "nav": "servicios",
-        "title": "Consultas y Exámenes — Larco Eye Clinic",
+        "title": "Consulta y exámenes oftalmológicos en Quito | Larco Eye Clinic",
         "description": "La consulta oftalmológica y los quince exámenes de diagnóstico con que "
                        "confirmamos cada diagnóstico: Pentacam, OCT, Angio-OCT, campimetría y más.",
         "og_title": "Consultas y Exámenes — Larco Eye Clinic",
@@ -72,7 +72,7 @@ PAGES = [
         "slug": "especialidades",
         "content": "especialidades",
         "nav": "servicios",
-        "title": "Especialidades — Larco Eye Clinic",
+        "title": "Cirugía de catarata, retina y glaucoma en Quito | Larco Eye Clinic",
         "description": "Córnea, catarata, retina y vítreo, glaucoma y cirugía refractiva: en qué "
                        "consiste cada condición y cómo la tratamos.",
         "og_title": "Especialidades — Larco Eye Clinic",
@@ -83,7 +83,7 @@ PAGES = [
         "slug": "casos-clinicos",
         "content": "casos-clinicos",
         "nav": "casos",
-        "title": "Casos Clínicos — Larco Eye Clinic",
+        "title": "Casos clínicos y testimonios de pacientes | Larco Eye Clinic",
         "description": "Casos reales analizados por nuestros especialistas, del diagnóstico al "
                        "resultado, y los testimonios de quienes ya pasaron por la clínica.",
         "og_title": "Casos Clínicos — Larco Eye Clinic",
@@ -94,7 +94,7 @@ PAGES = [
         "slug": "contactanos",
         "content": "contactanos",
         "nav": "contacto",
-        "title": "Contáctanos — Larco Eye Clinic",
+        "title": "Citas y contacto: oftalmólogo en Cumbayá, Quito | Larco Eye Clinic",
         "description": "Agenda tu cita con nuestro equipo. Dirección, teléfono, WhatsApp, correo "
                        "y horarios de atención de la clínica en Cumbayá, Quito.",
         "og_title": "Contáctanos — Larco Eye Clinic",
@@ -102,9 +102,10 @@ PAGES = [
     },
     {
         "slug": "dr-marcelo-larco",
+        "physician": ("Cirujano oftalmólogo, especialista en córnea, catarata y cirugía refractiva", "dr-marcelo-larco-4.webp", ['Córnea', 'Catarata', 'Cirugía refractiva', 'Queratocono']),
         "content": "dr-marcelo-larco",
         "nav": "sobre",
-        "title": "Dr. Marcelo Larco — Larco Eye Clinic",
+        "title": "Dr. Marcelo Larco, oftalmólogo en Quito | Larco Eye Clinic",
         "description": "Dr. Marcelo Larco, cirujano oftalmólogo especialista en córnea, catarata "
                        "y cirugía refractiva. Formación, trayectoria y publicaciones.",
         "og_title": "Dr. Marcelo Larco — Larco Eye Clinic",
@@ -112,9 +113,10 @@ PAGES = [
     },
     {
         "slug": "dr-roberto-larco",
+        "physician": ("Cirujano oftalmólogo, especialista en retina, mácula y vítreo", "dr-roberto-larco-4.webp", ['Retina', 'Mácula', 'Vítreo', 'Degeneración macular']),
         "content": "dr-roberto-larco",
         "nav": "sobre",
-        "title": "Dr. Roberto Larco — Larco Eye Clinic",
+        "title": "Dr. Roberto Larco, especialista en retina en Quito | Larco Eye Clinic",
         "description": "Dr. Roberto Larco, cirujano oftalmólogo especialista en retina, mácula y "
                        "vítreo, con formación en Brasil.",
         "og_title": "Dr. Roberto Larco — Larco Eye Clinic",
@@ -122,6 +124,7 @@ PAGES = [
     },
     {
         "slug": "consentimiento",
+        "robots": "noindex, follow",
         "content": "consentimiento",
         "nav": "contacto",
         "title": "Consentimiento de datos — Larco Eye Clinic",
@@ -152,19 +155,23 @@ PAGES = [
     },
     {
         "slug": "dra-maria-gabriela-larco",
+        "physician": ("Cirujana oftalmóloga", "dra-gabriela-larco.webp", ['Oftalmología', 'Segmento posterior']),
         "content": "dra-maria-gabriela-larco",
         "nav": "sobre",
-        "title": "Dra. María Gabriela Larco — Larco Eye Clinic",
-        "description": "Dra. María Gabriela Larco, cirujana oftalmóloga.",
+        "title": "Dra. María Gabriela Larco, oftalmóloga en Quito | Larco Eye Clinic",
+        "description": "Dra. María Gabriela Larco, cirujana oftalmóloga formada en Buenos Aires, con máster "
+                       "en patología y cirugía del segmento posterior (Barraquer). Atiende en Cumbayá, Quito.",
         "og_title": "Dra. María Gabriela Larco — Larco Eye Clinic",
         "og_description": "Cirujana oftalmóloga.",
     },
     {
         "slug": "dr-jose-alvarez",
+        "physician": ("Oftalmólogo, subespecialista en cirugía plástica ocular", "dr-jose-alvarez.webp", ['Cirugía plástica ocular', 'Párpados', 'Órbita', 'Vías lagrimales']),
         "content": "dr-jose-alvarez",
         "nav": "sobre",
-        "title": "Dr. José Álvarez Hermosa — Larco Eye Clinic",
-        "description": "Dr. José Álvarez Hermosa, cirugía plástica ocular.",
+        "title": "Dr. José Álvarez Hermosa, oculoplástica en Quito | Larco Eye Clinic",
+        "description": "Dr. José Álvarez Hermosa, oftalmólogo subespecialista en cirugía plástica ocular: "
+                       "párpados, órbita y vías lagrimales. Formación en la UNAM. Atiende en Cumbayá, Quito.",
         "og_title": "Dr. José Álvarez Hermosa — Larco Eye Clinic",
         "og_description": "Oftalmólogo, cirugía plástica ocular.",
     },
@@ -232,6 +239,30 @@ JSONLD = """<script type="application/ld+json">
 </script>
 """
 
+def physician_jsonld(page: dict) -> str:
+    """Ficha `Physician` para Google en la página de cada doctor."""
+    import json
+    spec, img, about = page["physician"]
+    name = page["title"].split(",")[0]
+    data = {
+        "@context": "https://schema.org", "@type": "Physician",
+        "@id": f"{SITE_URL}{page['slug']}.html#medico",
+        "name": name, "description": spec,
+        "url": f"{SITE_URL}{page['slug']}.html",
+        "image": f"{SITE_URL}assets/img/photos/{img}",
+        "knowsAbout": about,
+        "telephone": "+593999522699",
+        "address": {"@type": "PostalAddress",
+                    "streetAddress": "Av. Oswaldo Guayasamín y Calle 1, Urbanización Santa Lucía Baja, junto al Paseo San Francisco",
+                    "addressLocality": "Cumbayá, Quito", "addressRegion": "Pichincha",
+                    "postalCode": "170157", "addressCountry": "EC"},
+        "hospitalAffiliation": {"@type": "MedicalClinic", "@id": f"{SITE_URL}#clinica",
+                                "name": "Larco Eye Clinic", "url": SITE_URL},
+    }
+    return ('<script type="application/ld+json">\n'
+            + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n</script>\n")
+
+
 SCRIPTS = '<script src="assets/js/site.js?v={v}" defer></script>\n</body>\n</html>\n'
 
 
@@ -273,7 +304,8 @@ def render(page: str) -> str:
     url = SITE_URL if page["slug"] == "index" else f"{SITE_URL}{page['slug']}.html"
     out = HEAD.format(v=ASSET_VERSION, site=SITE_URL, canonical=url,
                       robots=page.get("robots", "index, follow, max-image-preview:large"),
-                      jsonld=JSONLD if page["slug"] in ("index", "contactanos") else "",
+                      jsonld=(JSONLD if page["slug"] in ("index", "contactanos")
+                              else physician_jsonld(page) if "physician" in page else ""),
                       **{k: page[k] for k in ("title", "description", "og_title", "og_description")})
     # El pie es el mismo en las seis páginas, pero alguna necesita apagarle una
     # fila (contactanos ya tiene su propio mapa). Sellar el slug en <body> deja
