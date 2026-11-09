@@ -71,6 +71,16 @@
   function startHeroVideo() {
     var v = document.querySelector('.hero__video');
     if (!v || reduceMotion) return;
+    // Con ahorro de datos o conexión lenta queda la foto fija: el video pesa
+    // más que todo el resto de la página junto.
+    var c = navigator.connection;
+    if (c && (c.saveData || /(^|-)(2g|3g)$/.test(c.effectiveType || ''))) return;
+    // Que no le quite ancho de banda a la foto, las fuentes y el CSS: el
+    // video empieza a bajar recién cuando la página terminó de cargar.
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', startHeroVideo, { once: true });
+      return;
+    }
     var small = window.matchMedia('(max-width: 900px)').matches;
     v.src = small ? v.getAttribute('data-src-sm') : v.getAttribute('data-src-lg');
     v.autoplay = true;
