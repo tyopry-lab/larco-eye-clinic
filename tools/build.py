@@ -40,7 +40,7 @@ PAGES = [
         "nav": "inicio",
         "title": "Clínica oftalmológica en Cumbayá, Quito | Larco Eye Clinic",
         "description": "Clínica oftalmológica en Cumbayá, Quito. Tres generaciones de cirujanos "
-                       "oftalmólogos, tecnología ZEIZZ y atención personalizada en córnea, "
+                       "oftalmólogos, tecnología ZEISS y atención personalizada en córnea, "
                        "catarata, retina, glaucoma y cirugía refractiva.",
         "og_title": "Larco Eye Clinic — 70 años cuidando tu visión",
         "og_description": "Tres generaciones de cirujanos oftalmólogos en Quito. Tradición médica familiar "
